@@ -6,7 +6,7 @@
     "atomic_success": 34.6,
     "composite_seen_success": 6.1,
     "composite_unseen_success": 1.1,
-    "overall_success": 13.9,
+    "overall_success": 14.8,
     "code_url": "https://github.com/robocasa-benchmark/openpi",
     "commit_hash": "43fd9da0bdad94a2d409f5601b4b878f5ca59070",
     "checkpoint_url": "https://huggingface.co/robocasa/robocasa365_checkpoints/tree/main/pi0/pi0_robocasa_pretrain_human300/multitask_learning/75000",
