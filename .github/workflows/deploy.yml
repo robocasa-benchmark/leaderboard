@@ -31,7 +31,7 @@ jobs:
         run: pip install jsonschema
 
       - name: Validate submission files
-        run: python scripts/validate_submission.py
+        run: python scripts/validate_success.py
 
       - name: Build leaderboard data
         run: python scripts/build_leaderboard.py
