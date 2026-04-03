@@ -4,9 +4,9 @@ Each submission is a single JSON file added to `submissions/` with this structur
 
 ```json
 {
-  "model_name": "<string, e.g. 'pi0.5'>",
-  "benchmark_track": "<string, e.g. 'RoboCasa365-main'>",
-  "policy_family": "<string, e.g. 'openpi' | 'gr00t' | 'diffusion_policy' | 'other'>",
+  "model_name": "<string>",
+  "benchmark_track": "<string>",
+  "policy_family": "<string>",
   "date": "<YYYY-MM-DD, e.g. '2026-04-02'>",
   "submission_source": "external",
   "robocasa_version": "<string, e.g. '1.0.0'>",
