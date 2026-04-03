@@ -4,12 +4,11 @@
     "type": "object",
     "required": [
       "model_name",
-      "benchmark_track",
       "policy_family",
       "date",
       "submission_source",
       "robocasa_version",
-      "atomic_success",
+      "atomic_seen_success",
       "composite_seen_success",
       "composite_unseen_success",
       "overall_success",
@@ -20,10 +19,6 @@
     ],
     "properties": {
       "model_name": {
-        "type": "string",
-        "minLength": 1
-      },
-      "benchmark_track": {
         "type": "string",
         "minLength": 1
       },
@@ -43,7 +38,7 @@
         "type": "string",
         "minLength": 1
       },
-      "atomic_success": {
+      "atomic_seen_success": {
         "type": "number",
         "minimum": 0,
         "maximum": 100
@@ -82,4 +77,3 @@
     },
     "additionalProperties": false
   }
-  

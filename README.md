@@ -13,7 +13,6 @@ Each submission is a single JSON file added to `submissions/` with this structur
 ```json
 {
   "model_name": "<string>",
-  "benchmark_track": "<string>",
   "policy_family": "<string>",
   "date": "<YYYY-MM-DD, e.g. '2026-04-02'>",
   "submission_source": "external",

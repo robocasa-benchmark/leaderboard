@@ -9,12 +9,11 @@
 ## Submission details
 
 - Model name:
-- Benchmark track:
 - Policy family:
 - Submission source: `external`
 - Submission JSON filename:
 - RoboCasa version:
-- Atomic success:
+- Atomic-Seen success:
 - Composite-Seen success:
 - Composite-Unseen success:
 - Overall success:
