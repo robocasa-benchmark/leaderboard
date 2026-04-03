@@ -2,6 +2,7 @@
     "model_name": "gr00t_n1.5",
     "policy_family": "GR00T",
     "date": "2026-04-02",
+    "submission_source": "internal",
     "robocasa_version": "1.0.0",
     "atomic_success": 43.0,
     "composite_seen_success": 9.6,
