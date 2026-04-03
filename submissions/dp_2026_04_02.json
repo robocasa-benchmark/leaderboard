@@ -11,5 +11,5 @@
     "code_url": "https://github.com/robocasa-benchmark/diffusion_policy",
     "commit_hash": "da6996f475572a3e37da16fef27b375732a612b4",
     "checkpoint_url": "https://huggingface.co/robocasa/robocasa365_checkpoints/blob/main/diffusion_policy/17.40.09_train_diffusion_transformer_hybrid_pretrain_human300/checkpoints/epoch%3D0500-test_mean_score%3D-1.000.ckpt",
-    "notes": "Example submission file"
+    "notes": "Example submission file."
   }
