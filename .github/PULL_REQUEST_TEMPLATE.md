@@ -11,7 +11,7 @@
 - Model name:
 - Benchmark track:
 - Policy family:
-- Submission source (`internal` or `external`):
+- Submission source (`external`):
 - Submission JSON filename:
 - RoboCasa version:
 - Atomic success:
