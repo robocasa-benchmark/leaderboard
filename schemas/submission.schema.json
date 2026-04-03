@@ -1,0 +1,85 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "RoboCasa Benchmark Submission",
+    "type": "object",
+    "required": [
+      "model_name",
+      "benchmark_track",
+      "policy_family",
+      "date",
+      "submission_source",
+      "robocasa_version",
+      "atomic_success",
+      "composite_seen_success",
+      "composite_unseen_success",
+      "overall_success",
+      "code_url",
+      "commit_hash",
+      "checkpoint_url",
+      "notes"
+    ],
+    "properties": {
+      "model_name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "benchmark_track": {
+        "type": "string",
+        "minLength": 1
+      },
+      "policy_family": {
+        "type": "string",
+        "minLength": 1
+      },
+      "date": {
+        "type": "string",
+        "format": "date"
+      },
+      "submission_source": {
+        "type": "string",
+        "enum": ["internal", "external"]
+      },
+      "robocasa_version": {
+        "type": "string",
+        "minLength": 1
+      },
+      "atomic_success": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "composite_seen_success": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "composite_unseen_success": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "overall_success": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "code_url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "commit_hash": {
+        "type": "string",
+        "minLength": 1
+      },
+      "checkpoint_url": {
+        "type": "string",
+        "minLength": 1
+      },
+      "notes": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "additionalProperties": false
+  }
+  
