@@ -32,3 +32,11 @@ Each submission is a single JSON file added to `submissions/` with this structur
 > For any field where the information is unavailable or not applicable, write `"N/A"` and explain the reason in the "notes" field.
 
 Here’s a sample JSON: [dp_2026_04_02.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/dp_2026_04_02.json)
+
+## Sync to robocasa.ai
+
+The site’s leaderboard page reads `_data/robocasa365_leaderboard.yml` from the **robocasa-web** repository. After changes merge to `main` here, the workflow [sync-robocasa-web.yml](.github/workflows/sync-robocasa-web.yml) rebuilds that file and pushes it to `robocasa-web`, which triggers your usual Pages/Jekyll deploy.
+
+**Setup (once):** In this repo, add a secret **`ROBOCASA_WEB_PUSH_TOKEN`**: a personal access token that can push to `robocasa-web` (classic token with `repo` scope, or a fine-grained token with **Contents: Read and write** on that repo). If the web repo is not named `{owner}/robocasa-web`, set a repository variable **`ROBOCASA_WEB_REPO`** to the full name (e.g. `my-org/robocasa-web`).
+
+You do not need to change `leaderboard.html`; it already uses `site.data.robocasa365_leaderboard`.

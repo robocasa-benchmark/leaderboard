@@ -1,0 +1,67 @@
+# After each push to main, regenerate Jekyll data and commit it to robocasa-web so
+# https://robocasa.ai/leaderboard.html stays in sync (no CORS-safe way to pull raw
+# GitHub JSON into the browser from another origin).
+#
+# Required repo secret: ROBOCASA_WEB_PUSH_TOKEN — a PAT with contents:write on the
+# robocasa-web repository (classic `repo` scope, or fine-grained repo access).
+#
+# Optional repo variable: ROBOCASA_WEB_REPO — full name e.g. my-org/robocasa-web if
+# it is not ${{ github.repository_owner }}/robocasa-web
+
+name: Sync leaderboard data to robocasa-web
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: sync-robocasa-web
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout leaderboard
+        uses: actions/checkout@v4
+        with:
+          path: leaderboard
+
+      - name: Checkout robocasa-web
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.ROBOCASA_WEB_REPO || format('{0}/robocasa-web', github.repository_owner) }}
+          token: ${{ secrets.ROBOCASA_WEB_PUSH_TOKEN }}
+          path: robocasa-web
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install jsonschema pyyaml
+        working-directory: leaderboard
+
+      - name: Validate submission files
+        run: python scripts/validate_success.py
+        working-directory: leaderboard
+
+      - name: Build Jekyll data
+        run: python scripts/build_leaderboard.py --output ../robocasa-web/_data/robocasa365_leaderboard.yml
+        working-directory: leaderboard
+
+      - name: Commit and push
+        run: |
+          set -e
+          cd robocasa-web
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/robocasa365_leaderboard.yml
+          if git diff --staged --quiet; then
+            echo "No changes to leaderboard data."
+            exit 0
+          fi
+          git commit -m "chore(data): sync RoboCasa leaderboard from ${{ github.repository }}@${{ github.sha }}"
+          git push
