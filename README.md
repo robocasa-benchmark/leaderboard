@@ -32,4 +32,4 @@ Each submission is a single JSON file added to `submissions/` with this structur
 > [!NOTE]
 > For any field where the information is unavailable or not applicable, write `"N/A"` and explain the reason in the "notes" field.
 
-Here’s a sample JSON: [dp_2026_04_02.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/dp_2026_04_02.json)
+Here’s a sample JSON: [dp_2026_04_02.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/dp_2026_04_02.json)
