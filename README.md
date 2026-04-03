@@ -1,4 +1,4 @@
-# RoboCasa Benchmark Leaderboard
+# RoboCasa Benchmark Leaderboard 🏆
 
 This repository hosts the official RoboCasa365 leaderboard and JSON submission files. It tracks multi-task policy learning performance on RoboCasa365 and is open to community submissions via pull requests.
 
