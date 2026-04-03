@@ -2,7 +2,7 @@
 
 This repository hosts the official RoboCasa365 leaderboard and JSON submission files. It tracks multi-task policy learning performance on RoboCasa365 and is open to community submissions via pull requests.
 
-We analyze multi-task learning through three RoboCasa365 splits — **Atomic**, **Composite-Seen**, and **Composite-Unseen** — and report average task success rate (in %) for each. This accounts for a total of 50 target tasks being evaluated. These evaluation splits and target datasets are explained in further detail in our [documentation](https://robocasa.ai/docs/build/html/datasets/datasets_overview.html#target-datasets).
+We analyze multi-task learning through three RoboCasa365 splits — **Atomic-Seen**, **Composite-Seen**, and **Composite-Unseen** — and report average task success rate (in %) for each. This accounts for a total of 50 target tasks being evaluated. These evaluation splits and target datasets are explained in further detail in our [documentation](https://robocasa.ai/docs/build/html/datasets/datasets_overview.html#target-datasets).
 
 To add your results, export a JSON file in the format below and open a pull request that adds it to the `submissions/` directory.
 
@@ -18,7 +18,7 @@ Each submission is a single JSON file added to `submissions/` with this structur
   "date": "<YYYY-MM-DD, e.g. '2026-04-02'>",
   "submission_source": "external",
   "robocasa_version": "<string, e.g. '1.0.0'>",
-  "atomic_success": <number 0–100>,
+  "atomic_seen_success": <number 0–100>,
   "composite_seen_success": <number 0–100>,
   "composite_unseen_success": <number 0–100>,
   "overall_success": <number 0–100>,

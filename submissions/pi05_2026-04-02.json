@@ -4,7 +4,7 @@
     "date": "2026-04-02",
     "submission_source": "internal",
     "robocasa_version": "1.0.0",
-    "atomic_success": 39.6,
+    "atomic_seen_success": 39.6,
     "composite_seen_success": 7.1,
     "composite_unseen_success": 1.2,
     "overall_success": 16.9,
