@@ -1,4 +1,8 @@
-name: Deploy leaderboard to GitHub Pages
+# Validates submissions and builds website/robocasa365_leaderboard.yml for CI.
+# Public leaderboard site is robocasa.ai (robocasa-web); use sync-robocasa-web.yml to push data there.
+# GitHub Pages is not used here (private repos / no Pages site avoids configure-pages failures).
+
+name: Validate and build leaderboard
 
 on:
   push:
@@ -7,17 +11,14 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: "pages"
+  group: leaderboard-ci
   cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -35,23 +36,3 @@ jobs:
 
       - name: Build leaderboard data
         run: python scripts/build_leaderboard.py
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: website
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
