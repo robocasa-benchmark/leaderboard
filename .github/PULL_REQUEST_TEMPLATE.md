@@ -16,7 +16,6 @@
 - Atomic-Seen success:
 - Composite-Seen success:
 - Composite-Unseen success:
-- Overall success:
 - Code URL:
 - Commit hash:
 - Checkpoint URL:

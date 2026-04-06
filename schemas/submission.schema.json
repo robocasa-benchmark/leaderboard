@@ -11,7 +11,6 @@
       "atomic_seen_success",
       "composite_seen_success",
       "composite_unseen_success",
-      "overall_success",
       "code_url",
       "commit_hash",
       "checkpoint_url",
@@ -49,11 +48,6 @@
         "maximum": 100
       },
       "composite_unseen_success": {
-        "type": "number",
-        "minimum": 0,
-        "maximum": 100
-      },
-      "overall_success": {
         "type": "number",
         "minimum": 0,
         "maximum": 100

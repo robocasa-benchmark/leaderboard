@@ -20,6 +20,8 @@ from pathlib import Path
 
 import yaml
 
+from weighted_overall import compute_overall_success
+
 # Static copy on the site (see leaderboard.html "How we evaluate").
 BENCHMARK_META = {
     "benchmark_name": "Multi-Task Learning",
@@ -77,16 +79,21 @@ def _policy_row(data: dict, rank: int) -> dict:
     family = disp.get("family") or data["policy_family"]
     color = disp.get("color", "#64748b")
 
+    a = float(data["atomic_seen_success"])
+    cs = float(data["composite_seen_success"])
+    cu = float(data["composite_unseen_success"])
+    overall = compute_overall_success(a, cs, cu)
+
     return {
         "rank": rank,
         "name": name,
         "short_name": short_name,
         "family": family,
         "color": color,
-        "score": float(data["overall_success"]),
-        "atomic_seen": float(data["atomic_seen_success"]),
-        "composite_seen": float(data["composite_seen_success"]),
-        "composite_unseen": float(data["composite_unseen_success"]),
+        "score": overall,
+        "atomic_seen": a,
+        "composite_seen": cs,
+        "composite_unseen": cu,
         "code_url": data["code_url"],
         "checkpoint_url": data["checkpoint_url"],
     }
@@ -111,7 +118,14 @@ def main() -> None:
         data = json.loads(file_path.read_text(encoding="utf-8"))
         rows.append(data)
 
-    rows.sort(key=lambda x: float(x["overall_success"]), reverse=True)
+    def _sort_key(row: dict) -> float:
+        return compute_overall_success(
+            float(row["atomic_seen_success"]),
+            float(row["composite_seen_success"]),
+            float(row["composite_unseen_success"]),
+        )
+
+    rows.sort(key=_sort_key, reverse=True)
 
     policies = [_policy_row(data, rank) for rank, data in enumerate(rows, start=1)]
 
