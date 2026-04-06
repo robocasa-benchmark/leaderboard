@@ -30,7 +30,4 @@ Each submission is a single JSON file added to `submissions/` with this structur
 > [!NOTE]
 > For any field where the information is unavailable or not applicable, write `"N/A"` and explain the reason in the "notes" field.
 
-**Overall score on the website** is not part of the JSON. It is computed as a task-weighted mean of the three splits (18 Atomic-Seen + 16 Composite-Seen + 16 Composite-Unseen = 50 tasks), each rounded to one decimal:  
-`(18×atomic_seen_success + 16×composite_seen_success + 16×composite_unseen_success) / 50`.
-
 Here’s a sample JSON: [dp_2026_04_02.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/dp_2026_04_02.json)
