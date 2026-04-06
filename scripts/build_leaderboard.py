@@ -6,13 +6,16 @@ By default, if ../robocasa-web exists (sibling of this repo), writes:
 Otherwise writes:
   website/robocasa365_leaderboard.yml
 Use --output PATH to override.
+
+`updated_at` in the YAML is the UTC calendar date when this script runs (sync/build time),
+not the latest submission JSON `date` field.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -59,13 +62,6 @@ MODEL_DISPLAY = {
 }
 
 
-def _parse_date(s: str) -> datetime | None:
-    try:
-        return datetime.strptime(s, "%Y-%m-%d")
-    except ValueError:
-        return None
-
-
 def _default_output_path(repo_root: Path) -> Path:
     sibling = repo_root.parent / "robocasa-web" / "_data" / "robocasa365_leaderboard.yml"
     if sibling.parent.is_dir():
@@ -110,24 +106,17 @@ def main() -> None:
 
     submissions_dir = repo_root / "submissions"
     rows: list[dict] = []
-    dates: list[datetime] = []
 
     for file_path in sorted(submissions_dir.glob("*.json")):
         data = json.loads(file_path.read_text(encoding="utf-8"))
         rows.append(data)
-        d = _parse_date(data["date"])
-        if d:
-            dates.append(d)
 
     rows.sort(key=lambda x: float(x["overall_success"]), reverse=True)
 
     policies = [_policy_row(data, rank) for rank, data in enumerate(rows, start=1)]
 
-    if dates:
-        latest = max(dates)
-        updated_at = latest.strftime("%m/%d/%Y")
-    else:
-        updated_at = datetime.now().strftime("%m/%d/%Y")
+    # When the YAML was generated (sync / local build), not max submission date.
+    updated_at = datetime.now(timezone.utc).strftime("%m/%d/%Y")
 
     payload = {
         "updated_at": updated_at,
