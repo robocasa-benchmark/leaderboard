@@ -7,8 +7,8 @@
     "atomic_seen_success": 39.6,
     "composite_seen_success": 7.1,
     "composite_unseen_success": 1.2,
-    "code_url": "N/A",
-    "commit_hash": "N/A",
+    "code_url": "https://github.com/robocasa-benchmark/openpi",
+    "commit_hash": "ca4c6d710db75e276bc7c866a57bd7e4aee5b6e8",
     "checkpoint_url": "https://huggingface.co/robocasa/robocasa365_checkpoints/tree/main/pi05_pretrain_human300/multitask_learning/75000",
     "notes": "Example submission file."
   }
