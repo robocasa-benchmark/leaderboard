@@ -9,6 +9,6 @@
   "composite_unseen_success": 1.7,
   "code_url": "https://github.com/Abhiram824/grootn16",
   "commit_hash": "9bbce8ad594359ff4a4c8015821b736e6ca53d7b",
-  "checkpoint_url": "https://huggingface.co/Abhi03/grootn16_robocasa365_multitask_learning/tree/main/checkpoint-120000"
+  "checkpoint_url": "https://huggingface.co/Abhi03/grootn16_robocasa365_multitask_learning/tree/main/checkpoint-120000",
   "notes": "<optional free text>"
 }
