@@ -1,0 +1,14 @@
+{
+    "model_name": "GigaWorld-Policy 0.1",
+    "policy_family": "GigaWorld-Policy",
+    "date": "2026-05-11",
+    "submission_source": "external",
+    "robocasa_version": "1.0.1",
+    "atomic_seen_success": 44.4,
+    "composite_seen_success": 11.8,
+    "composite_unseen_success": 2.9,
+    "code_url": "https://github.com/buyaojinchang/gigaworld_policy_01_robocasa_multi-task.git",
+    "commit_hash": "b9e491965584963b62c31115d8b6416851c155ef",
+    "checkpoint_url": "https://huggingface.co/HengtaoLi/gwp01-robocasa-multi-task/blob/main/model.pt",
+    "notes": "GigaWorld-Policy-0.1(for RoboCasa365) is a multi-task model that trained on human300 dataset"
+  }
