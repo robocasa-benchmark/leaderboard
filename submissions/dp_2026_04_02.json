@@ -1,5 +1,5 @@
 {
-    "model_name": "dp",
+    "model_name": "Diffusion Policy",
     "policy_family": "Diffusion Policy",
     "date": "2026-04-02",
     "submission_source": "internal",

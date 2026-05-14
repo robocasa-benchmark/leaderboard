@@ -74,7 +74,7 @@ def _default_output_path(repo_root: Path) -> Path:
 def _policy_row(data: dict, rank: int) -> dict:
     mid = data["model_name"]
     disp = MODEL_DISPLAY.get(mid, {})
-    name = disp.get("name") or data["policy_family"]
+    name = disp.get("name") or data["model_name"] or data["policy_family"]
     short_name = disp.get("short_name") or mid
     family = disp.get("family") or data["policy_family"]
     color = disp.get("color", "#64748b")
