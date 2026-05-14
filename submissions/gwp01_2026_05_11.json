@@ -3,7 +3,7 @@
     "policy_family": "GigaWorld-Policy",
     "date": "2026-05-11",
     "submission_source": "external",
-    "robocasa_version": "1.0.0",
+    "robocasa_version": "1.0.1",
     "atomic_seen_success": 44.4,
     "composite_seen_success": 11.8,
     "composite_unseen_success": 2.9,
