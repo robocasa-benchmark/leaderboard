@@ -68,7 +68,7 @@ MODEL_DISPLAY = {
         "note": "Evaluated with 2/3 shorter horizon",
     },
 }
-SUBMISSION_BASE_URL = "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions"
+SUBMISSION_MD_BASE_URL = "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md"
 
 
 def _default_output_path(repo_root: Path) -> Path:
@@ -168,7 +168,7 @@ def _policy_row(data: dict, rank: int) -> dict:
         "composite_unseen": cu,
         "training_config": training_config_out,
         "note": disp.get("note"),
-        "submission_url": f"{SUBMISSION_BASE_URL}/{data['_submission_filename']}",
+        "submission_url": f"{SUBMISSION_MD_BASE_URL}/{Path(data['_submission_filename']).stem}.md",
         "code_url": data["code_url"],
         "checkpoint_url": data["checkpoint_url"],
     }
