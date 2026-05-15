@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: leaderboard-ci
@@ -33,6 +33,15 @@ jobs:
 
       - name: Validate submission files
         run: python scripts/validate_success.py
+
+      - name: Generate submission markdown files
+        run: python scripts/generate_submission_markdown.py
+
+      - name: Commit generated markdown files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(submissions_md): auto-generate markdown summaries"
+          file_pattern: submissions_md/*.md
 
       - name: Build leaderboard data
         run: python scripts/build_leaderboard.py
