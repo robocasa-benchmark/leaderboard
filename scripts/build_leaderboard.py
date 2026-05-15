@@ -61,11 +61,11 @@ MODEL_DISPLAY = {
         "short_name": "GR00T",
         "family": "VLA",
         "color": "#8b5cf6",
-        "note": "Evaluated with 2/3 shorter horizon",
+        "note": "Evaluated with a horizon 33% shorter than standard",
     },
     # Keep note mapping when model_name is stored as a literal display name.
     "GR00T N1.5": {
-        "note": "Evaluated with 2/3 shorter horizon",
+        "note": "Evaluated with a horizon 33% shorter than standard",
     },
 }
 SUBMISSION_MD_BASE_URL = "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md"
@@ -120,7 +120,7 @@ def _merge_existing_fields(
     """
     merged = dict(generated)
     # Preserve curated presentation metadata when a row already exists.
-    preserve_existing_keys = {"name", "short_name", "family", "color", "note"}
+    preserve_existing_keys = {"name", "short_name", "family", "color"}
 
     for key, value in existing.items():
         if key not in merged:
