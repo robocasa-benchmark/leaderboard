@@ -46,7 +46,6 @@ def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
     lines.append(_fmt_field("Policy family", data.get("policy_family", "N/A")))
     lines.append(_fmt_field("Date evaluated", _fmt_date_mmddyyyy(data.get("date"))))
     lines.append(_fmt_field("Submission source", data.get("submission_source", "N/A")))
-    lines.append(_fmt_field("Submission JSON filename", filename))
     lines.append(_fmt_field("RoboCasa version", data.get("robocasa_version", "N/A")))
     lines.append(_fmt_field("Atomic-Seen success", data.get("atomic_seen_success", "N/A")))
     lines.append(_fmt_field("Composite-Seen success", data.get("composite_seen_success", "N/A")))
