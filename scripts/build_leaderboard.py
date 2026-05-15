@@ -61,8 +61,14 @@ MODEL_DISPLAY = {
         "short_name": "GR00T",
         "family": "VLA",
         "color": "#8b5cf6",
+        "note": "Evaluated with 2/3 shorter horizon",
+    },
+    # Keep note mapping when model_name is stored as a literal display name.
+    "GR00T N1.5": {
+        "note": "Evaluated with 2/3 shorter horizon",
     },
 }
+SUBMISSION_BASE_URL = "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions"
 
 
 def _default_output_path(repo_root: Path) -> Path:
@@ -138,6 +144,17 @@ def _policy_row(data: dict, rank: int) -> dict:
     cs = float(data["composite_seen_success"])
     cu = float(data["composite_unseen_success"])
     overall = compute_overall_success(a, cs, cu)
+    training_cfg = data.get("training_config", {})
+    if not isinstance(training_cfg, dict):
+        training_cfg = {}
+
+    training_config_out: dict[str, Any] = {}
+    if training_cfg.get("batch_size") is not None:
+        training_config_out["batch_size"] = int(training_cfg["batch_size"])
+    if training_cfg.get("num_training_steps") is not None:
+        num_training_steps = int(training_cfg["num_training_steps"])
+        training_config_out["num_training_steps"] = num_training_steps
+        training_config_out["num_training_steps_display"] = f"{num_training_steps:,}"
 
     return {
         "rank": rank,
@@ -149,6 +166,9 @@ def _policy_row(data: dict, rank: int) -> dict:
         "atomic_seen": a,
         "composite_seen": cs,
         "composite_unseen": cu,
+        "training_config": training_config_out,
+        "note": disp.get("note"),
+        "submission_url": f"{SUBMISSION_BASE_URL}/{data['_submission_filename']}",
         "code_url": data["code_url"],
         "checkpoint_url": data["checkpoint_url"],
     }
@@ -178,6 +198,7 @@ def main() -> None:
 
     for file_path in sorted(submissions_dir.glob("*.json")):
         data = json.loads(file_path.read_text(encoding="utf-8"))
+        data["_submission_filename"] = file_path.name
         rows.append(data)
 
     def _sort_key(row: dict) -> float:
