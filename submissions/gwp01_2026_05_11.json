@@ -10,5 +10,9 @@
     "code_url": "https://github.com/buyaojinchang/gigaworld_policy_01_robocasa_multi-task.git",
     "commit_hash": "b9e491965584963b62c31115d8b6416851c155ef",
     "checkpoint_url": "https://huggingface.co/HengtaoLi/gwp01-robocasa-multi-task/blob/main/model.pt",
+    "training_config": {
+        "batch_size": 64,
+        "num_training_steps": 600000
+    },
     "notes": "GigaWorld-Policy-0.1(for RoboCasa365) is a multi-task model that trained on human300 dataset"
   }

@@ -10,5 +10,6 @@
     "code_url": "https://github.com/robocasa-benchmark/Isaac-GR00T",
     "commit_hash": "9d7d7a9eb7ad30bd8ce30448d9ab53a918b45b10",
     "checkpoint_url": "https://huggingface.co/robocasa/robocasa365_checkpoints/tree/main/gr00t_n1-5/multitask_learning/checkpoint-120000",
+    "wandb": "https://wandb.ai/snasiriany/huggingface/runs/ie66zrqa",
     "notes": "Example submission file."
   }

@@ -64,6 +64,24 @@
         "type": "string",
         "minLength": 1
       },
+      "wandb": {
+        "type": "string",
+        "minLength": 1
+      },
+      "training_config": {
+        "type": "object",
+        "properties": {
+          "batch_size": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "num_training_steps": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false
+      },
       "notes": {
         "type": "string",
         "minLength": 1

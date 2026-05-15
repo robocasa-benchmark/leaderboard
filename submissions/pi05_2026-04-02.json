@@ -10,5 +10,6 @@
     "code_url": "https://github.com/robocasa-benchmark/openpi",
     "commit_hash": "ca4c6d710db75e276bc7c866a57bd7e4aee5b6e8",
     "checkpoint_url": "https://huggingface.co/robocasa/robocasa365_checkpoints/tree/main/pi05_pretrain_human300/multitask_learning/75000",
+    "wandb": "https://wandb.ai/snasiriany/openpi/runs/9geuchwa?nw=nwusersnasiriany",
     "notes": "Example submission file."
   }
