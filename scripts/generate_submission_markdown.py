@@ -26,6 +26,10 @@ def _fmt_field(label: str, value: Any) -> str:
     return f"- {label}: {value}"
 
 
+def _fmt_link(url: str) -> str:
+    return f'<a href="{url}" target="_blank" rel="noopener noreferrer">{url}</a>'
+
+
 def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
     lines: list[str] = []
     lines.append("## Submission details")
@@ -44,7 +48,7 @@ def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
 
     code_url = data.get("code_url")
     if code_url:
-        lines.append(_fmt_field("Code URL", f"[{code_url}]({code_url})"))
+        lines.append(_fmt_field("Code URL", _fmt_link(code_url)))
     else:
         lines.append(_fmt_field("Code URL", "N/A"))
 
@@ -52,13 +56,13 @@ def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
 
     checkpoint_url = data.get("checkpoint_url")
     if checkpoint_url:
-        lines.append(_fmt_field("Checkpoint URL", f"[{checkpoint_url}]({checkpoint_url})"))
+        lines.append(_fmt_field("Checkpoint URL", _fmt_link(checkpoint_url)))
     else:
         lines.append(_fmt_field("Checkpoint URL", "N/A"))
 
     wandb = data.get("wandb")
     if wandb:
-        lines.append(_fmt_field("W&B", f"[{wandb}]({wandb})"))
+        lines.append(_fmt_field("W&B", _fmt_link(wandb)))
 
     training_cfg = data.get("training_config")
     if isinstance(training_cfg, dict):
