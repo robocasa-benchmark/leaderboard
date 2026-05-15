@@ -14,6 +14,7 @@
       "code_url",
       "commit_hash",
       "checkpoint_url",
+      "training_config",
       "notes"
     ],
     "properties": {
@@ -70,6 +71,10 @@
       },
       "training_config": {
         "type": "object",
+        "required": [
+          "batch_size",
+          "num_training_steps"
+        ],
         "properties": {
           "batch_size": {
             "type": "integer",

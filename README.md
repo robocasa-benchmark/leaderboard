@@ -23,10 +23,10 @@ Each submission is a single JSON file added to `submissions/` with this structur
   "code_url": "<URL>",
   "commit_hash": "<git commit hash>",
   "checkpoint_url": "<URL>",
-  "wandb": "<optional wandb run or project URL/reference>",
+  "wandb": "<wandb run or project URL/reference>",
   "training_config": {
-    "batch_size": "<optional integer>",
-    "num_training_steps": "<optional integer>"
+    "batch_size": "<integer>",
+    "num_training_steps": "<integer>"
   },
   "notes": "<optional free text>"
 }
@@ -34,8 +34,5 @@ Each submission is a single JSON file added to `submissions/` with this structur
 
 > [!NOTE]
 > For any field where the information is unavailable or not applicable, write `"N/A"` and explain the reason in the "notes" field.
-
-> [!TIP]
-> `wandb` is the preferred way to share training details. If that is not available, include `training_config.batch_size` and `training_config.num_training_steps`.
 
 Here’s a sample JSON: [dp_2026_04_02.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/dp_2026_04_02.json)
