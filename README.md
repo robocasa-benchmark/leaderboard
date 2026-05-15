@@ -16,7 +16,7 @@ Each submission is a single JSON file added to `submissions/` with this structur
   "policy_family": "<string>",
   "date": "<YYYY-MM-DD, e.g. '2026-04-02'>",
   "submission_source": "external",
-  "robocasa_version": "<string, e.g. '1.0.0'>",
+  "robocasa_version": "<string, default '1.0.1'>",
   "atomic_seen_success": <number 0–100>,
   "composite_seen_success": <number 0–100>,
   "composite_unseen_success": <number 0–100>,
@@ -34,5 +34,6 @@ Each submission is a single JSON file added to `submissions/` with this structur
 
 > [!NOTE]
 > For any field where the information is unavailable or not applicable, write `"N/A"` and explain the reason in the "notes" field.
+> The current default `robocasa_version` is `1.0.1` until a new update is announced.
 
 Here’s a sample JSON: [gr00t_n1.5_2026_04_02.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/gr00t_n1.5_2026_04_02.json)
