@@ -10,5 +10,9 @@
   "code_url": "https://github.com/Abhiram824/grootn16",
   "commit_hash": "a21fc9af9a93a0b87bee534083b82d8f0b47d733",
   "checkpoint_url": "https://huggingface.co/Abhi03/grootn16_robocasa365_multitask_learning/tree/main/checkpoint-120000",
+  "training_config": {
+      "batch_size": 128,
+      "num_training_steps": 120000
+  },
   "notes": "<optional free text>"
 }
