@@ -69,6 +69,9 @@ MODEL_DISPLAY = {
     },
 }
 SUBMISSION_MD_BASE_URL = "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md"
+SUBMISSION_URL_OVERRIDES = {
+    "GR00T N1.6": "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md/gr00t_n1.6_2026_05_14.md",
+}
 
 
 def _default_output_path(repo_root: Path) -> Path:
@@ -156,6 +159,11 @@ def _policy_row(data: dict, rank: int) -> dict:
         training_config_out["num_training_steps"] = num_training_steps
         training_config_out["num_training_steps_display"] = f"{num_training_steps:,}"
 
+    submission_url = SUBMISSION_URL_OVERRIDES.get(
+        data["model_name"],
+        f"{SUBMISSION_MD_BASE_URL}/{Path(data['_submission_filename']).stem}.md",
+    )
+
     return {
         "rank": rank,
         "name": name,
@@ -168,7 +176,7 @@ def _policy_row(data: dict, rank: int) -> dict:
         "composite_unseen": cu,
         "training_config": training_config_out,
         "note": disp.get("note"),
-        "submission_url": f"{SUBMISSION_MD_BASE_URL}/{Path(data['_submission_filename']).stem}.md",
+        "submission_url": submission_url,
         "code_url": data["code_url"],
         "checkpoint_url": data["checkpoint_url"],
     }

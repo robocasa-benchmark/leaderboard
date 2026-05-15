@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -26,6 +27,16 @@ def _fmt_field(label: str, value: Any) -> str:
     return f"- {label}: {value}"
 
 
+def _fmt_date_mmddyyyy(value: Any) -> str:
+    if not value:
+        return "N/A"
+    try:
+        dt = datetime.strptime(str(value), "%Y-%m-%d")
+        return dt.strftime("%m/%d/%Y")
+    except ValueError:
+        return str(value)
+
+
 def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
     lines: list[str] = []
     lines.append("## Submission details")
@@ -33,6 +44,7 @@ def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
 
     lines.append(_fmt_field("Model name", data.get("model_name", "N/A")))
     lines.append(_fmt_field("Policy family", data.get("policy_family", "N/A")))
+    lines.append(_fmt_field("Date evaluated", _fmt_date_mmddyyyy(data.get("date"))))
     lines.append(_fmt_field("Submission source", data.get("submission_source", "N/A")))
     lines.append(_fmt_field("Submission JSON filename", filename))
     lines.append(_fmt_field("RoboCasa version", data.get("robocasa_version", "N/A")))
