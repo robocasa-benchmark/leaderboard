@@ -15,6 +15,10 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+PR_URL_OVERRIDES = {
+    "gwp01_2026_05_11.json": "https://github.com/robocasa-benchmark/leaderboard/pull/1",
+}
+
 
 def _fmt_steps(value: Any) -> str:
     try:
@@ -66,6 +70,10 @@ def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
         lines.append(_fmt_field("Checkpoint URL", f"[{checkpoint_url}]({checkpoint_url})"))
     else:
         lines.append(_fmt_field("Checkpoint URL", "N/A"))
+
+    pr_url = PR_URL_OVERRIDES.get(filename)
+    if pr_url:
+        lines.append(_fmt_field("PR", f"[{pr_url}]({pr_url})"))
 
     wandb = data.get("wandb")
     if wandb:
