@@ -15,10 +15,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-PR_URL_OVERRIDES = {
-    "gwp01_2026_05_11.json": "https://github.com/robocasa-benchmark/leaderboard/pull/1",
-}
-
 
 def _fmt_steps(value: Any) -> str:
     try:
@@ -41,7 +37,19 @@ def _fmt_date_mmddyyyy(value: Any) -> str:
         return str(value)
 
 
-def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
+def _load_pr_links(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def render_submission_markdown(
+    data: dict[str, Any], filename: str, pr_links: dict[str, str]
+) -> str:
     lines: list[str] = []
     lines.append("## Submission details")
     lines.append("")
@@ -71,7 +79,7 @@ def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
     else:
         lines.append(_fmt_field("Checkpoint URL", "N/A"))
 
-    pr_url = PR_URL_OVERRIDES.get(filename)
+    pr_url = pr_links.get(filename)
     if pr_url:
         lines.append(_fmt_field("PR", f"[{pr_url}]({pr_url})"))
 
@@ -110,16 +118,23 @@ def main() -> None:
         default=Path(__file__).resolve().parents[1] / "submissions_md",
         help="Directory where markdown summaries will be written.",
     )
+    parser.add_argument(
+        "--pr-links-path",
+        type=Path,
+        default=Path(__file__).resolve().parents[1] / "submissions_md" / "pr_links.json",
+        help="JSON mapping file from submission filename to PR URL.",
+    )
     args = parser.parse_args()
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    pr_links = _load_pr_links(args.pr_links_path)
     generated = 0
 
     for json_path in sorted(args.submissions_dir.glob("*.json")):
         with json_path.open("r", encoding="utf-8") as f:
             payload = json.load(f)
 
-        md_text = render_submission_markdown(payload, json_path.name)
+        md_text = render_submission_markdown(payload, json_path.name, pr_links)
         output_path = args.output_dir / f"{json_path.stem}.md"
         with output_path.open("w", encoding="utf-8") as f:
             f.write(md_text)
