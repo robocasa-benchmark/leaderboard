@@ -1,0 +1,19 @@
+{
+  "model_name": "RLDX-1",
+  "policy_family": "RLDX",
+  "date": "2026-05-05",
+  "submission_source": "external",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 67.3,
+  "composite_seen_success": 19.0,
+  "composite_unseen_success": 5.6,
+  "code_url": "https://github.com/RLWRLD/RLDX-1",
+  "commit_hash": "ef05cd4ae634ff97d672d42275febbc0b92cc192",
+  "checkpoint_url": "https://huggingface.co/RLWRLD/RLDX-1-FT-RC365",
+  "wandb": "https://wandb.ai/happyhappy/rldx-robocasa365/runs/di3k54nm",
+  "training_config": {
+    "batch_size": 192,
+    "num_training_steps": 250000
+  },
+  "notes": "Tech report: https://arxiv.org/abs/2605.03269. Fine-tuned from RLWRLD/RLDX-1-PT on RoboCasa-365 (365 tasks). 16-GPU (8x2 nodes), bf16, video-length=4, n-cog-tokens=64. Experiment name: rldx1_ft_robocasa365_human300_bsz192_250k_16gpu. Aggregate RoboCasa-365 average: 32.1%."
+}
