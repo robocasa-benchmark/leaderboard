@@ -6,20 +6,6 @@
 - [ ] I used `"N/A"` for any field that is unavailable or not applicable
 - [ ] I did not modify existing submission files unrelated to this PR
 
-## Submission details
+## Notes (optional)
 
-- Model name:
-- Policy family:
-- Submission source: `external`
-- Submission JSON filename:
-- RoboCasa version:
-- Atomic-Seen success:
-- Composite-Seen success:
-- Composite-Unseen success:
-- Code URL:
-- Commit hash:
-- Checkpoint URL:
-
-## Notes
-
-Add any additional context for the submission here.
+Add any extra context for reviewers here. **Submission details are auto-generated from your JSON** in a bot comment on this PR (updated when you push changes).

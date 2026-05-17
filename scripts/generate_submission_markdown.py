@@ -47,13 +47,16 @@ def _load_pr_links(path: Path) -> dict[str, str]:
     return data if isinstance(data, dict) else {}
 
 
-def render_submission_markdown(
-    data: dict[str, Any], filename: str, pr_links: dict[str, str]
-) -> str:
+def render_submission_fields(
+    data: dict[str, Any],
+    filename: str,
+    pr_links: dict[str, str],
+    *,
+    include_filename: bool = False,
+) -> list[str]:
     lines: list[str] = []
-    lines.append("## Submission details")
-    lines.append("")
-
+    if include_filename:
+        lines.append(_fmt_field("Submission JSON filename", filename))
     lines.append(_fmt_field("Model name", data.get("model_name", "N/A")))
     lines.append(_fmt_field("Policy family", data.get("policy_family", "N/A")))
     lines.append(_fmt_field("Date evaluated", _fmt_date_mmddyyyy(data.get("date"))))
@@ -100,6 +103,31 @@ def render_submission_markdown(
     if notes:
         lines.append(_fmt_field("Notes", notes))
 
+    return lines
+
+
+def render_submission_markdown(
+    data: dict[str, Any], filename: str, pr_links: dict[str, str]
+) -> str:
+    lines = ["## Submission details", ""]
+    lines.extend(render_submission_fields(data, filename, pr_links))
+    lines.append("")
+    return "\n".join(lines)
+
+
+def render_pr_submission_comment(
+    data: dict[str, Any], filename: str
+) -> str:
+    lines = [
+        "<!-- robocasa-submission-summary -->",
+        "### Submission summary (auto-generated)",
+        "",
+        f"_From `{filename}`. Edit the JSON in this PR to update this summary._",
+        "",
+    ]
+    lines.extend(
+        render_submission_fields(data, filename, pr_links={}, include_filename=True)
+    )
     lines.append("")
     return "\n".join(lines)
 

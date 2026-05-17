@@ -1,0 +1,55 @@
+# Posts an auto-generated PR comment from the submission JSON so contributors
+# do not duplicate fields in the PR description.
+
+name: PR submission summary
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Find changed submission JSON files
+        id: changed
+        run: |
+          mapfile -t FILES < <(
+            git diff --name-only \
+              "${{ github.event.pull_request.base.sha }}" \
+              "${{ github.event.pull_request.head.sha }}" \
+              -- 'submissions/*.json'
+          )
+          if [ "${#FILES[@]}" -eq 0 ]; then
+            echo "paths=" >> "$GITHUB_OUTPUT"
+          else
+            printf -v joined '%s ' "${FILES[@]}"
+            echo "paths=${joined%" "}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Render comment body
+        working-directory: scripts
+        run: python render_pr_comment.py ${{ steps.changed.outputs.paths }} > ../comment-body.md
+
+      - name: Post or update PR comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: comment-body.md
+          edit-mode: replace
+          comment-tag: robocasa-submission-summary
