@@ -61,11 +61,6 @@ MODEL_DISPLAY = {
         "short_name": "GR00T",
         "family": "VLA",
         "color": "#8b5cf6",
-        "note": "Evaluated with a horizon 33% shorter than standard",
-    },
-    # Keep note mapping when model_name is stored as a literal display name.
-    "GR00T N1.5": {
-        "note": "Evaluated with a horizon 33% shorter than standard",
     },
 }
 SUBMISSION_MD_BASE_URL = "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md"
