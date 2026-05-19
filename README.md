@@ -36,4 +36,4 @@ Each submission is a single JSON file added to `submissions/` with this structur
 > For any field where the information is unavailable or not applicable, write `"N/A"` and explain the reason in the "notes" field.
 > The current default `robocasa_version` is `1.0.1` until a new update is announced.
 
-Here’s a sample JSON: [gr00t_n1.5_2026_04_02.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/gr00t_n1.5_2026_04_02.json)
+Here’s a sample JSON: [gr00t_n1.5_2026_05_19.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/gr00t_n1.5_2026_05_19.json)
