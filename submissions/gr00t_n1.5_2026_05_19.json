@@ -15,5 +15,5 @@
         "batch_size": 128,
         "num_training_steps": 120000
     },
-    "notes": "Example submission file."
+    "notes": "re-evaluated with 1.5x longer horizon after RoboCasa 1.0.1 update for consistency"
   }
