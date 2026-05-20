@@ -1,5 +1,8 @@
 # Posts an auto-generated PR comment from the submission JSON so contributors
 # do not duplicate fields in the PR description.
+#
+# Checkout uses the base branch (main) so workflow scripts are always present.
+# Submission JSON is read from the PR head via refs/pull/<n>/head.
 
 name: PR submission summary
 
@@ -15,11 +18,16 @@ jobs:
   summary:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout PR head
+      - name: Checkout base branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.base.ref }}
+          fetch-depth: 0
+
+      - name: Fetch PR head
+        run: |
+          git fetch origin \
+            +refs/pull/${{ github.event.pull_request.number }}/head:refs/remotes/pull/${{ github.event.pull_request.number }}/head
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,7 +40,7 @@ jobs:
           mapfile -t FILES < <(
             git diff --name-only \
               "${{ github.event.pull_request.base.sha }}" \
-              "${{ github.event.pull_request.head.sha }}" \
+              "refs/remotes/pull/${{ github.event.pull_request.number }}/head" \
               -- 'submissions/*.json'
           )
           if [ "${#FILES[@]}" -eq 0 ]; then
@@ -42,9 +50,16 @@ jobs:
             echo "paths=${joined%" "}" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Materialize submission JSON from PR head
+        if: steps.changed.outputs.paths != ''
+        run: |
+          for f in ${{ steps.changed.outputs.paths }}; do
+            mkdir -p "$(dirname "$f")"
+            git show "refs/remotes/pull/${{ github.event.pull_request.number }}/head:$f" > "$f"
+          done
+
       - name: Render comment body
-        working-directory: scripts
-        run: python render_pr_comment.py ${{ steps.changed.outputs.paths }} > ../comment-body.md
+        run: python scripts/render_pr_comment.py ${{ steps.changed.outputs.paths }} > comment-body.md
 
       - name: Post or update PR comment
         uses: peter-evans/create-or-update-comment@v4
