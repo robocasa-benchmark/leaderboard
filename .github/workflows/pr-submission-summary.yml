@@ -38,7 +38,7 @@ jobs:
         id: changed
         run: |
           mapfile -t FILES < <(
-            git diff --name-only \
+            git diff --name-only --diff-filter=ACM \
               "${{ github.event.pull_request.base.sha }}" \
               "refs/remotes/pull/${{ github.event.pull_request.number }}/head" \
               -- 'submissions/*.json'
@@ -53,13 +53,21 @@ jobs:
       - name: Materialize submission JSON from PR head
         if: steps.changed.outputs.paths != ''
         run: |
+          set -euo pipefail
           for f in ${{ steps.changed.outputs.paths }}; do
             mkdir -p "$(dirname "$f")"
-            git show "refs/remotes/pull/${{ github.event.pull_request.number }}/head:$f" > "$f"
+            git show "refs/remotes/pull/${{ github.event.pull_request.number }}/head:${f}" > "${f}"
           done
 
       - name: Render comment body
-        run: python scripts/render_pr_comment.py ${{ steps.changed.outputs.paths }} > comment-body.md
+        working-directory: scripts
+        run: |
+          set -euo pipefail
+          ARGS=""
+          for f in ${{ steps.changed.outputs.paths }}; do
+            ARGS="${ARGS} ../${f}"
+          done
+          python render_pr_comment.py ${ARGS} > ../comment-body.md
 
       - name: Post or update PR comment
         uses: peter-evans/create-or-update-comment@v4
