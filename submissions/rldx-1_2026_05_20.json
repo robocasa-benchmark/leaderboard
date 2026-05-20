@@ -15,5 +15,5 @@
     "batch_size": 192,
     "num_training_steps": 250000
   },
-  "notes": "Tech report: https://arxiv.org/abs/2605.03269. Fine-tuned from RLWRLD/RLDX-1-PT on RoboCasa-365 (365 tasks). 16-GPU (8x2 nodes), bf16, video-length=4, n-cog-tokens=64. Experiment name: rldx1_ft_robocasa365_human300_bsz192_250k_16gpu. Aggregate RoboCasa-365 average: 32.1%."
+  "notes": "RLDX-1 Tech Report: https://arxiv.org/abs/2605.03269. @happyhappy-jun @huiwon-jang @dongyoungkim-prog"
 }
