@@ -9,6 +9,12 @@ name: PR submission summary
 on:
   pull_request_target:
     types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "PR number to summarize (for manual re-runs)"
+        required: true
+        type: number
 
 permissions:
   pull-requests: write
@@ -18,16 +24,25 @@ jobs:
   summary:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout base branch
+      - name: Resolve PR number
+        id: pr
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "number=${{ inputs.pr_number }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "number=${{ github.event.pull_request.number }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.base.ref }}
+          ref: main
           fetch-depth: 0
 
       - name: Fetch PR head
         run: |
           git fetch origin \
-            +refs/pull/${{ github.event.pull_request.number }}/head:refs/remotes/pull/${{ github.event.pull_request.number }}/head
+            +refs/pull/${{ steps.pr.outputs.number }}/head:refs/remotes/pull/${{ steps.pr.outputs.number }}/head
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -37,10 +52,18 @@ jobs:
       - name: Find changed submission JSON files
         id: changed
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            if [ -z "$BASE_SHA" ]; then
+              BASE_SHA="$(git merge-base origin/main refs/remotes/pull/${{ steps.pr.outputs.number }}/head)"
+            fi
+          else
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          fi
           mapfile -t FILES < <(
             git diff --name-only --diff-filter=ACM \
-              "${{ github.event.pull_request.base.sha }}" \
-              "refs/remotes/pull/${{ github.event.pull_request.number }}/head" \
+              "$BASE_SHA" \
+              "refs/remotes/pull/${{ steps.pr.outputs.number }}/head" \
               -- 'submissions/*.json'
           )
           if [ "${#FILES[@]}" -eq 0 ]; then
@@ -56,23 +79,33 @@ jobs:
           set -euo pipefail
           for f in ${{ steps.changed.outputs.paths }}; do
             mkdir -p "$(dirname "$f")"
-            git show "refs/remotes/pull/${{ github.event.pull_request.number }}/head:${f}" > "${f}"
+            git show "refs/remotes/pull/${{ steps.pr.outputs.number }}/head:${f}" > "${f}"
           done
 
       - name: Render comment body
-        working-directory: scripts
         run: |
           set -euo pipefail
-          ARGS=""
-          for f in ${{ steps.changed.outputs.paths }}; do
-            ARGS="${ARGS} ../${f}"
-          done
-          python render_pr_comment.py ${ARGS} > ../comment-body.md
+          cd scripts
+          if [ -z "${{ steps.changed.outputs.paths }}" ]; then
+            python render_pr_comment.py > ../comment-body.md
+          else
+            python render_pr_comment.py \
+              $(printf '../%s ' ${{ steps.changed.outputs.paths }}) > ../comment-body.md
+          fi
 
       - name: Post or update PR comment
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.state == 'open'
+        continue-on-error: true
+        id: comment
         uses: peter-evans/create-or-update-comment@v4
         with:
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ steps.pr.outputs.number }}
           body-path: comment-body.md
           edit-mode: replace
           comment-tag: robocasa-submission-summary
+
+      - name: Finish (closed PR or comment skipped)
+        if: steps.comment.outcome == 'skipped' || steps.comment.outcome == 'failure'
+        run: |
+          echo "PR comment was not posted (merged/closed PR or post failed). Summary rendered successfully."
+          cat comment-body.md
