@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -25,6 +26,25 @@ def _fmt_steps(value: Any) -> str:
 
 def _fmt_field(label: str, value: Any) -> str:
     return f"- {label}: {value}"
+
+
+_GITHUB_USER_RE = re.compile(r"@([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,38}))")
+_URL_RE = re.compile(r"(?<!\]\()https?://\S+")
+
+
+def _linkify_notes(notes: str) -> str:
+    """Turn @handles and bare URLs into Markdown links for GitHub rendering."""
+    text = _GITHUB_USER_RE.sub(
+        lambda m: f"[@{m.group(1)}](https://github.com/{m.group(1)})", notes
+    )
+
+    def _link_url(match: re.Match[str]) -> str:
+        raw = match.group(0)
+        url = raw.rstrip(".,;:!?)")
+        suffix = raw[len(url) :]
+        return f"[{url}]({url}){suffix}"
+
+    return _URL_RE.sub(_link_url, text)
 
 
 def _fmt_date_mmddyyyy(value: Any) -> str:
@@ -101,7 +121,7 @@ def render_submission_fields(
 
     notes = data.get("notes")
     if notes:
-        lines.append(_fmt_field("Notes", notes))
+        lines.append(_fmt_field("Notes", _linkify_notes(str(notes))))
 
     return lines
 
