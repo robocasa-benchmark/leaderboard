@@ -47,6 +47,13 @@ def _linkify_notes(notes: str) -> str:
     return _URL_RE.sub(_link_url, text)
 
 
+# PR URLs for markdown only (not part of submission JSON / schema).
+SUBMISSION_PR_URLS: dict[str, str] = {
+    "gwp01_2026_05_11.json": "https://github.com/robocasa-benchmark/leaderboard/pull/1",
+    "rldx-1_2026_05_20.json": "https://github.com/robocasa-benchmark/leaderboard/pull/3",
+}
+
+
 def _fmt_date_mmddyyyy(value: Any) -> str:
     if not value:
         return "N/A"
@@ -90,6 +97,10 @@ def render_submission_fields(
         lines.append(_fmt_field("Checkpoint URL", f"[{checkpoint_url}]({checkpoint_url})"))
     else:
         lines.append(_fmt_field("Checkpoint URL", "N/A"))
+
+    pr_url = SUBMISSION_PR_URLS.get(filename)
+    if pr_url:
+        lines.append(_fmt_field("PR", f"[{pr_url}]({pr_url})"))
 
     wandb = data.get("wandb")
     if wandb:
