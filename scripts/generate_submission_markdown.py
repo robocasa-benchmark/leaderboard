@@ -57,20 +57,9 @@ def _fmt_date_mmddyyyy(value: Any) -> str:
         return str(value)
 
 
-def _load_pr_links(path: Path) -> dict[str, str]:
-    if not path.exists():
-        return {}
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return {}
-    return data if isinstance(data, dict) else {}
-
-
 def render_submission_fields(
     data: dict[str, Any],
     filename: str,
-    pr_links: dict[str, str],
     *,
     include_filename: bool = False,
 ) -> list[str]:
@@ -102,10 +91,6 @@ def render_submission_fields(
     else:
         lines.append(_fmt_field("Checkpoint URL", "N/A"))
 
-    pr_url = pr_links.get(filename)
-    if pr_url:
-        lines.append(_fmt_field("PR", f"[{pr_url}]({pr_url})"))
-
     wandb = data.get("wandb")
     if wandb:
         lines.append(_fmt_field("W&B", f"[{wandb}]({wandb})"))
@@ -126,11 +111,9 @@ def render_submission_fields(
     return lines
 
 
-def render_submission_markdown(
-    data: dict[str, Any], filename: str, pr_links: dict[str, str]
-) -> str:
+def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
     lines = ["## Submission details", ""]
-    lines.extend(render_submission_fields(data, filename, pr_links))
+    lines.extend(render_submission_fields(data, filename))
     lines.append("")
     return "\n".join(lines)
 
@@ -145,9 +128,7 @@ def render_pr_submission_comment(
         f"_From `{filename}`. Edit the JSON in this PR to update this summary._",
         "",
     ]
-    lines.extend(
-        render_submission_fields(data, filename, pr_links={}, include_filename=True)
-    )
+    lines.extend(render_submission_fields(data, filename, include_filename=True))
     lines.append("")
     return "\n".join(lines)
 
@@ -166,23 +147,16 @@ def main() -> None:
         default=Path(__file__).resolve().parents[1] / "submissions_md",
         help="Directory where markdown summaries will be written.",
     )
-    parser.add_argument(
-        "--pr-links-path",
-        type=Path,
-        default=Path(__file__).resolve().parents[1] / "submissions_md" / "pr_links.json",
-        help="JSON mapping file from submission filename to PR URL.",
-    )
     args = parser.parse_args()
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    pr_links = _load_pr_links(args.pr_links_path)
     generated = 0
 
     for json_path in sorted(args.submissions_dir.glob("*.json")):
         with json_path.open("r", encoding="utf-8") as f:
             payload = json.load(f)
 
-        md_text = render_submission_markdown(payload, json_path.name, pr_links)
+        md_text = render_submission_markdown(payload, json_path.name)
         output_path = args.output_dir / f"{json_path.stem}.md"
         with output_path.open("w", encoding="utf-8") as f:
             f.write(md_text)

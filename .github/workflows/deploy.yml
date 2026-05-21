@@ -35,55 +35,6 @@ jobs:
       - name: Validate submission files
         run: python scripts/validate_success.py
 
-      - name: Update PR links mapping for changed submissions
-        env:
-          REPO: ${{ github.repository }}
-          SHA: ${{ github.sha }}
-          BEFORE: ${{ github.event.before }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -e
-          PR_URL="$(gh api "repos/$REPO/commits/$SHA/pulls" --jq '.[0].html_url' 2>/dev/null || true)"
-          if [ -z "$PR_URL" ] || [ "$PR_URL" = "null" ]; then
-            echo "No associated PR found for this push; skipping PR mapping update."
-            exit 0
-          fi
-
-          CHANGED_SUBMISSIONS="$(git diff --name-only --diff-filter=A "$BEFORE" "$SHA" -- submissions/*.json || true)"
-          if [ -z "$CHANGED_SUBMISSIONS" ]; then
-            echo "No newly added submission JSON files in this push."
-            exit 0
-          fi
-
-          export PR_URL
-          export CHANGED_SUBMISSIONS
-          python - <<'PY'
-          import json
-          import os
-          from pathlib import Path
-
-          pr_url = os.environ["PR_URL"]
-          changed = [line.strip() for line in os.environ["CHANGED_SUBMISSIONS"].splitlines() if line.strip()]
-          mapping_path = Path("submissions_md/pr_links.json")
-          mapping_path.parent.mkdir(parents=True, exist_ok=True)
-          if mapping_path.exists():
-              try:
-                  mapping = json.loads(mapping_path.read_text(encoding="utf-8"))
-              except json.JSONDecodeError:
-                  mapping = {}
-          else:
-              mapping = {}
-          if not isinstance(mapping, dict):
-              mapping = {}
-
-          for rel_path in changed:
-              filename = Path(rel_path).name
-              mapping[filename] = pr_url
-
-          mapping_path.write_text(json.dumps(mapping, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-          print(f"Updated {mapping_path} for {len(changed)} submission file(s)")
-          PY
-
       - name: Generate submission markdown files
         run: python scripts/generate_submission_markdown.py
 
@@ -91,7 +42,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore(submissions_md): auto-generate markdown summaries"
-          file_pattern: submissions_md/*.md submissions_md/pr_links.json
+          file_pattern: submissions_md/*.md
 
       - name: Build leaderboard data
         run: python scripts/build_leaderboard.py
