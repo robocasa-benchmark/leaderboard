@@ -1,8 +1,5 @@
-# Posts an auto-generated PR comment from the submission JSON so contributors
-# do not duplicate fields in the PR description.
-#
-# Checkout uses the base branch (main) so workflow scripts are always present.
-# Submission JSON is read from the PR head via refs/pull/<n>/head.
+# Posts an auto-generated PR comment from the submission JSON.
+# Use "Run workflow" (workflow_dispatch) to test — do not rely on "Re-run" for old failed runs.
 
 name: PR submission summary
 
@@ -12,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       pr_number:
-        description: "PR number to summarize (for manual re-runs)"
+        description: "PR number to summarize"
         required: true
         type: number
 
@@ -39,10 +36,15 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - name: Verify scripts exist
+        run: |
+          test -f scripts/render_pr_comment.py
+          test -f scripts/generate_submission_markdown.py
+
       - name: Fetch PR head
         run: |
           git fetch origin \
-            +refs/pull/${{ steps.pr.outputs.number }}/head:refs/remotes/pull/${{ steps.pr.outputs.number }}/head
+            "+refs/pull/${{ steps.pr.outputs.number }}/head:refs/remotes/pull/${{ steps.pr.outputs.number }}/head"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -51,12 +53,11 @@ jobs:
 
       - name: Find changed submission JSON files
         id: changed
+        shell: bash
         run: |
+          set -euo pipefail
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            BASE_SHA="${{ github.event.pull_request.base.sha }}"
-            if [ -z "$BASE_SHA" ]; then
-              BASE_SHA="$(git merge-base origin/main refs/remotes/pull/${{ steps.pr.outputs.number }}/head)"
-            fi
+            BASE_SHA="$(git merge-base HEAD "refs/remotes/pull/${{ steps.pr.outputs.number }}/head")"
           else
             BASE_SHA="${{ github.event.pull_request.base.sha }}"
           fi
@@ -75,6 +76,7 @@ jobs:
 
       - name: Materialize submission JSON from PR head
         if: steps.changed.outputs.paths != ''
+        shell: bash
         run: |
           set -euo pipefail
           for f in ${{ steps.changed.outputs.paths }}; do
@@ -83,15 +85,14 @@ jobs:
           done
 
       - name: Render comment body
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          SUBMISSION_PATHS: ${{ steps.changed.outputs.paths }}
         run: |
           set -euo pipefail
-          cd scripts
-          if [ -z "${{ steps.changed.outputs.paths }}" ]; then
-            python render_pr_comment.py > ../comment-body.md
-          else
-            python render_pr_comment.py \
-              $(printf '../%s ' ${{ steps.changed.outputs.paths }}) > ../comment-body.md
-          fi
+          python3 "${{ github.workspace }}/scripts/render_pr_comment.py" ${SUBMISSION_PATHS} > comment-body.md
+          test -s comment-body.md
 
       - name: Post or update PR comment
         if: github.event_name == 'workflow_dispatch' || github.event.pull_request.state == 'open'
@@ -104,8 +105,8 @@ jobs:
           edit-mode: replace
           comment-tag: robocasa-submission-summary
 
-      - name: Finish (closed PR or comment skipped)
-        if: steps.comment.outcome == 'skipped' || steps.comment.outcome == 'failure'
+      - name: Done (merged PR — comment optional)
+        if: always()
         run: |
-          echo "PR comment was not posted (merged/closed PR or post failed). Summary rendered successfully."
-          cat comment-body.md
+          echo "Summary job finished. comment-body.md:"
+          cat comment-body.md || true
