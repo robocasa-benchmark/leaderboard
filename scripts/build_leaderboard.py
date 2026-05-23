@@ -159,7 +159,8 @@ def _policy_row(data: dict, rank: int) -> dict:
         f"{SUBMISSION_MD_BASE_URL}/{Path(data['_submission_filename']).stem}.md",
     )
 
-    return {
+    wandb = data.get("wandb")
+    row: dict[str, Any] = {
         "rank": rank,
         "name": name,
         "short_name": short_name,
@@ -175,6 +176,9 @@ def _policy_row(data: dict, rank: int) -> dict:
         "code_url": data["code_url"],
         "checkpoint_url": data["checkpoint_url"],
     }
+    if wandb:
+        row["wandb"] = wandb
+    return row
 
 
 def main() -> None:
