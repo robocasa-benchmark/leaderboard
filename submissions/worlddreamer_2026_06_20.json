@@ -1,0 +1,18 @@
+{
+  "model_name": "Worlddreamer",
+  "policy_family": "Worlddreamer",
+  "date": "2026-06-20",
+  "submission_source": "external",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 63.5,
+  "composite_seen_success": 23.3,
+  "composite_unseen_success": 11.9,
+  "code_url": "https://github.com/worldAgents-c/world_dreamer_server-robocasa365-multi_task/tree/main",
+  "commit_hash": "f9ba61f0657ca79b864e3eac6ddd6ef3634b4645",
+  "checkpoint_url": "https://huggingface.co/WorldAgents-c/world_dreamer-robocasa365-multi_task",
+  "training_config": {
+    "batch_size": 20,
+    "num_training_steps": 375000
+  },
+  "notes": "Evaluated on RoboCasa365 target50 with split=target, n_envs=5, n_episodes=50, n_action_steps=8."
+}
