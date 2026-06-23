@@ -14,4 +14,4 @@
 - PR: [https://github.com/robocasa-benchmark/leaderboard/pull/5](https://github.com/robocasa-benchmark/leaderboard/pull/5)
 - Batch size: 20
 - Number of training steps: 375,000
-- Notes: Evaluated on RoboCasa365 target50 with split=target, n_envs=5, n_episodes=50, n_action_steps=8.
+- Notes: Re-evaluated on pretrain split

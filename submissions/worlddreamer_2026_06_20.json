@@ -14,5 +14,5 @@
     "batch_size": 20,
     "num_training_steps": 375000
   },
-  "notes": "Re-evaluated on split=pretrain"
+  "notes": "Re-evaluated on pretrain split"
 }
