@@ -9,7 +9,7 @@
   "composite_unseen_success": 5.9,
   "code_url": "https://github.com/amap-cvlab/ABot-M0.6-for-Robocasa365",
   "commit_hash": "83b2843eae1344a1419210915389dbfcbe01a229",
-  "checkpoint_url": "https://huggingface.co/acvlab/ABot-M0.6-RoboCasa365/blob/main/abot06_step_120000.pt",
+  "checkpoint_url": "https://huggingface.co/acvlab/ABot-M0.6-RoboCasa365/tree/main",
   "wandb": "https://wandb.ai/abot_m/ABot-M0.6/runs/xkphuvi2?nw=nwuserabot_m666",
   "training_config": {
     "batch_size": 256,
