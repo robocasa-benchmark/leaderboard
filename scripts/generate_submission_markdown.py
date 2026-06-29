@@ -49,6 +49,7 @@ def _linkify_notes(notes: str) -> str:
 
 # PR URLs for markdown only (not part of submission JSON / schema).
 SUBMISSION_PR_URLS: dict[str, str] = {
+    "abot-m0.6_2026_06_26.json": "https://github.com/robocasa-benchmark/leaderboard/pull/7",
     "gwp01_2026_05_11.json": "https://github.com/robocasa-benchmark/leaderboard/pull/1",
     "rldx-1_2026_05_20.json": "https://github.com/robocasa-benchmark/leaderboard/pull/3",
     "worlddreamer_2026_06_20.json": "https://github.com/robocasa-benchmark/leaderboard/pull/5",
