@@ -12,9 +12,13 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+GITHUB_REPO_URL = "https://github.com/robocasa-benchmark/leaderboard"
 
 
 def _fmt_steps(value: Any) -> str:
@@ -47,13 +51,49 @@ def _linkify_notes(notes: str) -> str:
     return _URL_RE.sub(_link_url, text)
 
 
-# PR URLs for markdown only (not part of submission JSON / schema).
-SUBMISSION_PR_URLS: dict[str, str] = {
-    "abot-m0.6_2026_06_26.json": "https://github.com/robocasa-benchmark/leaderboard/pull/7",
-    "gwp01_2026_05_11.json": "https://github.com/robocasa-benchmark/leaderboard/pull/1",
-    "rldx-1_2026_05_20.json": "https://github.com/robocasa-benchmark/leaderboard/pull/3",
-    "worlddreamer_2026_06_20.json": "https://github.com/robocasa-benchmark/leaderboard/pull/5",
-}
+# Manual override for the PR link shown in markdown (not part of the submission
+# JSON / schema). Normally the PR is auto-detected from git history (see
+# `_pr_url_from_git`); only add an entry here to pin or correct a link.
+SUBMISSION_PR_URLS: dict[str, str] = {}
+
+
+def _pr_url_from_git(filename: str) -> str | None:
+    """Best-effort: find the PR that merged a submission JSON into main.
+
+    Looks up the commit that first added `submissions/<filename>`, then finds the
+    `Merge pull request #N` commit that brought it onto the current branch and
+    returns the PR URL. Returns None if it can't be determined (e.g. the file was
+    committed directly to main, or git history isn't available).
+    """
+    rel_path = f"submissions/{filename}"
+
+    def _git(*args: str) -> str:
+        return subprocess.run(
+            ["git", *args],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout
+
+    try:
+        # Walk main's first-parent line only: a PR merge shows the file as Added
+        # on the merge commit ("Merge pull request #N ..."), and a squash merge
+        # shows it on a commit whose subject ends with "(#N)". The oldest (last)
+        # such commit is where the file first reached main. Files committed
+        # directly to main have no PR number -> no PR link.
+        adds = _git(
+            "log", "--first-parent", "--diff-filter=A", "--format=%s", "--", rel_path
+        ).splitlines()
+        if not adds:
+            return None
+        subject = adds[-1]
+        match = re.search(r"#(\d+)", subject)
+        if match:
+            return f"{GITHUB_REPO_URL}/pull/{match.group(1)}"
+    except (subprocess.CalledProcessError, FileNotFoundError, OSError):
+        return None
+    return None
 
 
 def _fmt_date_mmddyyyy(value: Any) -> str:
@@ -100,7 +140,7 @@ def render_submission_fields(
     else:
         lines.append(_fmt_field("Checkpoint URL", "N/A"))
 
-    pr_url = SUBMISSION_PR_URLS.get(filename)
+    pr_url = SUBMISSION_PR_URLS.get(filename) or _pr_url_from_git(filename)
     if pr_url:
         lines.append(_fmt_field("PR", f"[{pr_url}]({pr_url})"))
 

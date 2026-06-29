@@ -23,6 +23,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          # Full history so generate_submission_markdown.py can auto-detect the
+          # PR that introduced each submission (via first-parent merge commits).
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
