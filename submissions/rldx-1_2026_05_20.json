@@ -10,6 +10,8 @@
   "code_url": "https://github.com/RLWRLD/RLDX-1",
   "commit_hash": "ef05cd4ae634ff97d672d42275febbc0b92cc192",
   "checkpoint_url": "https://huggingface.co/RLWRLD/RLDX-1-FT-RC365",
+  "paper_link": "https://arxiv.org/abs/2605.03269",
+  "open_source": "yes",
   "wandb": "https://wandb.ai/happyhappy/rldx-robocasa365/runs/di3k54nm",
   "training_config": {
     "batch_size": 192,

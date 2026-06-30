@@ -14,6 +14,8 @@
       "code_url",
       "commit_hash",
       "checkpoint_url",
+      "paper_link",
+      "open_source",
       "training_config",
       "notes"
     ],
@@ -64,6 +66,14 @@
       "checkpoint_url": {
         "type": "string",
         "minLength": 1
+      },
+      "paper_link": {
+        "type": "string",
+        "minLength": 1
+      },
+      "open_source": {
+        "type": "string",
+        "enum": ["yes", "no"]
       },
       "wandb": {
         "type": "string",

@@ -10,6 +10,8 @@
     "code_url": "https://github.com/robocasa-benchmark/openpi",
     "commit_hash": "43fd9da0bdad94a2d409f5601b4b878f5ca59070",
     "checkpoint_url": "https://huggingface.co/robocasa/robocasa365_checkpoints/tree/main/pi0/pi0_robocasa_pretrain_human300/multitask_learning/75000",
+    "paper_link": "https://arxiv.org/pdf/2410.24164",
+    "open_source": "yes",
     "wandb": "https://wandb.ai/snasiriany/openpi/runs/lkype54o?nw=nwusersnasiriany",
     "training_config": {
         "batch_size": 64,

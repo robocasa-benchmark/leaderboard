@@ -175,6 +175,7 @@ def _policy_row(data: dict, rank: int) -> dict:
         "submission_url": submission_url,
         "code_url": data["code_url"],
         "checkpoint_url": data["checkpoint_url"],
+        "open_source": data.get("open_source", "yes"),
     }
     if wandb:
         row["wandb"] = wandb

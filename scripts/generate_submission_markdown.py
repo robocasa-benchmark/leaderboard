@@ -140,6 +140,14 @@ def render_submission_fields(
     else:
         lines.append(_fmt_field("Checkpoint URL", "N/A"))
 
+    paper_link = data.get("paper_link")
+    if paper_link:
+        lines.append(_fmt_field("Paper link", f"[{paper_link}]({paper_link})"))
+    else:
+        lines.append(_fmt_field("Paper link", "N/A"))
+
+    lines.append(_fmt_field("Open Source", data.get("open_source", "N/A")))
+
     pr_url = SUBMISSION_PR_URLS.get(filename) or _pr_url_from_git(filename)
     if pr_url:
         lines.append(_fmt_field("PR", f"[{pr_url}]({pr_url})"))
