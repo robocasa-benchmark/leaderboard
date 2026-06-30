@@ -10,7 +10,7 @@
   "code_url": "https://github.com/worldAgents-c/world_dreamer_server-robocasa365-multi_task/tree/main",
   "commit_hash": "f9ba61f0657ca79b864e3eac6ddd6ef3634b4645",
   "checkpoint_url": "https://huggingface.co/WorldAgents-c/world_dreamer-robocasa365-multi_task",
-  "paper_link": "https://arxiv.org/pdf/2401.09985",
+  "paper_link": "https://arxiv.org/abs/2401.09985",
   "open_source": "yes",
   "training_config": {
     "batch_size": 20,

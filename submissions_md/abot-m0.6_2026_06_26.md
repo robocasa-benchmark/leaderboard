@@ -9,7 +9,7 @@
 - Composite-Seen success: 48.3
 - Composite-Unseen success: 7.9
 - Commit hash: 83b2843eae1344a1419210915389dbfcbe01a229
-- Paper link: [https://arxiv.org/pdf/2602.11236](https://arxiv.org/pdf/2602.11236)
+- Paper link: [https://arxiv.org/abs/2602.11236](https://arxiv.org/abs/2602.11236)
 - Open Source: no
 - PR: [https://github.com/robocasa-benchmark/leaderboard/pull/7](https://github.com/robocasa-benchmark/leaderboard/pull/7)
 - W&B: [https://wandb.ai/abot_m/ABot-M0.6/runs/xkphuvi2?nw=nwuserabot_m666](https://wandb.ai/abot_m/ABot-M0.6/runs/xkphuvi2?nw=nwuserabot_m666)
