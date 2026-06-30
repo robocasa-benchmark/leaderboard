@@ -9,8 +9,8 @@
 - Composite-Seen success: 14.8
 - Composite-Unseen success: 2.7
 - Code URL: [https://github.com/robocasa-benchmark/Isaac-GR00T](https://github.com/robocasa-benchmark/Isaac-GR00T)
-- Commit hash: 9d7d7a9eb7ad30bd8ce30448d9ab53a918b45b10
 - Checkpoint URL: [https://huggingface.co/robocasa/robocasa365_checkpoints/tree/main/gr00t_n1-5/multitask_learning/checkpoint-120000](https://huggingface.co/robocasa/robocasa365_checkpoints/tree/main/gr00t_n1-5/multitask_learning/checkpoint-120000)
+- Commit hash: 9d7d7a9eb7ad30bd8ce30448d9ab53a918b45b10
 - Paper link: [https://arxiv.org/pdf/2503.14734](https://arxiv.org/pdf/2503.14734)
 - Open Source: yes
 - W&B: [https://wandb.ai/snasiriany/huggingface/runs/ie66zrqa](https://wandb.ai/snasiriany/huggingface/runs/ie66zrqa)

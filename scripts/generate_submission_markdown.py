@@ -127,18 +127,20 @@ def render_submission_fields(
     )
 
     code_url = data.get("code_url")
-    if code_url:
-        lines.append(_fmt_field("Code URL", f"[{code_url}]({code_url})"))
-    else:
-        lines.append(_fmt_field("Code URL", "N/A"))
+    is_open_source = data.get("open_source") != "no"
+    if is_open_source:
+        if code_url:
+            lines.append(_fmt_field("Code URL", f"[{code_url}]({code_url})"))
+        else:
+            lines.append(_fmt_field("Code URL", "N/A"))
+
+        checkpoint_url = data.get("checkpoint_url")
+        if checkpoint_url:
+            lines.append(_fmt_field("Checkpoint URL", f"[{checkpoint_url}]({checkpoint_url})"))
+        else:
+            lines.append(_fmt_field("Checkpoint URL", "N/A"))
 
     lines.append(_fmt_field("Commit hash", data.get("commit_hash", "N/A")))
-
-    checkpoint_url = data.get("checkpoint_url")
-    if checkpoint_url:
-        lines.append(_fmt_field("Checkpoint URL", f"[{checkpoint_url}]({checkpoint_url})"))
-    else:
-        lines.append(_fmt_field("Checkpoint URL", "N/A"))
 
     paper_link = data.get("paper_link")
     if paper_link:

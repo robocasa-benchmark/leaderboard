@@ -1,6 +1,6 @@
 {
-  "model_name": "Worlddreamer",
-  "policy_family": "Worlddreamer",
+  "model_name": "WorldDreamer",
+  "policy_family": "WorldDreamer",
   "date": "2026-06-20",
   "submission_source": "external",
   "robocasa_version": "1.0.1",
