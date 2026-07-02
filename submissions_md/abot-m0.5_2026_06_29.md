@@ -2,7 +2,7 @@
 
 - Model name: ABot-M0.5
 - Policy family: ABot-M
-- Date evaluated: 06/29/2026
+- Date evaluated: 06-29-2026
 - Submission source: external
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 75.6
