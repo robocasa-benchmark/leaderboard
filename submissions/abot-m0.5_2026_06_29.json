@@ -10,6 +10,8 @@
     "code_url": "https://github.com/amap-cvlab/ABot-M0.5-for-Robocasa365",
     "commit_hash": "916de8a",
     "checkpoint_url": "https://huggingface.co/acvlab/ABot-M0.5-RoboCasa365/tree/main",
+    "paper_link": "https://arxiv.org/abs/2602.11236",
+    "open_source": "no",
     "wandb": "N/A",
     "training_config": {
       "batch_size": 64,
