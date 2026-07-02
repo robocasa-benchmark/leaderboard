@@ -4,9 +4,9 @@
     "date": "2026-06_29",
     "submission_source": "external",
     "robocasa_version": "1.0.1",
-    "atomic_seen_success": 75.9,
-    "composite_seen_success": 38.3, 
-    "composite_unseen_success": 2.7,
+    "atomic_seen_success": 75.6,
+    "composite_seen_success": 37.7, 
+    "composite_unseen_success": 3.3,
     "code_url": "https://github.com/amap-cvlab/ABot-M0.5-for-Robocasa365",
     "commit_hash": "916de8a",
     "checkpoint_url": "https://huggingface.co/acvlab/ABot-M0.5-RoboCasa365/tree/main",
@@ -15,7 +15,7 @@
       "batch_size": 64,
       "num_training_steps": 100000
     },
-    "notes": "Results of ABot-M0.5. Evaluated by RoboCasa team with private access to model weights and code. The wandb link is N/A because the server used for this experiment has no internet access. Thank you for your time and effort in reviewing this PR. I appreciate the resources you dedicate to maintaining this project. I've done my best to ensure the code is clean and well-tested, but please let me know if there are any problems."
+    "notes": "Results of ABot-M0.5. Evaluated by RoboCasa team with private access to model weights and code."
   }
   
   
