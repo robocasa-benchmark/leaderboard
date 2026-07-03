@@ -12,7 +12,6 @@
 - Paper link: [https://arxiv.org/abs/2602.11236](https://arxiv.org/abs/2602.11236)
 - Open Source: no
 - PR: [https://github.com/robocasa-benchmark/leaderboard/pull/9](https://github.com/robocasa-benchmark/leaderboard/pull/9)
-- W&B: [N/A](N/A)
 - Batch size: 64
 - Number of training steps: 100,000
 - Notes: Results of ABot-M0.5. Evaluated by RoboCasa team with private access to model weights and code.
