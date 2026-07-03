@@ -12,7 +12,6 @@
     "checkpoint_url": "https://huggingface.co/acvlab/ABot-M0.5-RoboCasa365/tree/main",
     "paper_link": "https://arxiv.org/abs/2602.11236",
     "open_source": "no",
-    "wandb": "N/A",
     "training_config": {
       "batch_size": 64,
       "num_training_steps": 100000
