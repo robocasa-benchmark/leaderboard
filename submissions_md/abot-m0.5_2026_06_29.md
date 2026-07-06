@@ -9,7 +9,7 @@
 - Composite-Seen success: 37.7
 - Composite-Unseen success: 3.3
 - Commit hash: 916de8a
-- Paper link: [https://arxiv.org/abs/2602.11236](https://arxiv.org/abs/2602.11236)
+- Paper link: [https://arxiv.org/abs/2607.00678](https://arxiv.org/abs/2607.00678)
 - Open Source: no
 - PR: [https://github.com/robocasa-benchmark/leaderboard/pull/9](https://github.com/robocasa-benchmark/leaderboard/pull/9)
 - Batch size: 64
