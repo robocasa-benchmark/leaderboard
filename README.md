@@ -6,6 +6,9 @@ We analyze multi-task learning through three RoboCasa365 splits — **Atomic-See
 
 To add your results, export a JSON file in the format below and open a pull request that adds it to the `submissions/` directory. The results will be displayed on our main [website](https://robocasa.ai/leaderboard.html).
 
+> [!NOTE]
+> For models that cannot be released open-source (`"open_source": "no"`), you must grant the RoboCasa team private access to your model checkpoint and evaluation code so we can verify results on our benchmark.
+
 ## Submission template
 
 Each submission is a single JSON file added to `submissions/` with this structure: :
