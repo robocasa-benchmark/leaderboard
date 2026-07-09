@@ -28,8 +28,22 @@ def _fmt_steps(value: Any) -> str:
         return str(value)
 
 
+def _is_na(value: Any) -> bool:
+    if value is None:
+        return True
+    if isinstance(value, str):
+        return value.strip().upper() in {"", "N/A", "NA"}
+    return False
+
+
 def _fmt_field(label: str, value: Any) -> str:
     return f"- {label}: {value}"
+
+
+def _append_field(lines: list[str], label: str, value: Any) -> None:
+    if _is_na(value):
+        return
+    lines.append(_fmt_field(label, value))
 
 
 _GITHUB_USER_RE = re.compile(r"@([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,38}))")
@@ -114,61 +128,56 @@ def render_submission_fields(
 ) -> list[str]:
     lines: list[str] = []
     if include_filename:
-        lines.append(_fmt_field("Submission JSON filename", filename))
-    lines.append(_fmt_field("Model name", data.get("model_name", "N/A")))
-    lines.append(_fmt_field("Policy family", data.get("policy_family", "N/A")))
-    lines.append(_fmt_field("Date evaluated", _fmt_date_mmddyyyy(data.get("date"))))
-    lines.append(_fmt_field("Submission source", data.get("submission_source", "N/A")))
-    lines.append(_fmt_field("RoboCasa version", data.get("robocasa_version", "N/A")))
-    lines.append(_fmt_field("Atomic-Seen success", data.get("atomic_seen_success", "N/A")))
-    lines.append(_fmt_field("Composite-Seen success", data.get("composite_seen_success", "N/A")))
-    lines.append(
-        _fmt_field("Composite-Unseen success", data.get("composite_unseen_success", "N/A"))
-    )
+        _append_field(lines, "Submission JSON filename", filename)
+    _append_field(lines, "Model name", data.get("model_name"))
+    _append_field(lines, "Policy family", data.get("policy_family"))
+    if not _is_na(data.get("date")):
+        _append_field(lines, "Date evaluated", _fmt_date_mmddyyyy(data.get("date")))
+    _append_field(lines, "Submission source", data.get("submission_source"))
+    _append_field(lines, "RoboCasa version", data.get("robocasa_version"))
+    _append_field(lines, "Atomic-Seen success", data.get("atomic_seen_success"))
+    _append_field(lines, "Composite-Seen success", data.get("composite_seen_success"))
+    _append_field(lines, "Composite-Unseen success", data.get("composite_unseen_success"))
 
     code_url = data.get("code_url")
     is_open_source = data.get("open_source") != "no"
     if is_open_source:
-        if code_url:
+        if not _is_na(code_url):
             lines.append(_fmt_field("Code URL", f"[{code_url}]({code_url})"))
-        else:
-            lines.append(_fmt_field("Code URL", "N/A"))
 
         checkpoint_url = data.get("checkpoint_url")
-        if checkpoint_url:
+        if not _is_na(checkpoint_url):
             lines.append(_fmt_field("Checkpoint URL", f"[{checkpoint_url}]({checkpoint_url})"))
-        else:
-            lines.append(_fmt_field("Checkpoint URL", "N/A"))
 
-    lines.append(_fmt_field("Commit hash", data.get("commit_hash", "N/A")))
+    commit_hash = data.get("commit_hash")
+    if not _is_na(commit_hash):
+        _append_field(lines, "Commit hash", commit_hash)
 
     paper_link = data.get("paper_link")
-    if paper_link:
+    if not _is_na(paper_link):
         lines.append(_fmt_field("Paper link", f"[{paper_link}]({paper_link})"))
-    else:
-        lines.append(_fmt_field("Paper link", "N/A"))
 
-    lines.append(_fmt_field("Open Source", data.get("open_source", "N/A")))
+    _append_field(lines, "Open Source", data.get("open_source"))
 
     pr_url = SUBMISSION_PR_URLS.get(filename) or _pr_url_from_git(filename)
     if pr_url:
         lines.append(_fmt_field("PR", f"[{pr_url}]({pr_url})"))
 
     wandb = data.get("wandb")
-    if wandb:
+    if not _is_na(wandb):
         lines.append(_fmt_field("W&B", f"[{wandb}]({wandb})"))
 
     training_cfg = data.get("training_config")
     if isinstance(training_cfg, dict):
         batch_size = training_cfg.get("batch_size")
         num_training_steps = training_cfg.get("num_training_steps")
-        if batch_size is not None:
-            lines.append(_fmt_field("Batch size", batch_size))
-        if num_training_steps is not None:
-            lines.append(_fmt_field("Number of training steps", _fmt_steps(num_training_steps)))
+        if not _is_na(batch_size):
+            _append_field(lines, "Batch size", batch_size)
+        if not _is_na(num_training_steps):
+            _append_field(lines, "Number of training steps", _fmt_steps(num_training_steps))
 
     notes = data.get("notes")
-    if notes:
+    if not _is_na(notes):
         lines.append(_fmt_field("Notes", _linkify_notes(str(notes))))
 
     return lines
