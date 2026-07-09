@@ -1,0 +1,21 @@
+{
+  "model_name": "Xiaomi-Robotics-1",
+  "policy_family": "Xiaomi-Robotics",
+  "date": "2026-07-08",
+  "submission_source": "external",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 80.2,
+  "composite_seen_success": 57.1, 
+  "composite_unseen_success": 32.1,
+  "code_url": "N/A",
+  "commit_hash": "N/A",
+  "checkpoint_url": "N/A",
+  "paper_link": "N/A",
+  "open_source": "no",
+  "wandb": "N/A",
+  "training_config": {
+    "batch_size": 512,
+    "num_training_steps": 120000
+  },
+  "notes": "Results of Xiaomi-Robotics-1. Evaluated by RoboCasa team with private access to model weights and code."
+}
