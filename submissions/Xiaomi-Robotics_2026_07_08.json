@@ -10,7 +10,7 @@
   "code_url": "N/A",
   "commit_hash": "N/A",
   "checkpoint_url": "N/A",
-  "paper_link": "N/A",
+  "paper_link": "https://robotics.xiaomi.com/robot-static-resource/xiaomi-robotics-1/xiaomi-robotics-1.pdf",
   "open_source": "no",
   "wandb": "N/A",
   "training_config": {
