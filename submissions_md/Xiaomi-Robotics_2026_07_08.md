@@ -8,7 +8,7 @@
 - Atomic-Seen success: 80.2
 - Composite-Seen success: 57.1
 - Composite-Unseen success: 32.1
-- Paper link: [https://robotics.xiaomi.com/robot-static-resource/xiaomi-robotics-1/xiaomi-robotics-1.pdf](https://robotics.xiaomi.com/robot-static-resource/xiaomi-robotics-1/xiaomi-robotics-1.pdf)
+- Paper link: [https://arxiv.org/abs/2607.15330](https://arxiv.org/abs/2607.15330)
 - Open Source: no
 - PR: [https://github.com/robocasa-benchmark/leaderboard/pull/10](https://github.com/robocasa-benchmark/leaderboard/pull/10)
 - Batch size: 512
