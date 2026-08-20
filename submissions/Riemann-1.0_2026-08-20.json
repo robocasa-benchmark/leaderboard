@@ -1,0 +1,21 @@
+{
+  "model_name": "Riemann-1.0",
+  "policy_family": "Riemann",
+  "date": "2026-08-20",
+  "submission_source": "external",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 79.44,
+  "composite_seen_success": 58.13,
+  "composite_unseen_success": 45.21,
+  "code_url": "https://github.com/Riemann-Dynamics/Riemann-1.0/tree/robcoasa365",
+  "commit_hash": "d9af9911594c8e52fc7681aaf3cde21a56aecc63",
+  "checkpoint_url": "https://huggingface.co/RiemannDynamics/Riemann-1-RoboCasa365",
+  "paper_link": "https://github.com/Riemann-Dynamics/Riemann-1.0-Website/blob/main/paper/Riemann-1.0.pdf",
+  "open_source": "no",
+  "wandb": "N/A",
+  "training_config": {
+    "batch_size": 128,
+    "num_training_steps": 200000
+  },
+  "notes": "Riemann-1.0 evaluated on the full 50 target tasks of the RoboCasa365. "
+}
