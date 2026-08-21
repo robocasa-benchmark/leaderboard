@@ -1,0 +1,22 @@
+{
+  "model_name": "PRTS",
+  "policy_family": "PRTS",
+  "date": "2026-08-18",
+  "submission_source": "external",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 66.3,
+  "composite_seen_success": 30.3, 
+  "composite_unseen_success": 18.8,
+  "code_url": "https://github.com/TeleHuman/PRTS",
+  "commit_hash": "15cd007afed891c1f28c69ec54dcb2d164805a2b",
+  "checkpoint_url": "https://huggingface.co/TeleEmbodied/PRTS-RoboCasa365",
+  "paper_link": "https://arxiv.org/abs/2604.27472",
+  "open_source": "yes",
+  "wandb": "https://wandb.ai/breezeyoung9470/PRTS_base_4B_robocasa365/runs/6ggl040i?nw=nwuserbreezeyoung9470",
+  "training_config": {
+    "batch_size": 192,
+    "num_training_steps": 250000
+  },
+  "notes": "Results of PRTS fine-tuned on RoboCasa365. Evaluated by TeleAI Rhodes team. We release the model, deploy the policy server following our open-sourced repo, and execute the whole predicted action chunk of horizon = 32 everytime the model performs inference."
+}
+
