@@ -36,9 +36,6 @@ BENCHMARK_META = {
     },
 }
 
-# Presentation metadata (name / short_name / family / color) is curated in
-# robocasa-web/_data/robocasa365_leaderboard.yml and preserved via
-# _merge_existing_fields. New submissions get defaults from the JSON until curated.
 SUBMISSION_MD_BASE_URL = "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md"
 SUBMISSION_URL_OVERRIDES = {
     "GR00T N1.6": "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md/gr00t_n1.6_2026_05_14.md",
