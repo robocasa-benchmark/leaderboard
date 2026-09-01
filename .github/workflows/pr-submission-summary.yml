@@ -21,14 +21,29 @@ jobs:
   summary:
     runs-on: ubuntu-latest
     steps:
+      # `workflow_dispatch` inputs arrive over the API as strings -- `type: number`
+      # drives the form widget, it is not a server-side guarantee -- and this value
+      # is interpolated into git refspecs downstream. Gate it to digits here so
+      # every later step can rely on it.
       - name: Resolve PR number
         id: pr
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_PR_NUMBER: ${{ inputs.pr_number }}
+          EVENT_PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "number=${{ inputs.pr_number }}" >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            NUMBER="$DISPATCH_PR_NUMBER"
           else
-            echo "number=${{ github.event.pull_request.number }}" >> "$GITHUB_OUTPUT"
+            NUMBER="$EVENT_PR_NUMBER"
           fi
+          if [[ ! "$NUMBER" =~ ^[0-9]+$ ]]; then
+            echo "::error::Refusing PR number '$NUMBER' -- must be digits only"
+            exit 1
+          fi
+          echo "number=$NUMBER" >> "$GITHUB_OUTPUT"
 
       - name: Checkout main
         uses: actions/checkout@v4
@@ -42,46 +57,79 @@ jobs:
           test -f scripts/generate_submission_markdown.py
 
       - name: Fetch PR head
+        shell: bash
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
         run: |
-          git fetch origin \
-            "+refs/pull/${{ steps.pr.outputs.number }}/head:refs/remotes/pull/${{ steps.pr.outputs.number }}/head"
+          set -euo pipefail
+          git fetch origin "+refs/pull/${PR_NUMBER}/head:refs/remotes/pull/${PR_NUMBER}/head"
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
+      # Filenames in a PR are attacker-controlled. They reach a `run:` block here,
+      # so they are passed through env (data) rather than `${{ }}` (spliced into
+      # the script text), and every one is checked against an allowlist first.
       - name: Find changed submission JSON files
         id: changed
         shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_REF: refs/remotes/pull/${{ steps.pr.outputs.number }}/head
+          EVENT_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          # Bracket ranges are collation-dependent in POSIX ERE; pin the locale
+          # so the allowlist below means the same thing on every runner.
+          LC_ALL: C
         run: |
           set -euo pipefail
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            BASE_SHA="$(git merge-base HEAD "refs/remotes/pull/${{ steps.pr.outputs.number }}/head")"
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            BASE_SHA="$(git merge-base HEAD "$PR_REF")"
           else
-            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            BASE_SHA="$EVENT_BASE_SHA"
           fi
-          mapfile -t FILES < <(
-            git diff --name-only --diff-filter=ACM \
-              "$BASE_SHA" \
-              "refs/remotes/pull/${{ steps.pr.outputs.number }}/head" \
-              -- 'submissions/*.json'
-          )
+          # -z yields raw NUL-separated paths: git neither quotes them nor lets a
+          # newline in a filename forge extra lines in $GITHUB_OUTPUT.
+          # Written to a file rather than read from a process substitution, whose
+          # exit status `pipefail` does not cover -- a failing `git diff` would
+          # otherwise read as "no submissions changed".
+          if ! git diff -z --name-only --diff-filter=ACM \
+                 "$BASE_SHA" "$PR_REF" -- 'submissions/*.json' > "$RUNNER_TEMP/changed.z"; then
+            echo "::error::git diff failed while listing changed submissions"
+            exit 1
+          fi
+          mapfile -d '' -t FILES < "$RUNNER_TEMP/changed.z"
           if [ "${#FILES[@]}" -eq 0 ]; then
             echo "paths=" >> "$GITHUB_OUTPUT"
-          else
-            printf -v joined '%s ' "${FILES[@]}"
-            echo "paths=${joined%" "}" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+          for f in "${FILES[@]}"; do
+            if [[ ! "$f" =~ ^submissions/[A-Za-z0-9._-]+\.json$ ]]; then
+              echo "::error::Refusing submission path '$f' -- submission filenames must match submissions/[A-Za-z0-9._-]+.json"
+              exit 1
+            fi
+          done
+          printf -v joined '%s ' "${FILES[@]}"
+          echo "paths=${joined%" "}" >> "$GITHUB_OUTPUT"
 
       - name: Materialize submission JSON from PR head
         if: steps.changed.outputs.paths != ''
         shell: bash
+        env:
+          SUBMISSION_PATHS: ${{ steps.changed.outputs.paths }}
+          PR_REF: refs/remotes/pull/${{ steps.pr.outputs.number }}/head
         run: |
           set -euo pipefail
-          for f in ${{ steps.changed.outputs.paths }}; do
+          # Unquoted on purpose: a space-joined list, and the allowlist above
+          # guarantees no path contains a space or any shell metacharacter.
+          for f in $SUBMISSION_PATHS; do
+            case "$f" in
+              submissions/*.json) ;;
+              *) echo "::error::Refusing unexpected path '$f'"; exit 1 ;;
+            esac
             mkdir -p "$(dirname "$f")"
-            git show "refs/remotes/pull/${{ steps.pr.outputs.number }}/head:${f}" > "${f}"
+            git show "${PR_REF}:${f}" > "$f"
           done
 
       - name: Render comment body
