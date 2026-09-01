@@ -36,33 +36,9 @@ BENCHMARK_META = {
     },
 }
 
-# Display names / table keys for known baseline model_name values; others use fallbacks.
-MODEL_DISPLAY = {
-    "pi0": {
-        "name": "π0",
-        "short_name": "pi0",
-        "family": "OpenPI",
-        "color": "#10b981",
-    },
-    "pi0.5": {
-        "name": "π0.5",
-        "short_name": "pi0.5",
-        "family": "OpenPI",
-        "color": "#f59e0b",
-    },
-    "dp": {
-        "name": "Diffusion Policy",
-        "short_name": "DP",
-        "family": "Diffusion",
-        "color": "#3b82f6",
-    },
-    "gr00t_n1.5": {
-        "name": "GR00T N1.5",
-        "short_name": "GR00T",
-        "family": "VLA",
-        "color": "#8b5cf6",
-    },
-}
+# Presentation metadata (name / short_name / family / color) is curated in
+# robocasa-web/_data/robocasa365_leaderboard.yml and preserved via
+# _merge_existing_fields. New submissions get defaults from the JSON until curated.
 SUBMISSION_MD_BASE_URL = "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md"
 SUBMISSION_URL_OVERRIDES = {
     "GR00T N1.6": "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md/gr00t_n1.6_2026_05_14.md",
@@ -115,9 +91,11 @@ def _merge_existing_fields(
     """
     Keep metadata from existing rows (e.g. notes/flags) while letting generated
     values win for freshly computed fields.
+
+    Presentation fields (name / short_name / family / color) are owned by the
+    existing robocasa-web YAML when a matching row is present.
     """
     merged = dict(generated)
-    # Preserve curated presentation metadata when a row already exists.
     preserve_existing_keys = {"name", "short_name", "family", "color"}
 
     for key, value in existing.items():
@@ -131,12 +109,7 @@ def _merge_existing_fields(
 
 
 def _policy_row(data: dict, rank: int) -> dict:
-    mid = data["model_name"]
-    disp = MODEL_DISPLAY.get(mid, {})
-    name = disp.get("name") or data["model_name"] or data["policy_family"]
-    short_name = disp.get("short_name") or mid
-    family = disp.get("family") or data["policy_family"]
-    color = disp.get("color", "#64748b")
+    name = data["model_name"] or data["policy_family"]
 
     a = float(data["atomic_seen_success"])
     cs = float(data["composite_seen_success"])
@@ -163,15 +136,14 @@ def _policy_row(data: dict, rank: int) -> dict:
     row: dict[str, Any] = {
         "rank": rank,
         "name": name,
-        "short_name": short_name,
-        "family": family,
-        "color": color,
+        "short_name": name,
+        "family": data["policy_family"],
+        "color": "#64748b",
         "score": overall,
         "atomic_seen": a,
         "composite_seen": cs,
         "composite_unseen": cu,
         "training_config": training_config_out,
-        "note": disp.get("note"),
         "submission_url": submission_url,
         "code_url": data["code_url"],
         "checkpoint_url": data["checkpoint_url"],
