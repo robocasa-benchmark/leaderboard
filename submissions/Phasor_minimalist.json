@@ -1,0 +1,21 @@
+{
+  "model_name": "Minimalist_Xiaomi",
+  "policy_family": "Phasor_m7",
+  "date": "<2026-09-05'>",
+  "submission_source": "internal",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 79.44,
+  "composite_seen_success": 57.62,
+  "composite_unseen_success":30.75,
+  "code_url": "runpod:xr1-m7-submission repo, currently pod-local only)",
+  "commit_hash": "tbd",
+  "checkpoint_url": "tbd",
+  "paper_link": "N/A",
+  "open_source": "no",
+  "wandb": "N/A",
+  "training_config": {
+    "batch_size": "64",
+    "num_training_steps": "80000"
+  },
+  "notes": "Real baseline eval of the modified Xiaomi-Robotics-1-RoboCasa365 with phasor sparse memory core checkpoint on runpod's own setup (single RTX 4090, official 50-task target50 protocol, 50 rollouts/task, 2500 total episodes). This is the hybrid pre-LoRA/pre-M7 baseline number — results closely replicate Xiaomi's own published figures (80.2%/57.1%/32.1%), validating the eval pipeline. LoRA-only vs LoRA+M7 ablation numbers pending"
+}
