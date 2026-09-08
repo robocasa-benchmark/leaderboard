@@ -28,6 +28,14 @@
         "type": "string",
         "minLength": 1
       },
+      "submitter": {
+        "type": "string",
+        "minLength": 1
+      },
+      "submitter_url": {
+        "type": "string",
+        "minLength": 1
+      },
       "date": {
         "type": "string",
         "format": "date"

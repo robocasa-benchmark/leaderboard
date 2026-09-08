@@ -130,6 +130,7 @@ def _policy_row(data: dict, rank: int) -> dict:
     )
 
     wandb = data.get("wandb")
+    submitter = data.get("submitter")
     row: dict[str, Any] = {
         "rank": rank,
         "name": name,
@@ -146,6 +147,10 @@ def _policy_row(data: dict, rank: int) -> dict:
         "checkpoint_url": data["checkpoint_url"],
         "open_source": data.get("open_source", "yes"),
     }
+    if submitter:
+        row["submitter"] = submitter
+    if data.get("submitter_url"):
+        row["submitter_url"] = data["submitter_url"]
     if wandb:
         row["wandb"] = wandb
     return row

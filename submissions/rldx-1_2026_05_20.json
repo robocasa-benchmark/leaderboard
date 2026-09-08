@@ -1,6 +1,7 @@
 {
   "model_name": "RLDX-1",
   "policy_family": "RLDX",
+  "submitter": "RLWRLD",
   "date": "2026-05-20",
   "submission_source": "external",
   "robocasa_version": "1.0.1",

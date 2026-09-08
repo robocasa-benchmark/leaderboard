@@ -2,6 +2,7 @@
 
 - Model name: Xiaomi-Robotics-1
 - Policy family: Xiaomi-Robotics
+- Submitter: Xiaomi Robotics
 - Date evaluated: 07/08/2026
 - Submission source: external
 - RoboCasa version: 1.0.1

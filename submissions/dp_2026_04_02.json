@@ -1,6 +1,7 @@
 {
     "model_name": "Diffusion Policy",
     "policy_family": "Diffusion Policy",
+    "submitter": "RoboCasa Team",
     "date": "2026-04-02",
     "submission_source": "internal",
     "robocasa_version": "1.0.0",

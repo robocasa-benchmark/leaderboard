@@ -1,6 +1,7 @@
 {
   "model_name": "PRTS",
   "policy_family": "PRTS",
+  "submitter": "TeleAI",
   "date": "2026-08-18",
   "submission_source": "external",
   "robocasa_version": "1.0.1",

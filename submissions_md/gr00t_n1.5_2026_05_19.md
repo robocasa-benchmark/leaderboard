@@ -2,6 +2,7 @@
 
 - Model name: GR00T N1.5
 - Policy family: GR00T
+- Submitter: RoboCasa Team
 - Date evaluated: 05/19/2026
 - Submission source: internal
 - RoboCasa version: 1.0.1
