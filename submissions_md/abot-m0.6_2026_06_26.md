@@ -1,7 +1,6 @@
 ## Submission details
 
 - Model name: ABot-M0.6
-- Policy family: ABot-M
 - Submitter: AMAP CV Lab
 - Date evaluated: 06/26/2026
 - Submission source: external

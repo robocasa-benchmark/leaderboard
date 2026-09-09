@@ -130,7 +130,6 @@ def render_submission_fields(
     if include_filename:
         _append_field(lines, "Submission JSON filename", filename)
     _append_field(lines, "Model name", data.get("model_name"))
-    _append_field(lines, "Policy family", data.get("policy_family"))
     submitter = data.get("submitter")
     submitter_url = data.get("submitter_url")
     if not _is_na(submitter) and not _is_na(submitter_url):

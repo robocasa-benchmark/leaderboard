@@ -1,7 +1,6 @@
 ## Submission details
 
 - Model name: WorldDreamer
-- Policy family: WorldDreamer
 - Submitter: GigaAI
 - Date evaluated: 06/20/2026
 - Submission source: external

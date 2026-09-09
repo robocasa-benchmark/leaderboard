@@ -1,7 +1,6 @@
 ## Submission details
 
 - Model name: GR00T N1.6
-- Policy family: GR00T
 - Submitter: RoboCasa Team
 - Date evaluated: 05/14/2026
 - Submission source: internal

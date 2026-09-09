@@ -16,7 +16,6 @@ Each submission is a single JSON file added to `submissions/` with this structur
 ```json
 {
   "model_name": "<string>",
-  "policy_family": "<string>",
   "submitter": "<team or organization name>",
   "date": "<YYYY-MM-DD, e.g. '2026-04-02'>",
   "submission_source": "external",

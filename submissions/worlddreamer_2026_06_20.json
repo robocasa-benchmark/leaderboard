@@ -1,6 +1,5 @@
 {
   "model_name": "WorldDreamer",
-  "policy_family": "WorldDreamer",
   "submitter": "GigaAI",
   "date": "2026-06-20",
   "submission_source": "external",

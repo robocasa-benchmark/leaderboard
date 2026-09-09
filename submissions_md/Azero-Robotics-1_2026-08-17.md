@@ -1,7 +1,6 @@
 ## Submission details
 
 - Model name: Azero-Robotics-1
-- Policy family: GR00T
 - Submitter: [GitHub: yuxin101](https://github.com/robocasa-benchmark/leaderboard/pull/11)
 - Date evaluated: 08/17/2026
 - Submission source: external

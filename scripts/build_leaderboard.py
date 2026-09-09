@@ -89,13 +89,15 @@ def _merge_existing_fields(
     Keep metadata from existing rows (e.g. notes/flags) while letting generated
     values win for freshly computed fields.
 
-    Presentation fields (name / short_name / family / color) are owned by the
+    Presentation fields (name / short_name / color) are owned by the
     existing robocasa-web YAML when a matching row is present.
     """
     merged = dict(generated)
-    preserve_existing_keys = {"name", "short_name", "family", "color"}
+    preserve_existing_keys = {"name", "short_name", "color"}
 
     for key, value in existing.items():
+        if key == "family":
+            continue
         if key not in merged:
             merged[key] = value
         elif merged[key] is None and value is not None:
@@ -106,7 +108,7 @@ def _merge_existing_fields(
 
 
 def _policy_row(data: dict, rank: int) -> dict:
-    name = data["model_name"] or data["policy_family"]
+    name = data["model_name"]
 
     a = float(data["atomic_seen_success"])
     cs = float(data["composite_seen_success"])
@@ -135,7 +137,6 @@ def _policy_row(data: dict, rank: int) -> dict:
         "rank": rank,
         "name": name,
         "short_name": name,
-        "family": data["policy_family"],
         "color": "#64748b",
         "score": overall,
         "atomic_seen": a,
