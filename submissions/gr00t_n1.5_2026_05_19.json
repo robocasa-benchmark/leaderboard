@@ -1,8 +1,8 @@
 {
     "model_name": "GR00T N1.5",
     "submitter": "RoboCasa Team",
+    "accent": "#76b900",
     "date": "2026-05-19",
-    "submission_source": "internal",
     "robocasa_version": "1.0.1",
     "atomic_seen_success": 50.7,
     "composite_seen_success": 14.8,

@@ -3,7 +3,6 @@
 - Model name: ABot-M0.6
 - Submitter: AMAP CV Lab
 - Date evaluated: 06/26/2026
-- Submission source: external
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 79.4
 - Composite-Seen success: 48.3

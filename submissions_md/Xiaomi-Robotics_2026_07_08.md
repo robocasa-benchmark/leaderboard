@@ -3,7 +3,6 @@
 - Model name: Xiaomi-Robotics-1
 - Submitter: Xiaomi Robotics
 - Date evaluated: 07/08/2026
-- Submission source: external
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 80.2
 - Composite-Seen success: 57.1

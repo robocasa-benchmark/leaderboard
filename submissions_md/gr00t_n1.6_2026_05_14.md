@@ -3,7 +3,6 @@
 - Model name: GR00T N1.6
 - Submitter: RoboCasa Team
 - Date evaluated: 05/14/2026
-- Submission source: internal
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 51.1
 - Composite-Seen success: 9.4

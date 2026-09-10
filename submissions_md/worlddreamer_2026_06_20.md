@@ -3,7 +3,6 @@
 - Model name: WorldDreamer
 - Submitter: GigaAI
 - Date evaluated: 06/20/2026
-- Submission source: external
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 66.3
 - Composite-Seen success: 26.7

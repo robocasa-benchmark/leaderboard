@@ -36,6 +36,10 @@ BENCHMARK_META = {
     },
 }
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+ICONS_DIR = REPO_ROOT / "icons"
+ICON_EXTENSIONS = (".png", ".svg", ".jpg", ".jpeg", ".webp")
+
 SUBMISSION_MD_BASE_URL = "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md"
 SUBMISSION_URL_OVERRIDES = {
     "GR00T N1.6": "https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions_md/gr00t_n1.6_2026_05_14.md",
@@ -152,9 +156,23 @@ def _policy_row(data: dict, rank: int) -> dict:
         row["submitter"] = submitter
     if data.get("submitter_url"):
         row["submitter_url"] = data["submitter_url"]
+    if data.get("accent"):
+        row["accent"] = data["accent"]
+    icon = _icon_filename(data["_submission_filename"])
+    if icon:
+        row["icon"] = icon
     if wandb:
         row["wandb"] = wandb
     return row
+
+
+def _icon_filename(submission_filename: str) -> str | None:
+    """Icon convention: icons/<submission-json-basename>.<png|svg|jpg|jpeg|webp>."""
+    stem = Path(submission_filename).stem
+    for ext in ICON_EXTENSIONS:
+        if (ICONS_DIR / f"{stem}{ext}").exists():
+            return f"{stem}{ext}"
+    return None
 
 
 def main() -> None:

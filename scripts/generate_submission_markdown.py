@@ -138,7 +138,6 @@ def render_submission_fields(
         _append_field(lines, "Submitter", submitter)
     if not _is_na(data.get("date")):
         _append_field(lines, "Date evaluated", _fmt_date_mmddyyyy(data.get("date")))
-    _append_field(lines, "Submission source", data.get("submission_source"))
     _append_field(lines, "RoboCasa version", data.get("robocasa_version"))
     _append_field(lines, "Atomic-Seen success", data.get("atomic_seen_success"))
     _append_field(lines, "Composite-Seen success", data.get("composite_seen_success"))

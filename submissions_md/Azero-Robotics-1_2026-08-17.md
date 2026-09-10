@@ -3,7 +3,6 @@
 - Model name: Azero-Robotics-1
 - Submitter: [GitHub: yuxin101](https://github.com/robocasa-benchmark/leaderboard/pull/11)
 - Date evaluated: 08/17/2026
-- Submission source: external
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 30.3
 - Composite-Seen success: 3.8

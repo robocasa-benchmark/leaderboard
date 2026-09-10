@@ -2,7 +2,6 @@
     "model_name": "Diffusion Policy",
     "submitter": "RoboCasa Team",
     "date": "2026-04-02",
-    "submission_source": "internal",
     "robocasa_version": "1.0.0",
     "atomic_seen_success": 15.7,
     "composite_seen_success": 0.2,

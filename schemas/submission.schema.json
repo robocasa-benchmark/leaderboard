@@ -5,7 +5,6 @@
     "required": [
       "model_name",
       "date",
-      "submission_source",
       "robocasa_version",
       "atomic_seen_success",
       "composite_seen_success",
@@ -31,13 +30,13 @@
         "type": "string",
         "minLength": 1
       },
+      "accent": {
+        "type": "string",
+        "pattern": "^#[0-9a-fA-F]{6}$"
+      },
       "date": {
         "type": "string",
         "format": "date"
-      },
-      "submission_source": {
-        "type": "string",
-        "enum": ["internal", "external"]
       },
       "robocasa_version": {
         "type": "string",

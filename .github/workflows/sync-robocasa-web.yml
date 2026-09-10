@@ -52,13 +52,21 @@ jobs:
         run: python scripts/build_leaderboard.py --output ../robocasa-web/_data/robocasa365_leaderboard.yml
         working-directory: leaderboard
 
+      - name: Copy model icons
+        run: |
+          mkdir -p ../robocasa-web/assets/images/policy_icons
+          if compgen -G "icons/*" > /dev/null; then
+            cp -f icons/* ../robocasa-web/assets/images/policy_icons/
+          fi
+        working-directory: leaderboard
+
       - name: Commit and push
         run: |
           set -e
           cd robocasa-web
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add _data/robocasa365_leaderboard.yml
+          git add _data/robocasa365_leaderboard.yml assets/images/policy_icons
           if git diff --staged --quiet; then
             echo "No changes to leaderboard data."
             exit 0
