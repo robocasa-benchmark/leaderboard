@@ -1,5 +1,5 @@
 {
-  "model_name": "Minimalist_Xiaomi",
+  "model_name": "Phasor_m7",
   "submitter": "Phasor",
   "date": "2026-09-11",
   "robocasa_version": "1.0.1",
@@ -14,6 +14,7 @@
   "wandb": "N/A",
   "training_config": {
     "batch_size": 48,
-    "num_training_steps": 220},
-  "notes": "Correction to an earlier submission: the previously submitted numbers(79.44/57.62/30.75) were the froCasa365 baseline (no fine-tuning), These are the final nui : the frozen, open-weight Xiaomi-Robotics-1-RoboCasa365 checkpoint (backbone entirely unmodified, verified via exact DiT weight-sum match before/afte-tuned with rank-4 LoRAadapters on the VLM's language_model attention/MLP layers, plus a sparse end-to-end memory core (Hopfield network + HGRN ged to pooled VLM hidden statesas an additive consolidation-loss regularizer. Trained on real RoboCasa365 data (NVIDIA  PhysicalAI-Robotics-Manipulatioed to the 34 officialatomic_seen+composite_seen tasks (composite_unseen correctly held out of training). Results are from a completed, ode target50 eval run (2500/2500episodes, 0 errors). For reference, the frozen base checkpoint alone scores atomic_seen=79.44, composite_se=30.75. code_url/checkpoint_url are N/A public release."
+    "num_training_steps": 220
+  },
+  "notes": "This submission is not affiliated with Xiaomi. We use Xiaomi's real, open-weight (Apache 2.0) Xiaomi-Robotics-1-RoboCasa365 checkpoint as a frozen base -- backbone entirely unmodified, verified via exact DiT weight-sum match before/after every training run -- and fine-tune it with rank-4 LoRA adapters on the VLM's language_model attention/MLP layers, plus our own sparse end-to-end memory core (Hopfield network + HGRN gate + adaptive gate) applied to pooled VLM hidden states as an additive consolidation-loss regularizer. Trained on real RoboCasa365 data (NVIDIA PhysicalAI-Robotics-Manipulation-Kitchen-Demos), restricted to the 34 official atomic_seen+composite_seen tasks (composite_unseen correctly held out of training). Results are from a completed, official 50-task/2500-episode target50 eval run (2500/2500 episodes, 0 errors). For reference, the frozen base checkpoint alone scores atomic_seen=79.44, composite_seen=57.63, composite_unseen=30.75 on this same protocol -- this submission is essentially tied with baseline on atomic_seen and modestly behind on composite_seen/composite_unseen in this run. code_url/checkpoint_url are being migrated to a public GitHub repo and Hugging Face checkpoint under our own account and will be updated here shortly; private access for verification will be granted to sepnasiriany once that migration completes."
 }
