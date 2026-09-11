@@ -1,7 +1,7 @@
 {
   "model_name": "WorldDreamer",
-  "submitter": "GigaAI",
-  "accent": "#1f1a17",
+  "submitter": "World Agents",
+  "accent": "#8b5cf6",
   "date": "2026-06-20",
   "robocasa_version": "1.0.1",
   "atomic_seen_success": 66.3,
@@ -10,7 +10,7 @@
   "code_url": "https://github.com/worldAgents-c/world_dreamer_server-robocasa365-multi_task/tree/main",
   "commit_hash": "f9ba61f0657ca79b864e3eac6ddd6ef3634b4645",
   "checkpoint_url": "https://huggingface.co/WorldAgents-c/world_dreamer-robocasa365-multi_task",
-  "paper_link": "https://arxiv.org/abs/2401.09985",
+  "paper_link": "N/A",
   "open_source": "yes",
   "training_config": {
     "batch_size": 20,

@@ -1,7 +1,7 @@
 ## Submission details
 
 - Model name: WorldDreamer
-- Submitter: GigaAI
+- Submitter: World Agents
 - Date evaluated: 06/20/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 66.3
@@ -10,7 +10,6 @@
 - Code URL: [https://github.com/worldAgents-c/world_dreamer_server-robocasa365-multi_task/tree/main](https://github.com/worldAgents-c/world_dreamer_server-robocasa365-multi_task/tree/main)
 - Checkpoint URL: [https://huggingface.co/WorldAgents-c/world_dreamer-robocasa365-multi_task](https://huggingface.co/WorldAgents-c/world_dreamer-robocasa365-multi_task)
 - Commit hash: f9ba61f0657ca79b864e3eac6ddd6ef3634b4645
-- Paper link: [https://arxiv.org/abs/2401.09985](https://arxiv.org/abs/2401.09985)
 - Open Source: yes
 - PR: [https://github.com/robocasa-benchmark/leaderboard/pull/5](https://github.com/robocasa-benchmark/leaderboard/pull/5)
 - Batch size: 20
