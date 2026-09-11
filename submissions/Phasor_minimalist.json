@@ -1,21 +1,19 @@
 {
   "model_name": "Minimalist_Xiaomi",
-  "policy_family": "Phasor_m7",
-  "date": "<2026-09-05'>",
-  "submission_source": "internal",
+  "submitter": "Phasor",
+  "date": "2026-09-11",
   "robocasa_version": "1.0.1",
-  "atomic_seen_success": 79.44,
-  "composite_seen_success": 57.62,
-  "composite_unseen_success":30.75,
-  "code_url": "runpod:xr1-m7-submission repo, currently pod-local only)",
-  "commit_hash": "tbd",
-  "checkpoint_url": "tbd",
+  "atomic_seen_success": 78.89,
+  "composite_seen_success": 55.00,
+  "composite_unseen_success": 29.88,
+  "code_url": "N/A",
+  "commit_hash": "38360d368622c232989b7b75e7ac274a0914d551",
+  "checkpoint_url": "N/A",
   "paper_link": "N/A",
   "open_source": "no",
   "wandb": "N/A",
   "training_config": {
-    "batch_size": "64",
-    "num_training_steps": "80000"
-  },
-  "notes": "Real baseline eval of the modified Xiaomi-Robotics-1-RoboCasa365 with phasor sparse memory core checkpoint on runpod's own setup (single RTX 4090, official 50-task target50 protocol, 50 rollouts/task, 2500 total episodes). This is the hybrid pre-LoRA/pre-M7 baseline number — results closely replicate Xiaomi's own published figures (80.2%/57.1%/32.1%), validating the eval pipeline. LoRA-only vs LoRA+M7 ablation numbers pending"
+    "batch_size": 48,
+    "num_training_steps": 220},
+  "notes": "Correction to an earlier submission: the previously submitted numbers(79.44/57.62/30.75) were the froCasa365 baseline (nofine-tuning), mistakenly submitted as this model's final result before fine-tuning was complete. These are the correct, final nui: the frozen, open-weightXiaomi-Robotics-1-RoboCasa365 checkpoint (backbone entirely unmodified, verified via exact DiT weight-sum match before/afte-tuned with rank-4 LoRAadapters on the VLM's language_model attention/MLP layers, plus a sparse end-to-end memory core (Hopfield network + HGRN ged to pooled VLM hidden statesas an additive consolidation-loss regularizer. Trained on real RoboCasa365 data (NVIDIA  PhysicalAI-Robotics-Manipulatioed to the 34 officialatomic_seen+composite_seen tasks (composite_unseen correctly held out of training). Results are from a completed, ode target50 eval run (2500/2500episodes, 0 errors). For reference, the frozen base checkpoint alone scores atomic_seen=79.44, composite_se=30.75 -- this submission isessentially tied with baseline on atomic_seen and modestly behind on composite_seen/composite_unseenfig previously listed (batch_size 64, num_training_steps 80000) was also incorrect and has been corrected here to the real fine-tuning budget actually use eps starting from the already-pretrained base checkpoint, not a from-scratch training run). code_url/checkpoint_url are N/Alic release."
 }
