@@ -1,0 +1,21 @@
+{
+  "model_name": "Primotion",
+  "submitter": "PrimotionBot",
+  "date": "2026-09-11",
+  "submission_source": "external",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 79.22,
+  "composite_seen_success": 58.50,
+  "composite_unseen_success": 39.13,
+  "code_url": "N/A",
+  "commit_hash": "N/A",
+  "checkpoint_url": "N/A",
+  "paper_link": "N/A",
+  "open_source": "no",
+  "wandb": "N/A",
+  "training_config": {
+    "batch_size": 560,
+    "num_training_steps": 150000
+  },
+  "notes": "Results of Primotion-Robocasa365."
+}
