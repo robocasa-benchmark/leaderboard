@@ -6,9 +6,9 @@
   "atomic_seen_success": 78.89,
   "composite_seen_success": 55.00,
   "composite_unseen_success": 29.88,
-  "code_url": "N/A",
+  "code_url": "https://github.com/Phasor-inc/minimalist_m7",
   "commit_hash": "38360d368622c232989b7b75e7ac274a0914d551",
-  "checkpoint_url": "N/A",
+  "checkpoint_url": "https://huggingface.co/Ujere/phasor-m7-robocasa365",
   "paper_link": "N/A",
   "open_source": "no",
   "wandb": "N/A",
@@ -16,5 +16,5 @@
     "batch_size": 48,
     "num_training_steps": 220
   },
-  "notes": "This submission is not affiliated with Xiaomi. We use Xiaomi's real, open-weight (Apache 2.0) Xiaomi-Robotics-1-RoboCasa365 checkpoint as a frozen base backbone entirely unmodified, verified via exact DiT weight-sum match before/after every training run and fine-tune it with rank-4 LoRA adapters on the VLM's language_model attention/MLP layers, plus our own sparse end-to-end memory core (Hopfield network + HGRN gate + adaptive gate) applied to pooled VLM hidden states as an additive consolidation-loss regularizer. Trained on real RoboCasa365 data (NVIDIA PhysicalAI-Robotics-Manipulation-Kitchen-Demos), restricted to the 34 official atomic_seen+composite_seen tasks (composite_unseen correctly held out of training). Results are from a completed, official 50-task/2500, episode target50 eval run (2500/2500 episodes, 0 errors). For reference, the frozen base checkpoint alone scores atomic_seen=79.44, composite_seen=57.63, composite_unseen=30.75 on this same protocol,  this submission is essentially tied with baseline on atomic_seen and modestly behind on composite_seen/composite_unseen in this run. code_url/checkpoint_url are being migrated to a public GitHub repo and Hugging Face checkpoint under our own account and will be updated here shortly."
+  "notes": "This submission is not affiliated with Xiaomi. We use Xiaomi's real, open-weight (Apache 2.0) Xiaomi-Robotics-1-RoboCasa365 checkpoint as a frozen base -- backbone entirely unmodified, verified via exact DiT weight-sum match before/after every training run -- and fine-tune it with rank-4 LoRA adapters on the VLM's language_model attention/MLP layers, plus our own sparse end-to-end memory core (Hopfield network + HGRN gate + adaptive gate) applied to pooled VLM hidden states as an additive consolidation-loss regularizer. Trained on real RoboCasa365 data (NVIDIA PhysicalAI-Robotics-Manipulation-Kitchen-Demos), restricted to the 34 official atomic_seen+composite_seen tasks (composite_unseen correctly held out of training). Results are from a completed, official 50-task/2500-episode target50 eval run (2500/2500 episodes, 0 errors). For reference, the frozen base checkpoint alone scores atomic_seen=79.44, composite_seen=57.63, composite_unseen=30.75 on this same protocol -- this submission is essentially tied with baseline on atomic_seen and modestly behind on composite_seen/composite_unseen in this run. code_url is a private GitHub repo with the full training/eval code, tests, NOTES.md dev log, plots, and raw per-episode eval evidence; checkpoint_url is a private Hugging Face repo with the merged, deployable checkpoint. sepnasiriany has been added as a collaborator on the GitHub repo; Hugging Face access is being granted manually via repo Settings since Hugging Face does not expose collaborator management through its public API. A matching LoRA-only ablation checkpoint (no memory core, isolating M7's specific contribution) is also available at https://huggingface.co/Ujere/phasor-lora-only-robocasa365 -- its eval sweep was still in progress at the time of this submission; final numbers will be added to the GitHub repo's NOTES.md once complete."
 }
