@@ -120,8 +120,15 @@ def _fmt_date_mmddyyyy(value: Any) -> str:
         return str(value)
 
 
-def render_submission_fields(data: dict[str, Any], filename: str) -> list[str]:
+def render_submission_fields(
+    data: dict[str, Any],
+    filename: str,
+    *,
+    include_filename: bool = False,
+) -> list[str]:
     lines: list[str] = []
+    if include_filename:
+        _append_field(lines, "Submission JSON filename", filename)
     _append_field(lines, "Model name", data.get("model_name"))
     submitter = data.get("submitter")
     submitter_url = data.get("submitter_url")
@@ -183,6 +190,21 @@ def render_submission_fields(data: dict[str, Any], filename: str) -> list[str]:
 def render_submission_markdown(data: dict[str, Any], filename: str) -> str:
     lines = ["## Submission details", ""]
     lines.extend(render_submission_fields(data, filename))
+    lines.append("")
+    return "\n".join(lines)
+
+
+def render_pr_submission_comment(
+    data: dict[str, Any], filename: str
+) -> str:
+    lines = [
+        "<!-- robocasa-submission-summary -->",
+        "### Submission summary (auto-generated)",
+        "",
+        f"_From `{filename}`. Edit the JSON in this PR to update this summary._",
+        "",
+    ]
+    lines.extend(render_submission_fields(data, filename, include_filename=True))
     lines.append("")
     return "\n".join(lines)
 
