@@ -9,14 +9,25 @@
       "atomic_seen_success",
       "composite_seen_success",
       "composite_unseen_success",
-      "code_url",
-      "commit_hash",
       "checkpoint_url",
       "paper_link",
       "open_source",
       "training_config",
       "notes"
     ],
+    "if": {
+      "properties": {
+        "open_source": {
+          "const": "yes"
+        }
+      }
+    },
+    "then": {
+      "required": [
+        "code_url",
+        "commit_hash"
+      ]
+    },
     "properties": {
       "model_name": {
         "type": "string",
