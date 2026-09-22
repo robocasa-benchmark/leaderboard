@@ -7,9 +7,6 @@
     "atomic_seen_success": 75.6,
     "composite_seen_success": 37.7, 
     "composite_unseen_success": 3.3,
-    "code_url": "https://github.com/amap-cvlab/ABot-M0.5-for-Robocasa365",
-    "commit_hash": "916de8a",
-    "checkpoint_url": "https://huggingface.co/acvlab/ABot-M0.5-RoboCasa365/tree/main",
     "paper_link": "https://arxiv.org/abs/2607.00678",
     "open_source": "no",
     "training_config": {
