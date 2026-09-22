@@ -7,7 +7,8 @@
   "composite_seen_success": 57.4,
   "composite_unseen_success": 31.5,
   "code_url": "https://github.com/Phasor-inc/minimalist_m7",
-  "checkpoint_url": "https://huggingface.co/Project-Phasor/phasor-m7-robocasa365",
+  "commit_hash": "da6f12cbf3c96184731ea0108c3331bd724f36d5",
+  "checkpoint_url": "https://huggingface.co/Ujere/phasor-m7-robocasa365",
   "paper_link": "N/A",
   "open_source": "no",
   "wandb": "N/A",
@@ -15,5 +16,5 @@
     "batch_size": 48,
     "num_training_steps": 220
   },
-  "notes": "Model based off of Xiaomi-Robotics-1-RoboCasa365. This submission beats baseline on composite_unseen (+0.75pt) and is essentially tied on atomic_seen/composite_seen/overall. code_url is a private GitHub repo with the full training/eval code, tests, NOTES.md dev log, and raw per-episode eval evidence."
+  "notes": "Model based off Xiaomi-Robotics-1-RoboCasa365. This submission beats baseline on composite_unseen (+0.75pt) and is essentially tied on atomic_seen/composite_seen/overall. code_url is a private GitHub repo with the full training/eval code, tests, NOTES.md dev log, and raw per-episode eval evidence."
 }
