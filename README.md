@@ -9,6 +9,14 @@ To add your results, export a JSON file in the format below and open a pull requ
 > [!NOTE]
 > For models that cannot be released open-source (`"open_source": "no"`), you must grant the RoboCasa team private access to your model checkpoint and evaluation code so we can verify results on our benchmark. You can give private access to your model checkpoint on Hugging Face and evaluation code on GitHub by granting access to @sepnasiriany.
 
+## Submission requirements
+
+1. **Novel model.** A submission must be a distinct model: a new architecture, training recipe, or data approach. A short fine-tune, LoRA adapter, or minor post-training run on an existing entry is not a new submission.
+2. **Novelty must show up at inference.** Contributions that only run during training (regularizers, auxiliary losses) or that compute side outputs the policy never uses do not count. The mechanism you claim credit for must be part of what the model does at test time.
+3. **Show a real improvement.** If you build on someone else's base model, demonstrate a measurable success-rate gain from your contribution. A delta within noise of the base is the same model.
+4. **Attribute your base.** If your submission wraps or extends another team's checkpoint, say so clearly: which parts are frozen, which you trained, and how much data you used.
+5. **Paper or writeup.** Publish a paper, tech report, or blog post, or commit to a release timeline. Unexplained leaderboard numbers aren't reproducible science.
+
 ## Submission template
 
 Each submission is a single JSON file added to `submissions/` with this structure: :
