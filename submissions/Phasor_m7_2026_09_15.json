@@ -10,7 +10,7 @@
   "commit_hash": "da6f12cbf3c96184731ea0108c3331bd724f36d5",
   "checkpoint_url": "https://huggingface.co/Ujere/phasor-m7-robocasa365",
   "paper_link": "N/A",
-  "open_source": "no",
+  "open_source": "yes",
   "wandb": "N/A",
   "training_config": {
     "batch_size": 48,
