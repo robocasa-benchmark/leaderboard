@@ -1,7 +1,7 @@
 ## Submission details
 
-- Model name: Primotion
-- Submitter: PrimotionBot
+- Model name: Paimon
+- Submitter: Primotion
 - Date evaluated: 09/11/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 79.3
