@@ -1,6 +1,7 @@
 {
   "model_name": "Paimon-0",
   "submitter": "Primotion",
+  "accent": "#e8590c",
   "date": "2026-09-11",
   "robocasa_version": "1.0.1",
   "atomic_seen_success": 79.3,

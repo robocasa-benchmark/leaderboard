@@ -34,7 +34,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install jsonschema pyyaml
+        run: pip install jsonschema pyyaml pillow
 
       - name: Validate submission files
         run: python scripts/validate_success.py

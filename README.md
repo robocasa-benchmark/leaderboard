@@ -54,3 +54,5 @@ Here’s a sample JSON: [gr00t_n1.5_2026_05_19.json](https://github.com/robocasa
 ### Model icon (optional)
 
 To show a logo next to your model on the leaderboard, add a square image (256px or larger; `.png` or `.svg`) to the `icons/` folder in the same pull request, named after your submission JSON file. For example, `submissions/my-model_2026_09_01.json` pairs with `icons/my-model_2026_09_01.png`. Without an icon, the leaderboard shows a letter tile with your model's initial.
+
+When your submission includes an icon, the leaderboard derives a matching hover highlight color for your model's name from the logo automatically. To pick it yourself, set the optional `"accent"` field in your submission JSON (a hex color such as `"#76b900"`); an explicit accent always wins.

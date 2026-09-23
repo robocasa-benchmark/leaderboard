@@ -156,11 +156,14 @@ def _policy_row(data: dict, rank: int) -> dict:
         row["submitter"] = submitter
     if data.get("submitter_url"):
         row["submitter_url"] = data["submitter_url"]
-    if data.get("accent"):
-        row["accent"] = data["accent"]
+    accent = data.get("accent")
     icon = _icon_filename(data["_submission_filename"])
     if icon:
         row["icon"] = icon
+        if not accent:
+            accent = _accent_from_icon(icon)
+    if accent:
+        row["accent"] = accent
     if wandb:
         row["wandb"] = wandb
     return row
@@ -173,6 +176,52 @@ def _icon_filename(submission_filename: str) -> str | None:
         if (ICONS_DIR / f"{stem}{ext}").exists():
             return f"{stem}{ext}"
     return None
+
+
+def _accent_from_icon(icon_filename: str) -> str | None:
+    """Derive an accent color from the icon when the submission sets none.
+
+    Picks the dominant saturated color; a mostly monochrome mark gets a dark
+    neutral. An explicit "accent" in the submission JSON always wins.
+    """
+    if icon_filename.endswith(".svg"):
+        return None
+    try:
+        from PIL import Image
+    except ImportError:
+        return None
+    try:
+        src = Image.open(ICONS_DIR / icon_filename).convert("RGBA")
+    except OSError:
+        return None
+    white = Image.new("RGBA", src.size, (255, 255, 255, 255))
+    im = Image.alpha_composite(white, src).convert("RGB")
+    im.thumbnail((64, 64))
+    im = im.convert("P", palette=Image.ADAPTIVE, colors=16).convert("RGB")
+
+    from collections import Counter
+
+    best = None  # (saturation-weighted count, (r, g, b))
+    dark = 0
+    total = 0
+    for (r, g, b), n in Counter(im.getdata()).items():
+        mx, mn = max(r, g, b), min(r, g, b)
+        if mx > 242 and mn > 235:  # background / near-white
+            continue
+        total += n
+        sat = mx - mn
+        if mx < 90 and sat < 40:
+            dark += n
+        if sat >= 40:
+            weight = sat * n
+            if best is None or weight > best[0]:
+                best = (weight, (r, g, b))
+    if total == 0:
+        return None
+    if best is None or dark / total > 0.7:
+        return "#111111"
+    r, g, b = best[1]
+    return f"#{r:02x}{g:02x}{b:02x}"
 
 
 def main() -> None:
