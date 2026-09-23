@@ -73,7 +73,7 @@ SUBMISSION_PR_URLS: dict[str, str] = {
     # auto-detection sees the rename commit instead of the PR merge.
     "Phasor_m7_2026_09_15.json": "https://github.com/robocasa-benchmark/leaderboard/pull/16",
     # Renamed after merge (Primotion_2026_09_11.json -> Paimon_2026_09_11.json).
-    "Paimon_2026_09_11.json": "https://github.com/robocasa-benchmark/leaderboard/pull/17",
+    "Paimon-0_2026_09_11.json": "https://github.com/robocasa-benchmark/leaderboard/pull/17",
 }
 
 
