@@ -1,0 +1,20 @@
+{
+  "model_name": "LY-GWM-RoboCasa-Human300",
+  "submitter": "北京市密网信息科技有限公司",
+  "date": "2026-09-24",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 16.666666666666668,
+  "composite_seen_success": 4.75,
+  "composite_unseen_success": 2.375,
+  "code_url": "https://github.com/SEIN-LYGWM/LY-GWM-RoboCasa-Human300-eval",
+  "commit_hash": "79b247c854df116614d9ec5db29406c329a18603",
+  "checkpoint_url": "https://huggingface.co/lygwm-review/LY-GWM-RoboCasa-Human300/tree/180883d9af9ee02edc3c53fe20babdc7658d1127",
+  "paper_link": "https://github.com/SEIN-LYGWM/LY-GWM-RoboCasa-Human300-eval/blob/d6f2815d99380b6857a3d88cdb6d6fd0fc5f9d40/docs/LYGWM_RoboCasa_Technical_Report_EN.pdf",
+  "open_source": "yes",
+  "wandb": "N/A",
+  "training_config": {
+    "batch_size": 128,
+    "num_training_steps": 120000
+  },
+  "notes": "S42: RoboCasa 1.0.1, split=pretrain, 50 tasks x 50 episodes, 207/2500 successes (8.28%). R5 fine-tuned GR00T-N1.5 generates four candidates; frozen W5 LY-GWM predicts future features/state; a separate S38 binary state-reward head selects the maximum logit. The scorer is not a goal-conditioned value function. The previous 200/2500 submission is superseded by this S42 submission and is not evidence of LY-GWM-based action selection; the current submission uses S42's 207/2500 result and its corresponding public code, weights and evaluation records. S42 passed revised INTERNAL acceptance: after the run, nonzero action-bound counts became diagnostic-only; original zero-bound acceptance failed. 1822 affected episodes include 149 successful episodes; all 2500 remain in the denominator. No new rollouts were performed by the revised collector. Historical S31 was 181/2500 (7.24%); the +1.04 percentage-point difference is descriptive, without a causal or significance claim; S31 contemporaneous weight-shard hashes are unavailable. Historical full raw action traces are not bundled; recorded audit reports and trace hashes are supplied. New-machine reviewer entrypoints have CPU/static checks only, not a completed GPU reproduction. The local public-checkpoint versus official-reference performance gap remains unresolved. Source and inference weights are public subject to preserved component terms. Official acceptance is for the maintainers to determine."
+}
