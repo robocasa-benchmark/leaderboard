@@ -169,14 +169,12 @@ def _policy_row(data: dict, rank: int) -> dict:
         row["submitter"] = submitter
     if data.get("submitter_url"):
         row["submitter_url"] = data["submitter_url"]
-    accent = data.get("accent")
     icon = _icon_filename(data["_submission_filename"])
     if icon:
         row["icon"] = icon
-        if not accent:
-            accent = _accent_from_icon(icon)
-    if accent:
-        row["accent"] = accent
+        accent = _accent_from_icon(icon)
+        if accent:
+            row["accent"] = accent
     if wandb:
         row["wandb"] = wandb
     return row
@@ -192,13 +190,13 @@ def _icon_filename(submission_filename: str) -> str | None:
 
 
 def _accent_from_icon(icon_filename: str) -> str | None:
-    """Derive an accent color from the icon when the submission sets none.
+    """Derive the accent color from the icon.
 
     Picks the dominant saturated color; a mostly monochrome mark gets a dark
-    neutral. An explicit "accent" in the submission JSON always wins.
+    neutral. SVGs are read from their fill colors.
     """
     if icon_filename.endswith(".svg"):
-        return None
+        return _accent_from_svg(icon_filename)
     try:
         from PIL import Image
     except ImportError:
@@ -235,6 +233,27 @@ def _accent_from_icon(icon_filename: str) -> str | None:
         return "#111111"
     r, g, b = best[1]
     return f"#{r:02x}{g:02x}{b:02x}"
+
+
+def _accent_from_svg(icon_filename: str) -> str | None:
+    """Pick the most saturated fill color named in an SVG icon."""
+    import re
+
+    try:
+        text = (ICONS_DIR / icon_filename).read_text(encoding="utf-8")
+    except OSError:
+        return None
+    best = None  # (saturation, hex)
+    for match in re.findall(r'fill="#([0-9a-fA-F]{6})"', text):
+        r, g, b = (int(match[i : i + 2], 16) for i in (0, 2, 4))
+        sat = max(r, g, b) - min(r, g, b)
+        if best is None or sat > best[0]:
+            best = (sat, f"#{match.lower()}")
+    if best is None:
+        return None
+    if best[0] < 40:  # monochrome mark
+        return "#111111"
+    return best[1]
 
 
 def main() -> None:

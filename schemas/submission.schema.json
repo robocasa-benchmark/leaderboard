@@ -41,10 +41,6 @@
         "type": "string",
         "minLength": 1
       },
-      "accent": {
-        "type": "string",
-        "pattern": "^#[0-9a-fA-F]{6}$"
-      },
       "date": {
         "type": "string",
         "format": "date"

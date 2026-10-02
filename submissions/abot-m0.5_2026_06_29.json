@@ -1,7 +1,6 @@
 {
     "model_name": "ABot-M0.5",
     "submitter": "AMAP CV Lab",
-    "accent": "#2f7bf5",
     "date": "2026-06-29",
     "robocasa_version": "1.0.1",
     "atomic_seen_success": 75.6,
