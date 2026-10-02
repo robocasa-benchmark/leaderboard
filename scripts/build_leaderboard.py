@@ -65,6 +65,16 @@ def _load_existing_policies(out_path: Path) -> list[dict[str, Any]]:
     return policies if isinstance(policies, list) else []
 
 
+def _real_value(value: Any) -> str | None:
+    """A usable identity value: present and not an "N/A" placeholder."""
+    if not value:
+        return None
+    text = str(value)
+    if text.strip().upper() in {"N/A", "NA"}:
+        return None
+    return text
+
+
 def _policy_match_key(policy: dict[str, Any]) -> tuple[str, str] | None:
     """
     Match generated rows to existing rows by stable identity.
@@ -73,16 +83,19 @@ def _policy_match_key(policy: dict[str, Any]) -> tuple[str, str] | None:
       1) checkpoint_url
       2) code_url
       3) name (fallback for legacy rows)
+
+    "N/A" placeholders are skipped: closed-source submissions share them, and a
+    shared key would merge two different models into one row.
     """
-    checkpoint_url = policy.get("checkpoint_url")
+    checkpoint_url = _real_value(policy.get("checkpoint_url"))
     if checkpoint_url:
-        return ("checkpoint_url", str(checkpoint_url))
-    code_url = policy.get("code_url")
+        return ("checkpoint_url", checkpoint_url)
+    code_url = _real_value(policy.get("code_url"))
     if code_url:
-        return ("code_url", str(code_url))
-    name = policy.get("name")
+        return ("code_url", code_url)
+    name = _real_value(policy.get("name"))
     if name:
-        return ("name", str(name))
+        return ("name", name)
     return None
 
 
