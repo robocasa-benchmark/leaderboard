@@ -1,0 +1,20 @@
+{
+  "model_name": "Axiom-0",
+  "submitter": "4axiom",
+  "date": "2026-10-01",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 86.22,
+  "composite_seen_success": 60.12,
+  "composite_unseen_success": 37.62,
+  "code_url": "N/A",
+  "commit_hash": "N/A",
+  "checkpoint_url": "N/A",
+  "paper_link": "N/A",
+  "open_source": "no",
+  "wandb": "N/A",
+  "training_config": {
+    "batch_size": 2048,
+    "num_training_steps": 30000
+  },
+  "notes": "Results of Axiom-Robocasa365."
+}
