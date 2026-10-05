@@ -9,12 +9,12 @@
   "code_url": "N/A",
   "commit_hash": "N/A",
   "checkpoint_url": "N/A",
-  "paper_link": "https://sii-ferenas.github.io/ProWAM-page/",
+  "paper_link": "https://arxiv.org/abs/2610.02508",
   "open_source": "no",
   "wandb": "N/A",
   "training_config": {
     "batch_size": 256,
     "num_training_steps": 397000
   },
-  "notes": "ProWAM: World Action Modeling with Progressive Visual Planning. A 5B world action model that predicts an ordered chain of sparse sub-goals indexed by a normalized task-progress coordinate, then conditions action prediction on that chain. Sub-goals share the video backbone and are distinguished by a progress-conditioned adaLN offset; the video branch never attends to action tokens, so one cached video-expert pass serves every action denoising step. Evaluated with K=6 sub-goals at progress 0.3/0.4/0.5/0.65/0.8/0.9, action horizon 32, replan every 32 steps, 10 denoising steps, 50 official target tasks. Release timeline: the paper is currently under submission to arXiv and the project page is already public; we plan to release the model weights in December 2026. We are happy to have the model re-evaluated by the RoboCasa team once it is released."
+  "notes": "ProWAM: World Action Modeling with Progressive Visual Planning. A 5B world action model that predicts an ordered chain of sparse sub-goals indexed by a normalized task-progress coordinate, then conditions action prediction on that chain. Sub-goals share the video backbone and are distinguished by a progress-conditioned adaLN offset; the video branch never attends to action tokens, so one cached video-expert pass serves every action denoising step. Evaluated with K=6 sub-goals at progress 0.3/0.4/0.5/0.65/0.8/0.9, action horizon 32, replan every 32 steps, 10 denoising steps, 50 official target tasks. Release timeline: the paper is on arXiv (arXiv:2610.02508) and the project page is public at https://sii-ferenas.github.io/ProWAM-page/; we plan to release the model weights in December 2026. We are happy to have the model re-evaluated by the RoboCasa team once it is released."
 }
