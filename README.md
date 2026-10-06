@@ -35,7 +35,6 @@ Each submission is a single JSON file added to `submissions/` with this structur
   "checkpoint_url": "<URL>",
   "paper_link": "<URL>",
   "open_source": "yes",
-  "wandb": "<wandb run or project URL/reference>",
   "training_config": {
     "batch_size": "<integer>",
     "num_training_steps": "<integer>"
