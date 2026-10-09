@@ -12,7 +12,6 @@
 - Commit hash: 9d7d7a9eb7ad30bd8ce30448d9ab53a918b45b10
 - Paper link: [https://arxiv.org/abs/2503.14734](https://arxiv.org/abs/2503.14734)
 - Open Source: yes
-- W&B: [https://wandb.ai/snasiriany/huggingface/runs/ie66zrqa](https://wandb.ai/snasiriany/huggingface/runs/ie66zrqa)
 - Batch size: 128
 - Number of training steps: 120,000
 - Notes: re-evaluated with 1.5x longer horizon after RoboCasa 1.0.1 update for consistency
