@@ -4,7 +4,7 @@ This repository hosts the official RoboCasa365 leaderboard. It tracks multi-task
 
 We analyze multi-task learning through three RoboCasa365 splits — **Atomic-Seen**, **Composite-Seen**, and **Composite-Unseen** — and report average task success rate (in %) for each. This accounts for a total of 50 target tasks being evaluated. These evaluation splits and target datasets are explained in further detail in our [documentation](https://robocasa.ai/docs/build/html/datasets/datasets_overview.html).
 
-To add your results, export a JSON file in the format below and open a pull request that adds it to the `submissions/` directory. The results will be displayed on our main [website](https://robocasa.ai/leaderboard.html).
+To add your results, export a JSON file in the format below and open a pull request that adds it to the `submissions/` directory. Please give us up to 10 days to evaluate your model upon submission. After verification, results will be displayed on our main [website](https://robocasa.ai/leaderboard.html).
 
 > [!NOTE]
 > For models that cannot be released open-source (`"open_source": "no"`), you must grant the RoboCasa team private access to your model checkpoint and evaluation code so we can verify results on our benchmark. You can give private access to your model checkpoint on Hugging Face and evaluation code on GitHub by granting access to @sepnasiriany. We will only accept closed source models for legitimate proprietary reasons and we expect your model to eventually be open sourced.
