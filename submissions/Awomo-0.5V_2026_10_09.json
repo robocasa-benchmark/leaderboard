@@ -1,0 +1,21 @@
+{
+  "model_name": "Awomo-0.5V",
+  "submitter": "Awomo-WAM Team",
+  "submitter_url": "https://github.com/Awomo-WestlakeDI",
+  "date": "2026-10-09",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 85.0,
+  "composite_seen_success": 60.4,
+  "composite_unseen_success": 39.4,
+  "code_url": "https://github.com/Awomo-WestlakeDI/Awomo-0.5/tree/main/eval_robocasa365",
+  "commit_hash": "1145c18afd13a3876c6740f098bd734f5e35617a",
+  "checkpoint_url": "https://huggingface.co/Auwomo/Awomo-0.5V-RoboCasa365",
+  "paper_link": "N/A",
+  "open_source": "yes",
+  "wandb": "N/A",
+  "training_config": {
+    "batch_size": 512,
+    "num_training_steps": 40000
+  },
+  "notes": "Awomo-0.5V (Awomo-0.5-Video) is a video-based world-action model built on pretrained Wan2.2. It combines task instructions, video observations, and proprioception to jointly predict future video and action sequences, using a causal transformer with cached visual context. Supervised fine-tuning (SFT) used only RoboCasa365 Human300, with a global batch size of 512 for 40,000 steps. No Target50 data, target scenes, or target assets were used in training. Evaluation used RoboCasa 1.0.1, split=pretrain, replan=16, 16 denoising steps, and 30 trials per task. Results contain 938 successes over 1,500 episodes: Atomic-Seen 459/540, Composite-Seen 290/480, and Composite-Unseen 189/480. Code, checkpoint, and reproduction instructions are publicly available. A technical report is planned for October 2026."
+}
