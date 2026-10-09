@@ -1,0 +1,20 @@
+{
+  "model_name": "OriginX",
+  "submitter": "Qinzhen Ma",
+  "submitter_url": "https://github.com/Quinn-Ma",
+  "date": "2026-10-09",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 83.0,
+  "composite_seen_success": 59.875,
+  "composite_unseen_success": 33.75,
+  "code_url": "https://github.com/Quinn-Ma/OriginX",
+  "commit_hash": "e04001d5a6ccb7836bdd8b18be8c11ac28d5aee7",
+  "checkpoint_url": "https://github.com/Quinn-Ma/OriginX/releases/tag/v1.0.0",
+  "paper_link": "https://github.com/Quinn-Ma/OriginX/blob/e04001d5a6ccb7836bdd8b18be8c11ac28d5aee7/TECHNICAL_REPORT.md",
+  "open_source": "yes",
+  "training_config": {
+    "batch_size": 128,
+    "num_training_steps": 2000
+  },
+  "notes": "Author-run frozen native-reset evaluation: 1496/2500 successes (59.84%), all 50 tasks x 50 episodes, fixed seeds and registered horizons, no missing or unknown outcomes. Independent derivative of Xiaomi-Robotics-1-RoboCasa365: inherited A1613 rank-16 Action LoRA, then frozen A1613 plus a trained 4,216,839-parameter continuous conditioning branch used at inference. Training fields describe only B2000; full inherited training and data mixture are documented. Eligibility limitation: an earlier 600-pair confirmation versus the original model showed +1 percentage point (95% interval [-2.17,4.17], McNemar p=0.6173); a gain beyond noise is not established and no matched native-reset 2500-episode base or A-only ablation has been run. Request organizer review under the derivative-model requirements; no accepted rank claimed. CPU OSMesa, query-pixel-preserving rendering decimation and context/readback guards are disclosed. Original episode evidence is released; the subsequent portable loader has CPU checks only, not a repeat full-model evaluation."
+}
