@@ -9,7 +9,7 @@
   "composite_unseen_success": 33.75,
   "code_url": "https://github.com/Quinn-Ma/OriginX",
   "commit_hash": "e04001d5a6ccb7836bdd8b18be8c11ac28d5aee7",
-  "checkpoint_url": "https://github.com/Quinn-Ma/OriginX/releases/tag/v1.0.0",
+  "checkpoint_url": "https://huggingface.co/Qinzhen3/OriginX/tree/b4292b9cb10a9a88a07907da11740ebc12a11cdf",
   "paper_link": "https://github.com/Quinn-Ma/OriginX/blob/e04001d5a6ccb7836bdd8b18be8c11ac28d5aee7/TECHNICAL_REPORT.md",
   "open_source": "yes",
   "training_config": {
