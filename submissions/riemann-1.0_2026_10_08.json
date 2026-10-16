@@ -1,0 +1,19 @@
+{
+  "model_name": "Riemann-1.0",
+  "submitter": "Riemann Dynamics",
+  "date": "2026-10-09",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 82.11,
+  "composite_seen_success": 54.79,
+  "composite_unseen_success": 41.04,
+  "code_url": "N/A",
+  "commit_hash": "N/A",
+  "checkpoint_url": "N/A",
+  "paper_link": "https://arxiv.org/abs/2608.27033",
+  "open_source": "no",
+  "training_config": {
+    "batch_size": 512,
+    "num_training_steps": 212000
+  },
+  "notes": "Results of Riemman-1.0."
+}
