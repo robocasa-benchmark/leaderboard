@@ -1,0 +1,19 @@
+{
+  "model_name": "worlddreamer_v5",
+  "submitter": "World Agents",
+  "date": "2026-10-10",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 80.8,
+  "composite_seen_success": 60.0,
+  "composite_unseen_success": 30.6,
+  "code_url": "https://github.com/worldAgents-c/worlddreamer-v5-robocasa",
+  "commit_hash": "N/A",
+  "checkpoint_url": "https://huggingface.co/WorldAgents-c/worlddreamer-v5-robocasa",
+  "paper_link": "https://worldagents-c.github.io/worlddreamer-v5-project/",
+  "open_source": "yes",
+  "training_config": {
+    "batch_size": 192,
+    "num_training_steps": 168000
+  },
+  "notes": "Results of WorldDreamer-V5-lite on Robocasa365."
+}
