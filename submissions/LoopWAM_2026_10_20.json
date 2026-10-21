@@ -1,0 +1,19 @@
+{
+  "model_name": "LoopWAM",
+  "submitter": "LoopWAM Team",
+  "date": "2026-09-26",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 79.7,
+  "composite_seen_success": 50.3,
+  "composite_unseen_success": 14.9,
+  "code_url": "https://github.com/loop-wam/LoopWAM",
+  "commit_hash": "0bdcad41fcf274bffadad6e9af4f2aadfc4cde61",
+  "checkpoint_url": "https://huggingface.co/datasets/loop-wam/loopwam/tree/main/robocasa365",
+  "paper_link": "https://arxiv.org/abs/2610.18873",
+  "open_source": "yes",
+  "training_config": {
+    "batch_size": 1536,
+    "num_training_steps": 112500
+  },
+  "notes": "Results of LoopWAM on the RoboCasa365 benchmark."
+}
