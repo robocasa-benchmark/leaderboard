@@ -1,0 +1,7 @@
+agentic:
+  - changed-files:
+      - any-glob-to-any-file: "submissions/agentic/**"
+
+standard:
+  - changed-files:
+      - any-glob-to-any-file: "submissions/*.json"

@@ -1,0 +1,16 @@
+# Labels submission PRs by folder: submissions/agentic/ -> "agentic", submissions/*.json -> "standard".
+name: Label submissions
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v5
