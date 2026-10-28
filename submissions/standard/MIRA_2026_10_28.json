@@ -9,7 +9,7 @@
   "code_url": "https://github.com/yinpei-tri-pi/sys1_sys2",
   "commit_hash": "d3d4ecc1d68bd14efc40e88ac915ee05943d2065",
   "checkpoint_url": "https://huggingface.co/yinpei-tri-pi/robocasa-system1-pi05-progact",
-  "paper_link": "https://github.com/yinpei-tri-pi/sys1_sys2/blob/d3d4ecc1d68bd14efc40e88ac915ee05943d2065/doc/MIRA_System1_2_RoboCasa.pdf",
+  "paper_link": "https://github.com/yinpei-tri-pi/sys1_sys2/blob/master/doc/MIRA_System1_2_RoboCasa.pdf",
   "open_source": "yes",
   "training_config": {
     "batch_size": 512,
