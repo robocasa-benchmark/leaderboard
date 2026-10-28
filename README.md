@@ -33,7 +33,7 @@ Each submission is a single JSON file added to `submissions/standard/` with this
 ```json
 {
   "model_name": "<string>",
-  "model_type": "<VLA | WAM | VLA + WM | Visuomotor | Other>",
+  "model_type": "<string> (ie. VLA)",
   "submitter": "<team or organization name>",
   "date": "<YYYY-MM-DD, e.g. '2026-04-02'>",
   "robocasa_version": "<string, default '1.0.1'>",
