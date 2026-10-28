@@ -85,14 +85,6 @@ Each submission is a single JSON file added to `submissions/agentic/` with this 
   "atomic_seen_success": <number 0–100>,
   "composite_seen_success": <number 0–100>,
   "composite_unseen_success": <number 0–100>,
-  "novelty": "<new_model | agentic_harness | both>",
-  "novelty_description": "<what is new about the model or harness>",
-  "base_policy": {
-    "name": "<string>",
-    "hf_repo": "<URL>",
-    "commit": "<commit or checkpoint hash>",
-    "license": "<string>"
-  },
   "planner": {
     "provider": "<optional: only for closed-API planners>",
     "model_id": "<string>",
@@ -102,13 +94,21 @@ Each submission is a single JSON file added to `submissions/agentic/` with this 
   "commit_hash": "<git commit hash>",
   "paper_link": "<arXiv or preprint URL>",
   "open_source": "yes",
-  "stateful": false,
-  "notes": "<free text>"
+  "notes": "<base policy (name, HF repo and commit, license) and whether cross-episode memory is used>"
 }
 ```
 
 > [!NOTE]
 > The `planner` block is optional; include it only for closed-API planners.
+
+### Private information
+
+Everything in the pull request is public. Never put API keys or other credentials in your PR. After opening the PR, email [robocasa@googlegroups.com](mailto:robocasa@googlegroups.com) with:
+
+- A link to your PR.
+- Your API key for any closed-API planner, with enough quota for one full eval.
+- For closed-source code or checkpoints, confirmation that access was granted on GitHub to [@Abhiram824](https://github.com/Abhiram824) and on Hugging Face to [Abhi03](https://huggingface.co/Abhi03).
+- A contact person for questions during the verification run.
 
 ## Model icon
 

@@ -3,132 +3,101 @@
     "title": "RoboCasa Agentic Leaderboard Submission",
     "type": "object",
     "required": [
-      "model_name",
-      "submitter",
-      "date",
-      "robocasa_version",
-      "atomic_seen_success",
-      "composite_seen_success",
-      "composite_unseen_success",
-      "novelty",
-      "novelty_description",
-      "base_policy",
-      "code_url",
-      "commit_hash",
-      "paper_link",
-      "open_source",
-      "stateful",
-      "notes"
+        "model_name",
+        "submitter",
+        "date",
+        "robocasa_version",
+        "atomic_seen_success",
+        "composite_seen_success",
+        "composite_unseen_success",
+        "code_url",
+        "commit_hash",
+        "paper_link",
+        "open_source",
+        "notes"
     ],
     "properties": {
-      "model_name": {
-        "type": "string",
-        "minLength": 1
-      },
-      "submitter": {
-        "type": "string",
-        "minLength": 1
-      },
-      "submitter_url": {
-        "type": "string",
-        "minLength": 1
-      },
-      "date": {
-        "type": "string",
-        "format": "date"
-      },
-      "robocasa_version": {
-        "type": "string",
-        "minLength": 1
-      },
-      "atomic_seen_success": {
-        "type": "number",
-        "minimum": 0,
-        "maximum": 100
-      },
-      "composite_seen_success": {
-        "type": "number",
-        "minimum": 0,
-        "maximum": 100
-      },
-      "composite_unseen_success": {
-        "type": "number",
-        "minimum": 0,
-        "maximum": 100
-      },
-      "novelty": {
-        "type": "string",
-        "enum": ["new_model", "agentic_harness", "both"]
-      },
-      "novelty_description": {
-        "type": "string",
-        "minLength": 1
-      },
-      "base_policy": {
-        "type": "object",
-        "required": ["name", "hf_repo", "commit", "license"],
-        "properties": {
-          "name": {
+        "model_name": {
             "type": "string",
             "minLength": 1
-          },
-          "hf_repo": {
-            "type": "string",
-            "minLength": 1
-          },
-          "commit": {
-            "type": "string",
-            "minLength": 1
-          },
-          "license": {
-            "type": "string",
-            "minLength": 1
-          }
         },
-        "additionalProperties": false
-      },
-      "planner": {
-        "type": "object",
-        "required": ["provider", "model_id", "settings"],
-        "properties": {
-          "provider": {
+        "submitter": {
             "type": "string",
             "minLength": 1
-          },
-          "model_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "settings": {
-            "type": "string",
-            "minLength": 1
-          }
         },
-        "additionalProperties": false
-      },
-      "code_url": {
-        "type": "string",
-        "minLength": 1
-      },
-      "commit_hash": {
-        "type": "string",
-        "minLength": 1
-      },
-      "paper_link": {
-        "type": "string",
-        "minLength": 1
-      },
-      "open_source": {
-        "type": "string",
-        "enum": ["yes", "no"]
-      },
-      "stateful": {
-        "type": "boolean"
-      },
-      "notes": {
-        "type": "string",
-        "minLength": 1
-      }
+        "submitter_url": {
+            "type": "string",
+            "minLength": 1
+        },
+        "date": {
+            "type": "string",
+            "format": "date"
+        },
+        "robocasa_version": {
+            "type": "string",
+            "minLength": 1
+        },
+        "atomic_seen_success": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "composite_seen_success": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "composite_unseen_success": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "planner": {
+            "type": "object",
+            "required": [
+                "provider",
+                "model_id",
+                "settings"
+            ],
+            "properties": {
+                "provider": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "model_id": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "settings": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            },
+            "additionalProperties": false
+        },
+        "code_url": {
+            "type": "string",
+            "minLength": 1
+        },
+        "commit_hash": {
+            "type": "string",
+            "minLength": 1
+        },
+        "paper_link": {
+            "type": "string",
+            "minLength": 1
+        },
+        "open_source": {
+            "type": "string",
+            "enum": [
+                "yes",
+                "no"
+            ]
+        },
+        "notes": {
+            "type": "string",
+            "minLength": 1
+        }
     },
     "additionalProperties": false
-  }
+}
