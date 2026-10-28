@@ -1,17 +1,17 @@
 # RoboCasa Benchmark Leaderboard 🏆
 
-This repository hosts the official RoboCasa365 leaderboards. They track multi-task policy learning performance on RoboCasa365 and are open to community submissions via pull requests.
+This repository hosts the official RoboCasa365 leaderboard. It tracks multi-task policy learning performance on RoboCasa365 and is open to community submissions via pull requests.
 
 We analyze multi-task learning through three RoboCasa365 splits — **Atomic-Seen**, **Composite-Seen**, and **Composite-Unseen** — and report average task success rate (in %) for each. This accounts for a total of 50 target tasks being evaluated. These evaluation splits and target datasets are explained in further detail in our [documentation](https://robocasa.ai/docs/build/html/datasets/datasets_overview.html).
 
-There are two submission types, evaluated on the same tasks and splits:
+There are two submission types, evaluated on the same tasks and splits and ranked together on one [leaderboard](https://robocasa.ai/leaderboard.html):
 
-| Submission | What it ranks | Submission folder | Website |
-|---|---|---|---|
-| **Standard** | Policies you train | `submissions/standard/` | [robocasa.ai/leaderboard.html](https://robocasa.ai/leaderboard.html) |
-| **Agentic** | A new model or a novel agentic harness built around a base policy | `submissions/agentic/` | [robocasa.ai/leaderboard/agentic.html](https://robocasa.ai/leaderboard/agentic.html) |
+| Submission | What it ranks | Submission folder |
+|---|---|---|
+| **Standard** | Policies you train | `submissions/standard/` |
+| **Agentic** | A new model or a novel agentic harness built around a base policy | `submissions/agentic/` |
 
-To add your results, export a JSON file in the format for your leaderboard (below) and open a pull request that adds it to that submission type's submission folder. PRs are labeled `standard` or `agentic` automatically based on the folder. Please give us up to 10 days to evaluate your model upon submission. After verification, results will be displayed on our main [website](https://robocasa.ai/leaderboard.html).
+To add your results, export a JSON file in the format for your submission type (below) and open a pull request that adds it to that type's submission folder. PRs are labeled `standard` or `agentic` automatically based on the folder. Please give us up to 10 days to evaluate your model upon submission. After verification, results will be displayed on our main [website](https://robocasa.ai/leaderboard.html).
 
 ## Standard submissions
 
@@ -103,7 +103,7 @@ Each submission is a single JSON file added to `submissions/agentic/` with this 
 
 > [!NOTE]
 > `checkpoint_url` is required when `"open_source": "yes"`. `training_config` is optional; include it if you trained or finetuned a model.
-> `model_type` uses the same options as the standard leaderboard and describes the base policy; the website shows agentic entries as `Agent + <model_type>`.
+> `model_type` uses the same options as standard submissions and describes the base policy; the website shows agentic entries as `Agent + <model_type>`.
 
 ### Private information
 
@@ -115,7 +115,7 @@ Everything in the pull request is public. Never put API keys or other credential
 
 ## Model icon
 
-To show a logo next to your model on the leaderboard, add a square image (256px or larger; `.png` or `.svg`) to the `icons/` folder in the same pull request, named after your submission JSON file. For example, `submissions/standard/my-model_2026_09_01.json` pairs with `icons/my-model_2026_09_01.png`. Without an icon, the leaderboard shows a letter tile with your model's initial. This works the same for both leaderboards.
+To show a logo next to your model on the leaderboard, add a square image (256px or larger; `.png` or `.svg`) to the `icons/` folder in the same pull request, named after your submission JSON file. For example, `submissions/standard/my-model_2026_09_01.json` pairs with `icons/my-model_2026_09_01.png`. Without an icon, the leaderboard shows a letter tile with your model's initial. This works the same for both submission types.
 
 ## Questions
 
