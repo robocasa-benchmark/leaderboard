@@ -1,8 +1,8 @@
 ## Submission details
 
 - Model name: Xiaomi-Robotics-1
-- Model type: VLA
 - Submitter: Xiaomi Robotics
+- Model type: VLA
 - Date evaluated: 07/08/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 80.2

@@ -1,8 +1,8 @@
 ## Submission details
 
 - Model name: Awomo-0.5I
-- Model type: WAM
 - Submitter: Awomo-WAM Team
+- Model type: WAM
 - Date evaluated: 10/09/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 86.5

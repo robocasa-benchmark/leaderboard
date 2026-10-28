@@ -1,8 +1,8 @@
 ## Submission details
 
 - Model name: GR00T N1.5
-- Model type: VLA
 - Submitter: RoboCasa Team
+- Model type: VLA
 - Date evaluated: 05/19/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 50.7

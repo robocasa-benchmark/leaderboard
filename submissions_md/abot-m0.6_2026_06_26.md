@@ -1,8 +1,8 @@
 ## Submission details
 
 - Model name: ABot-M0.6
-- Model type: VLA
 - Submitter: AMAP CV Lab
+- Model type: VLA
 - Date evaluated: 06/26/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 79.4

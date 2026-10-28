@@ -1,8 +1,8 @@
 ## Submission details
 
 - Model name: Azero-Robotics-1
-- Model type: VLA
 - Submitter: [GitHub: yuxin101](https://github.com/robocasa-benchmark/leaderboard/pull/11)
+- Model type: VLA
 - Date evaluated: 08/17/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 30.3

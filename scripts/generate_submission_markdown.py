@@ -139,13 +139,13 @@ def render_submission_fields(
     if include_filename:
         _append_field(lines, "Submission JSON filename", filename)
     _append_field(lines, "Model name", data.get("model_name"))
-    _append_field(lines, "Model type", data.get("model_type"))
     submitter = data.get("submitter")
     submitter_url = data.get("submitter_url")
     if not _is_na(submitter) and not _is_na(submitter_url):
         lines.append(_fmt_field("Submitter", f"[{submitter}]({submitter_url})"))
     else:
         _append_field(lines, "Submitter", submitter)
+    _append_field(lines, "Model type", data.get("model_type"))
     if not _is_na(data.get("date")):
         _append_field(lines, "Date evaluated", _fmt_date_mmddyyyy(data.get("date")))
     _append_field(lines, "RoboCasa version", data.get("robocasa_version"))

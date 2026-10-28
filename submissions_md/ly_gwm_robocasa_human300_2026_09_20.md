@@ -1,8 +1,8 @@
 ## Submission details
 
 - Model name: LY-GWM-RoboCasa
-- Model type: VLA + WM
 - Submitter: SEIN-LYGWM
+- Model type: VLA + WM
 - Date evaluated: 09/24/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 48.3

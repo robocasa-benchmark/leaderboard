@@ -1,8 +1,8 @@
 ## Submission details
 
 - Model name: WorldDreamer
-- Model type: WAM
 - Submitter: World Agents
+- Model type: WAM
 - Date evaluated: 06/20/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 66.3
