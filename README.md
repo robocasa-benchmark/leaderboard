@@ -4,16 +4,16 @@ This repository hosts the official RoboCasa365 leaderboards. They track multi-ta
 
 We analyze multi-task learning through three RoboCasa365 splits — **Atomic-Seen**, **Composite-Seen**, and **Composite-Unseen** — and report average task success rate (in %) for each. This accounts for a total of 50 target tasks being evaluated. These evaluation splits and target datasets are explained in further detail in our [documentation](https://robocasa.ai/docs/build/html/datasets/datasets_overview.html).
 
-There are two leaderboards, evaluated on the same tasks and splits:
+There are two submission types, evaluated on the same tasks and splits:
 
-| Leaderboard | What it ranks | Submission folder | Website |
+| Submission | What it ranks | Submission folder | Website |
 |---|---|---|---|
 | **Standard** | Policies you train | `submissions/standard/` | [robocasa.ai/leaderboard.html](https://robocasa.ai/leaderboard.html) |
 | **Agentic** | A new model or a novel agentic harness built around a base policy | `submissions/agentic/` | [robocasa.ai/leaderboard/agentic.html](https://robocasa.ai/leaderboard/agentic.html) |
 
-To add your results, export a JSON file in the format for your leaderboard (below) and open a pull request that adds it to that leaderboard's submission folder. PRs are labeled `standard` or `agentic` automatically based on the folder. Please give us up to 10 days to evaluate your model upon submission. After verification, results will be displayed on our main [website](https://robocasa.ai/leaderboard.html).
+To add your results, export a JSON file in the format for your leaderboard (below) and open a pull request that adds it to that submission type's submission folder. PRs are labeled `standard` or `agentic` automatically based on the folder. Please give us up to 10 days to evaluate your model upon submission. After verification, results will be displayed on our main [website](https://robocasa.ai/leaderboard.html).
 
-## Standard leaderboard
+## Standard submissions
 
 > [!NOTE]
 > For models that cannot be released open-source (`"open_source": "no"`), you must grant the RoboCasa team private access to your model checkpoint and evaluation code so we can verify results on our benchmark. You can give private access to your model checkpoint on Hugging Face and evaluation code on GitHub by granting access to @sepnasiriany. We will only accept closed source models for legitimate proprietary reasons and we expect your model to eventually be open sourced.
@@ -61,7 +61,7 @@ Each submission is a single JSON file added to `submissions/standard/` with this
 
 Here’s a sample JSON: [gr00t_n1.5_2026_05_19.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/standard/gr00t_n1.5_2026_05_19.json)
 
-## Agentic leaderboard
+## Agentic submissions
 
 Agentic submissions go in `submissions/agentic/`. Please start the PR title with `[AGENTIC]`.
 
