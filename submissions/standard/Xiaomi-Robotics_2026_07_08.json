@@ -1,5 +1,6 @@
 {
   "model_name": "Xiaomi-Robotics-1",
+  "model_type": "VLA",
   "submitter": "Xiaomi Robotics",
   "date": "2026-07-08",
   "robocasa_version": "1.0.1",

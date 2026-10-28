@@ -1,5 +1,6 @@
 {
   "model_name": "ProWAM",
+  "model_type": "WAM",
   "submitter": "Meta",
   "date": "2026-09-30",
   "robocasa_version": "1.0.1",

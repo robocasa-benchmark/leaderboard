@@ -155,6 +155,7 @@ def _policy_row(data: dict, rank: int) -> dict:
         "rank": rank,
         "name": name,
         "short_name": name,
+        "model_type": data.get("model_type"),
         "color": "#64748b",
         "score": overall,
         "atomic_seen": a,

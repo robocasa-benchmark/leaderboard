@@ -1,6 +1,7 @@
 ## Submission details
 
 - Model name: Awomo-0.5V
+- Model type: WAM
 - Submitter: Awomo-WAM Team
 - Date evaluated: 10/09/2026
 - RoboCasa version: 1.0.1

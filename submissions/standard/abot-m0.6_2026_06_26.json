@@ -1,5 +1,6 @@
 {
   "model_name": "ABot-M0.6",
+  "model_type": "VLA",
   "submitter": "AMAP CV Lab",
   "date": "2026-06-26",
   "robocasa_version": "1.0.1",

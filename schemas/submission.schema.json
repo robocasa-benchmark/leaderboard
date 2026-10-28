@@ -4,6 +4,7 @@
     "type": "object",
     "required": [
       "model_name",
+      "model_type",
       "date",
       "robocasa_version",
       "atomic_seen_success",
@@ -32,6 +33,10 @@
       "model_name": {
         "type": "string",
         "minLength": 1
+      },
+      "model_type": {
+        "type": "string",
+        "enum": ["VLA", "WAM", "VLA + WM", "Visuomotor", "Other"]
       },
       "submitter": {
         "type": "string",

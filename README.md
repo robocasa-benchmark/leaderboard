@@ -33,6 +33,7 @@ Each submission is a single JSON file added to `submissions/standard/` with this
 ```json
 {
   "model_name": "<string>",
+  "model_type": "<VLA | WAM | VLA + WM | Visuomotor | Other>",
   "submitter": "<team or organization name>",
   "date": "<YYYY-MM-DD, e.g. '2026-04-02'>",
   "robocasa_version": "<string, default '1.0.1'>",
@@ -54,6 +55,7 @@ Each submission is a single JSON file added to `submissions/standard/` with this
 
 > [!NOTE]
 > For any field where the information is unavailable or not applicable, write `"N/A"`.
+> `model_type` is one of `VLA` (vision-language-action model), `WAM` (world action model that jointly predicts future frames and actions), `VLA + WM` (a VLA paired with a separate world model), `Visuomotor` (no language or VLM backbone), or `Other`.
 > The current default `robocasa_version` is `1.0.1` until a new update is announced.
 > `code_url`, `commit_hash`, and `checkpoint_url` are required when `"open_source": "yes"`; with `"open_source": "no"` they may be omitted.
 
@@ -78,6 +80,7 @@ Each submission is a single JSON file added to `submissions/agentic/` with this 
 ```json
 {
   "model_name": "<string>",
+  "model_type": "<type of the base policy: VLA | WAM | VLA + WM | Visuomotor | Other>",
   "submitter": "<team or organization name>",
   "date": "<YYYY-MM-DD>",
   "robocasa_version": "<string, default '1.0.1'>",
@@ -100,6 +103,7 @@ Each submission is a single JSON file added to `submissions/agentic/` with this 
 
 > [!NOTE]
 > `checkpoint_url` is required when `"open_source": "yes"`. `training_config` is optional; include it if you trained or finetuned a model.
+> `model_type` uses the same options as the standard leaderboard and describes the base policy; the website shows agentic entries as `Agent + <model_type>`.
 
 ### Private information
 

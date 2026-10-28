@@ -1,5 +1,6 @@
 {
   "model_name": "LY-GWM-RoboCasa",
+  "model_type": "VLA + WM",
   "submitter": "SEIN-LYGWM",
   "date": "2026-09-24",
   "robocasa_version": "1.0.1",

@@ -1,5 +1,6 @@
 {
   "model_name": "PRTS",
+  "model_type": "VLA",
   "submitter": "TeleAI",
   "date": "2026-08-18",
   "robocasa_version": "1.0.1",

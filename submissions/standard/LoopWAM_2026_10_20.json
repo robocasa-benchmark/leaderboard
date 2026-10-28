@@ -1,5 +1,6 @@
 {
   "model_name": "LoopWAM",
+  "model_type": "WAM",
   "submitter": "LoopWAM Team",
   "date": "2026-10-26",
   "robocasa_version": "1.0.1",

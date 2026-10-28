@@ -1,5 +1,6 @@
 {
     "model_name": "GigaWorld-Policy 0.1",
+    "model_type": "WAM",
     "submitter": "GigaAI",
     "date": "2026-05-11",
     "robocasa_version": "1.0.1",

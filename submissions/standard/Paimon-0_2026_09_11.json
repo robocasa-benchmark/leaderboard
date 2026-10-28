@@ -1,5 +1,6 @@
 {
   "model_name": "Paimon-0",
+  "model_type": "VLA",
   "submitter": "Primotion",
   "date": "2026-09-11",
   "robocasa_version": "1.0.1",

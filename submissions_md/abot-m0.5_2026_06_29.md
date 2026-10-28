@@ -1,6 +1,7 @@
 ## Submission details
 
 - Model name: ABot-M0.5
+- Model type: WAM
 - Submitter: AMAP CV Lab
 - Date evaluated: 06/29/2026
 - RoboCasa version: 1.0.1

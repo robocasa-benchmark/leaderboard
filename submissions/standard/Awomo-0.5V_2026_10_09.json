@@ -1,5 +1,6 @@
 {
   "model_name": "Awomo-0.5V",
+  "model_type": "WAM",
   "submitter": "Awomo-WAM Team",
   "date": "2026-10-09",
   "robocasa_version": "1.0.1",
