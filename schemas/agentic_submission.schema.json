@@ -52,29 +52,6 @@
             "minimum": 0,
             "maximum": 100
         },
-        "planner": {
-            "type": "object",
-            "required": [
-                "provider",
-                "model_id",
-                "settings"
-            ],
-            "properties": {
-                "provider": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "model_id": {
-                    "type": "string",
-                    "minLength": 1
-                },
-                "settings": {
-                    "type": "string",
-                    "minLength": 1
-                }
-            },
-            "additionalProperties": false
-        },
         "code_url": {
             "type": "string",
             "minLength": 1

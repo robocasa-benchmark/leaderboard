@@ -85,21 +85,13 @@ Each submission is a single JSON file added to `submissions/agentic/` with this 
   "atomic_seen_success": <number 0–100>,
   "composite_seen_success": <number 0–100>,
   "composite_unseen_success": <number 0–100>,
-  "planner": {
-    "provider": "<optional: only for closed-API planners>",
-    "model_id": "<string>",
-    "settings": "<reasoning / temperature settings>"
-  },
   "code_url": "<URL>",
   "commit_hash": "<git commit hash>",
   "paper_link": "<arXiv or preprint URL>",
   "open_source": "yes",
-  "notes": "<base policy (name, HF repo and commit, license) and whether cross-episode memory is used>"
+  "notes": "<base policy (name, HF repo and commit, license), planner provider and model ID if closed-API, and whether cross-episode memory is used>"
 }
 ```
-
-> [!NOTE]
-> The `planner` block is optional; include it only for closed-API planners.
 
 ### Private information
 
@@ -108,7 +100,6 @@ Everything in the pull request is public. Never put API keys or other credential
 - A link to your PR.
 - Your API key for any closed-API planner, with enough quota for one full eval.
 - For closed-source code or checkpoints, confirmation that access was granted on GitHub to [@Abhiram824](https://github.com/Abhiram824) and on Hugging Face to [Abhi03](https://huggingface.co/Abhi03).
-- A contact person for questions during the verification run.
 
 ## Model icon
 
