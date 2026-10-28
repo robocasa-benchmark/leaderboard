@@ -96,7 +96,7 @@ jobs:
           # exit status `pipefail` does not cover -- a failing `git diff` would
           # otherwise read as "no submissions changed".
           if ! git diff -z --name-only --diff-filter=ACM \
-                 "$BASE_SHA" "$PR_REF" -- 'submissions/*.json' > "$RUNNER_TEMP/changed.z"; then
+                 "$BASE_SHA" "$PR_REF" -- 'submissions/standard/*.json' > "$RUNNER_TEMP/changed.z"; then
             echo "::error::git diff failed while listing changed submissions"
             exit 1
           fi
@@ -106,8 +106,8 @@ jobs:
             exit 0
           fi
           for f in "${FILES[@]}"; do
-            if [[ ! "$f" =~ ^submissions/[A-Za-z0-9._-]+\.json$ ]]; then
-              echo "::error::Refusing submission path '$f' -- submission filenames must match submissions/[A-Za-z0-9._-]+.json"
+            if [[ ! "$f" =~ ^submissions/standard/[A-Za-z0-9._-]+\.json$ ]]; then
+              echo "::error::Refusing submission path '$f' -- submission filenames must match submissions/standard/[A-Za-z0-9._-]+.json"
               exit 1
             fi
           done
@@ -126,7 +126,7 @@ jobs:
           # guarantees no path contains a space or any shell metacharacter.
           for f in $SUBMISSION_PATHS; do
             case "$f" in
-              submissions/*.json) ;;
+              submissions/standard/*.json) ;;
               *) echo "::error::Refusing unexpected path '$f'"; exit 1 ;;
             esac
             mkdir -p "$(dirname "$f")"

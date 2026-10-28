@@ -4,4 +4,4 @@ agentic:
 
 standard:
   - changed-files:
-      - any-glob-to-any-file: "submissions/*.json"
+      - any-glob-to-any-file: "submissions/standard/**"

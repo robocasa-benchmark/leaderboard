@@ -1,4 +1,4 @@
-# Labels submission PRs by folder: submissions/agentic/ -> "agentic", submissions/*.json -> "standard".
+# Labels submission PRs by folder: submissions/agentic/ -> "agentic", submissions/standard/ -> "standard".
 name: Label submissions
 
 on:

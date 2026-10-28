@@ -2,7 +2,7 @@
 Render a PR comment body summarizing submission JSON file(s) in a pull request.
 
 Usage:
-  python scripts/render_pr_comment.py path/to/submissions/foo.json
+  python scripts/render_pr_comment.py path/to/submissions/standard/foo.json
   python scripts/render_pr_comment.py   # no files: prints a helpful message
 """
 
@@ -24,7 +24,7 @@ def _no_json_message() -> str:
             f"<!-- {COMMENT_TAG} -->",
             "### Submission summary (auto-generated)",
             "",
-            "No `submissions/*.json` file was found in this PR. Add your submission JSON under `submissions/`.",
+            "No `submissions/standard/*.json` file was found in this PR. Add your submission JSON under `submissions/standard/`.",
             "",
         ]
     )
@@ -49,7 +49,7 @@ def main() -> None:
     parser.add_argument(
         "json_files",
         nargs="*",
-        help="Submission JSON paths changed in the PR (e.g. submissions/foo.json).",
+        help="Submission JSON paths changed in the PR (e.g. submissions/standard/foo.json).",
     )
     args = parser.parse_args()
 

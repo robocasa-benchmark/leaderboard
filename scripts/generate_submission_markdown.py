@@ -2,7 +2,7 @@
 Generate Markdown summaries from submission JSON files.
 
 By default, reads:
-  submissions/*.json
+  submissions/standard/*.json
 and writes:
   submissions_md/<same-name>.md
 """
@@ -80,12 +80,15 @@ SUBMISSION_PR_URLS: dict[str, str] = {
 def _pr_url_from_git(filename: str) -> str | None:
     """Best-effort: find the PR that merged a submission JSON into main.
 
-    Looks up the commit that first added `submissions/<filename>`, then finds the
+    Looks up the commit that first added the file, then finds the
     `Merge pull request #N` commit that brought it onto the current branch and
     returns the PR URL. Returns None if it can't be determined (e.g. the file was
     committed directly to main, or git history isn't available).
+
+    Older submissions were added at `submissions/<filename>` before moving to
+    `submissions/standard/`, so both paths are searched; the oldest add wins.
     """
-    rel_path = f"submissions/{filename}"
+    rel_paths = [f"submissions/standard/{filename}", f"submissions/{filename}"]
 
     def _git(*args: str) -> str:
         return subprocess.run(
@@ -103,7 +106,7 @@ def _pr_url_from_git(filename: str) -> str | None:
         # such commit is where the file first reached main. Files committed
         # directly to main have no PR number -> no PR link.
         adds = _git(
-            "log", "--first-parent", "--diff-filter=A", "--format=%s", "--", rel_path
+            "log", "--first-parent", "--diff-filter=A", "--format=%s", "--", *rel_paths
         ).splitlines()
         if not adds:
             return None
@@ -220,7 +223,7 @@ def main() -> None:
     parser.add_argument(
         "--submissions-dir",
         type=Path,
-        default=Path(__file__).resolve().parents[1] / "submissions",
+        default=Path(__file__).resolve().parents[1] / "submissions" / "standard",
         help="Directory containing submission JSON files.",
     )
     parser.add_argument(

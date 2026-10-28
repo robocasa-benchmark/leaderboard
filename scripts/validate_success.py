@@ -7,7 +7,7 @@ from jsonschema import Draft202012Validator
 
 # Each leaderboard validates its own folder against its own schema.
 BOARDS = [
-    ("standard", "submissions", "submission.schema.json"),
+    ("standard", "submissions/standard", "submission.schema.json"),
     ("agentic", "submissions/agentic", "agentic_submission.schema.json"),
 ]
 
@@ -19,6 +19,11 @@ def main():
         print(f"== {board} ({folder}/)")
         if not validate_board(repo_root / folder, repo_root / "schemas" / schema_name):
             has_errors = True
+
+    stray = sorted((repo_root / "submissions").glob("*.json"))
+    for file_path in stray:
+        has_errors = True
+        print(f"[FAIL] submissions/{file_path.name}: move it to submissions/standard/ or submissions/agentic/")
 
     if has_errors:
         sys.exit(1)

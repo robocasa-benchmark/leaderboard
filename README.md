@@ -8,7 +8,7 @@ There are two leaderboards, evaluated on the same tasks and splits:
 
 | Leaderboard | What it ranks | Submission folder | Website |
 |---|---|---|---|
-| **Standard** | Policies you train | `submissions/` | [robocasa.ai/leaderboard.html](https://robocasa.ai/leaderboard.html) |
+| **Standard** | Policies you train | `submissions/standard/` | [robocasa.ai/leaderboard.html](https://robocasa.ai/leaderboard.html) |
 | **Agentic** | A new model or a novel agentic harness built around a base policy | `submissions/agentic/` | [robocasa.ai/leaderboard/agentic.html](https://robocasa.ai/leaderboard/agentic.html) |
 
 To add your results, export a JSON file in the format for your leaderboard (below) and open a pull request that adds it to that leaderboard's submission folder. PRs are labeled `standard` or `agentic` automatically based on the folder. Please give us up to 10 days to evaluate your model upon submission. After verification, results will be displayed on our main [website](https://robocasa.ai/leaderboard.html).
@@ -28,7 +28,7 @@ To add your results, export a JSON file in the format for your leaderboard (belo
 
 ### Submission template
 
-Each submission is a single JSON file added to `submissions/` with this structure:
+Each submission is a single JSON file added to `submissions/standard/` with this structure:
 
 ```json
 {
@@ -57,7 +57,7 @@ Each submission is a single JSON file added to `submissions/` with this structur
 > The current default `robocasa_version` is `1.0.1` until a new update is announced.
 > `code_url`, `commit_hash`, and `checkpoint_url` are required when `"open_source": "yes"`; with `"open_source": "no"` they may be omitted.
 
-Here’s a sample JSON: [gr00t_n1.5_2026_05_19.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/gr00t_n1.5_2026_05_19.json)
+Here’s a sample JSON: [gr00t_n1.5_2026_05_19.json](https://github.com/robocasa-benchmark/leaderboard/blob/main/submissions/standard/gr00t_n1.5_2026_05_19.json)
 
 ## Agentic leaderboard
 
@@ -111,7 +111,7 @@ Everything in the pull request is public. Never put API keys or other credential
 
 ## Model icon
 
-To show a logo next to your model on the leaderboard, add a square image (256px or larger; `.png` or `.svg`) to the `icons/` folder in the same pull request, named after your submission JSON file. For example, `submissions/my-model_2026_09_01.json` pairs with `icons/my-model_2026_09_01.png`. Without an icon, the leaderboard shows a letter tile with your model's initial. This works the same for both leaderboards.
+To show a logo next to your model on the leaderboard, add a square image (256px or larger; `.png` or `.svg`) to the `icons/` folder in the same pull request, named after your submission JSON file. For example, `submissions/standard/my-model_2026_09_01.json` pairs with `icons/my-model_2026_09_01.png`. Without an icon, the leaderboard shows a letter tile with your model's initial. This works the same for both leaderboards.
 
 ## Questions
 

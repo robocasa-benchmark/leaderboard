@@ -1,5 +1,5 @@
 """
-Aggregate submissions/*.json into Jekyll data for robocasa-web (leaderboard.html).
+Aggregate submissions/standard/*.json into Jekyll data for robocasa-web (leaderboard.html).
 
 By default, if ../robocasa-web exists (sibling of this repo), writes:
   robocasa-web/_data/robocasa365_leaderboard.yml
@@ -307,7 +307,7 @@ def main() -> None:
             if key is not None:
                 existing_by_key[key] = policy
 
-    submissions_dir = repo_root / "submissions"
+    submissions_dir = repo_root / "submissions" / "standard"
     rows: list[dict] = []
 
     for file_path in sorted(submissions_dir.glob("*.json")):

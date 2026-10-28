@@ -1,7 +1,7 @@
 ## Submission checklist
 
 - [ ] I added exactly one JSON file for this submission
-- [ ] I placed the file in the `submissions/` directory
+- [ ] I placed the file in the `submissions/standard/` directory (or `submissions/agentic/` for agentic entries)
 - [ ] My JSON follows the submission template in the README
 - [ ] I used `"N/A"` for any field that is unavailable or not applicable
 - [ ] I did not modify existing submission files unrelated to this PR
