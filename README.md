@@ -70,7 +70,6 @@ Agentic submissions go in `submissions/agentic/` and are validated against [`sch
 3. **Scope.** Policy observations only (no privileged simulator state). No ground-truth success signal during an episode. Cross-episode memory must be disclosed.
 4. **Reproducibility.** Public repo, pinned dependencies, and one-prompt setup. For closed-API planners: provider, model ID, settings, and a test key with enough quota for one full eval. For closed-source code or checkpoints, grant access on GitHub to [@Abhiram824](https://github.com/Abhiram824) and on Hugging Face to [Abhi03](https://huggingface.co/Abhi03).
 5. **Verification.** An arXiv or preprint link. We re-run the full eval, and our numbers are the ones posted.
-6. **Entry label.** "agentic", plus "stateful" if cross-episode memory is used. The base policy is linked to its own entry.
 
 ### Submission template
 
@@ -85,13 +84,22 @@ Each submission is a single JSON file added to `submissions/agentic/` with this 
   "atomic_seen_success": <number 0–100>,
   "composite_seen_success": <number 0–100>,
   "composite_unseen_success": <number 0–100>,
+  "base_policy": "<name of the policy the agent runs>",
   "code_url": "<URL>",
   "commit_hash": "<git commit hash>",
+  "checkpoint_url": "<URL of the policy checkpoint the agent runs>",
   "paper_link": "<arXiv or preprint URL>",
   "open_source": "yes",
-  "notes": "<base policy (name, HF repo and commit, license), planner provider and model ID if closed-API, and whether cross-episode memory is used>"
+  "training_config": {
+    "batch_size": "<integer>",
+    "num_training_steps": "<integer>"
+  },
+  "notes": "<base policy license, planner provider and model ID if closed-API, and whether cross-episode memory is used>"
 }
 ```
+
+> [!NOTE]
+> `checkpoint_url` is required when `"open_source": "yes"`. `training_config` is optional; include it if you trained or finetuned a model.
 
 ### Private information
 

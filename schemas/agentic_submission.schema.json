@@ -10,12 +10,25 @@
         "atomic_seen_success",
         "composite_seen_success",
         "composite_unseen_success",
+        "base_policy",
         "code_url",
         "commit_hash",
         "paper_link",
         "open_source",
         "notes"
     ],
+    "if": {
+        "properties": {
+            "open_source": {
+                "const": "yes"
+            }
+        }
+    },
+    "then": {
+        "required": [
+            "checkpoint_url"
+        ]
+    },
     "properties": {
         "model_name": {
             "type": "string",
@@ -52,11 +65,19 @@
             "minimum": 0,
             "maximum": 100
         },
+        "base_policy": {
+            "type": "string",
+            "minLength": 1
+        },
         "code_url": {
             "type": "string",
             "minLength": 1
         },
         "commit_hash": {
+            "type": "string",
+            "minLength": 1
+        },
+        "checkpoint_url": {
             "type": "string",
             "minLength": 1
         },
@@ -70,6 +91,24 @@
                 "yes",
                 "no"
             ]
+        },
+        "training_config": {
+            "type": "object",
+            "required": [
+                "batch_size",
+                "num_training_steps"
+            ],
+            "properties": {
+                "batch_size": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "num_training_steps": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            },
+            "additionalProperties": false
         },
         "notes": {
             "type": "string",
