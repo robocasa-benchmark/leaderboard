@@ -61,7 +61,7 @@ Here’s a sample JSON: [gr00t_n1.5_2026_05_19.json](https://github.com/robocasa
 
 ## Agentic leaderboard
 
-Agentic submissions go in `submissions/agentic/` and are validated against [`schemas/agentic_submission.schema.json`](schemas/agentic_submission.schema.json). Please start the PR title with `[AGENTIC]`.
+Agentic submissions go in `submissions/agentic/`. Please start the PR title with `[AGENTIC]`.
 
 ### Submission requirements
 
