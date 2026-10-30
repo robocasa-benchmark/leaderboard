@@ -1,7 +1,7 @@
 {
     "model_name": "π0.5",
-    "model_type": "VLA",
     "submitter": "RoboCasa Team",
+    "model_type": "VLA",
     "date": "2026-04-02",
     "robocasa_version": "1.0.0",
     "atomic_seen_success": 39.6,

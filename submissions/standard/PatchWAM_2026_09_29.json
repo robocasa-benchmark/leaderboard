@@ -1,7 +1,7 @@
 {
   "model_name": "PatchWAM",
-  "model_type": "WAM",
   "submitter": "PatchWAM Team",
+  "model_type": "WAM",
   "date": "2026-09-29",
   "robocasa_version": "1.0.1",
   "atomic_seen_success": 78.7,

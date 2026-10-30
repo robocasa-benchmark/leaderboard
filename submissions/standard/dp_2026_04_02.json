@@ -1,7 +1,7 @@
 {
     "model_name": "Diffusion Policy",
-    "model_type": "Visuomotor",
     "submitter": "RoboCasa Team",
+    "model_type": "Visuomotor",
     "date": "2026-04-02",
     "robocasa_version": "1.0.0",
     "atomic_seen_success": 15.7,

@@ -33,8 +33,8 @@ Each submission is a single JSON file added to `submissions/standard/` with this
 ```json
 {
   "model_name": "<string>",
-  "model_type": "<string> (ie. VLA)",
   "submitter": "<team or organization name>",
+  "model_type": "<string> (ie. VLA)",
   "date": "<YYYY-MM-DD, e.g. '2026-04-02'>",
   "robocasa_version": "<string, default '1.0.1'>",
   "atomic_seen_success": <number 0–100>,
@@ -80,8 +80,8 @@ Each submission is a single JSON file added to `submissions/agentic/` with this 
 ```json
 {
   "model_name": "<string>",
-  "model_type": "<type of the base policy: VLA | WAM | VLA + WM | Visuomotor | Other>",
   "submitter": "<team or organization name>",
+  "model_type": "<type of the base policy: VLA | WAM | VLA + WM | Visuomotor | Other>",
   "date": "<YYYY-MM-DD>",
   "robocasa_version": "<string, default '1.0.1'>",
   "atomic_seen_success": <number 0–100>,
