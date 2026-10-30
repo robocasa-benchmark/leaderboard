@@ -1,0 +1,19 @@
+{
+  "model_name": "MIRA",
+  "submitter": "Toyota Research Institute",
+  "date": "2026-10-26",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 80.1,
+  "composite_seen_success": 51.5,
+  "composite_unseen_success": 28.1,
+  "code_url": "https://github.com/yinpei-tri-pi/sys1_sys2",
+  "commit_hash": "d3d4ecc1d68bd14efc40e88ac915ee05943d2065",
+  "checkpoint_url": "https://huggingface.co/yinpei-tri-pi/robocasa-system1-pi05-progact",
+  "paper_link": "https://github.com/yinpei-tri-pi/sys1_sys2/blob/master/doc/MIRA_System1_2_RoboCasa.pdf",
+  "open_source": "yes",
+  "training_config": {
+    "batch_size": 512,
+    "num_training_steps": 270000
+  },
+  "notes": "MIRA is a hierarchical System2 + System1 policy. System2, a Qwen3-VL-4B planner fine-tuned from Qwen3-VL-4B (checkpoint-17124, https://huggingface.co/yinpei-tri-pi/robocasa-system2-qwen3vl-4b, served with vLLM 0.19.1, greedy decoding), writes a milestone plan and, after every System1 segment, watches a clip of it and issues the next subgoal. System1, a subgoal-conditioned policy fine-tuned from pi0.5 (step 269999, https://huggingface.co/yinpei-tri-pi/robocasa-system1-pi05-progact), outputs action chunks plus its own subgoal-progress estimate (progress-as-action). Hardcoded language-steering rules revise System2's output before it reaches System1. training_config refers to System1. Policy observations only; no privileged simulator state or success signal is used during an episode, and there is no cross-episode memory. Evaluation follows the official robocasa-benchmark/openpi protocol: RoboCasa 1.0.1, split=pretrain, seed 7, 50 sequential trials per task, per-task registry horizon. Results contain 1,358 successes over 2,500 episodes with 0 infrastructure errors: Atomic-Seen 721/900, Composite-Seen 412/800, Composite-Unseen 225/800 (task-weighted overall 54.3). Per-task results and the full setup are in doc/results.md of the code repo."
+}
