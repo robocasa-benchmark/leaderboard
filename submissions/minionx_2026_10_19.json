@@ -1,0 +1,17 @@
+{
+  "model_name": "minionx",
+  "submitter": "novaxbot",
+  "date": "2026-10-19",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 80.9,
+  "composite_seen_success": 58.0,
+  "composite_unseen_success": 45.3,
+  "paper_link": "https://arxiv.org/abs/2609.39304",
+  "open_source": "no",
+  "wandb": "N/A",
+  "training_config": {
+    "batch_size": 256,
+    "num_training_steps": 800
+  },
+  "notes": "minionx is Xiaomi-Robotics-1-RoboCasa365 fine-tuned with multi-teacher on-policy distillation (OPD); all weights were trained, inference code is unchanged from the Xiaomi release. training_config gives the final OPD stage only (batch 256, 800 steps); the steps used to train the teacher models are not included. Evaluated on RoboCasa 1.0.1, split=pretrain, 50 tasks x 50 official seeds: 1553/2497 successes (atomic_seen 728/900, composite_seen 464/800, composite_unseen 361/797). Paper: https://arxiv.org/abs/2609.39304. Private access to the checkpoint and the evaluation code will be granted to @sepnasiriany for verification."
+}
