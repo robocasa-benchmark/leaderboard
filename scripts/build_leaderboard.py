@@ -1,5 +1,5 @@
 """
-Aggregate submissions/standard/*.json into Jekyll data for robocasa-web (leaderboard.html).
+Aggregate submissions/standard/*.json and submissions/agentic/*.json into Jekyll data for robocasa-web (leaderboard.html).
 
 By default, if ../robocasa-web exists (sibling of this repo), writes:
   robocasa-web/_data/robocasa365_leaderboard.yml
@@ -167,6 +167,11 @@ def _policy_row(data: dict, rank: int) -> dict:
         "checkpoint_url": data.get("checkpoint_url"),
         "open_source": data.get("open_source", "yes"),
     }
+    if data.get("_submission_type") == "agentic":
+        # The site filters on `type`; the badge reads "Agent + <base policy type>".
+        row["type"] = "agentic"
+        model_type = data.get("model_type")
+        row["model_type"] = f"Agent + {model_type}" if model_type and model_type != "Other" else "Agent"
     if submitter:
         row["submitter"] = submitter
     if data.get("submitter_url"):
@@ -308,13 +313,15 @@ def main() -> None:
             if key is not None:
                 existing_by_key[key] = policy
 
-    submissions_dir = repo_root / "submissions" / "standard"
     rows: list[dict] = []
 
-    for file_path in sorted(submissions_dir.glob("*.json")):
-        data = json.loads(file_path.read_text(encoding="utf-8"))
-        data["_submission_filename"] = file_path.name
-        rows.append(data)
+    # Both submission types are ranked together on one leaderboard.
+    for submission_type in ("standard", "agentic"):
+        for file_path in sorted((repo_root / "submissions" / submission_type).glob("*.json")):
+            data = json.loads(file_path.read_text(encoding="utf-8"))
+            data["_submission_filename"] = file_path.name
+            data["_submission_type"] = submission_type
+            rows.append(data)
 
     def _sort_key(row: dict) -> float:
         return compute_overall_success(

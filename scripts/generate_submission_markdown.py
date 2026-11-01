@@ -2,7 +2,7 @@
 Generate Markdown summaries from submission JSON files.
 
 By default, reads:
-  submissions/standard/*.json
+  submissions/standard/*.json and submissions/agentic/*.json
 and writes:
   submissions_md/<same-name>.md
 """
@@ -88,7 +88,11 @@ def _pr_url_from_git(filename: str) -> str | None:
     Older submissions were added at `submissions/<filename>` before moving to
     `submissions/standard/`, so both paths are searched; the oldest add wins.
     """
-    rel_paths = [f"submissions/standard/{filename}", f"submissions/{filename}"]
+    rel_paths = [
+        f"submissions/standard/{filename}",
+        f"submissions/agentic/{filename}",
+        f"submissions/{filename}",
+    ]
 
     def _git(*args: str) -> str:
         return subprocess.run(
@@ -224,8 +228,12 @@ def main() -> None:
     parser.add_argument(
         "--submissions-dir",
         type=Path,
-        default=Path(__file__).resolve().parents[1] / "submissions" / "standard",
-        help="Directory containing submission JSON files.",
+        nargs="+",
+        default=[
+            Path(__file__).resolve().parents[1] / "submissions" / "standard",
+            Path(__file__).resolve().parents[1] / "submissions" / "agentic",
+        ],
+        help="Directories containing submission JSON files.",
     )
     parser.add_argument(
         "--output-dir",
@@ -238,7 +246,8 @@ def main() -> None:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     generated = 0
 
-    for json_path in sorted(args.submissions_dir.glob("*.json")):
+    json_paths = [p for d in args.submissions_dir for p in sorted(d.glob("*.json"))]
+    for json_path in json_paths:
         with json_path.open("r", encoding="utf-8") as f:
             payload = json.load(f)
 
