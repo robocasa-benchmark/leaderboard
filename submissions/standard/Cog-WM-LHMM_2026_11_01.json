@@ -1,12 +1,7 @@
 {
-  "model_name": "Cog-WM LHMM",
   "submitter": "lidingebkernel-bit",
   "model_type": "VLA",
-  "date": "2026-11-01",
   "robocasa_version": "1.0.1",
-  "atomic_seen_success": 87.11111111111111,
-  "composite_seen_success": 65.0,
-  "composite_unseen_success": 40.125,
   "code_url": "N/A",
   "commit_hash": "N/A",
   "checkpoint_url": "N/A",
@@ -16,5 +11,10 @@
     "batch_size": 512,
     "num_training_steps": 56849
   },
-  "notes": "Cog-WM LHMM (previously submitted as XR1-SFT-1Epoch), submitted for eligibility and reproducibility review. Xiaomi-Robotics-1-5B adapted by one epoch of supervised training on RoboCasa Human300 (29106226 valid training frames). Historical model-only evaluation: sft1epfull_target50_20261010; pretrain scenes, target50 tasks, 50 trials per task; 1625/2500 successes (65.00% overall). Exact subtask counts: 784/900 Atomic-Seen, 520/800 Composite-Seen, 321/800 Composite-Unseen. This is our SFT checkpoint, not the published Xiaomi RoboCasa checkpoint. It is also the fixed base of our separately submitted Cog-Harness system. A shorter training run alone is not claimed to establish a distinct-model contribution; we request guidance on whether this belongs as a Standard entry or only as the Agentic baseline. Code/checkpoint hosting, reviewer access, a pinned reproduction release, license metadata and a paper/preprint are pending; N/A does not indicate access has been granted. The version field follows the archived RoboCasa 1.0.1 environment; reproduction must pin and verify the full runtime. These are self-reported historical results, not organizer-verified scores. Report naming: Cog-WM LHMM denotes the checkpoint reported as XR1 SFT, one epoch in the associated technical report v0.6 (2026-10-31); the auxiliary future-feature training variant is a separate experiment."
+  "model_name": "Cog-WM LHMM (BCP+RPM/AEP)",
+  "date": "2026-10-18",
+  "atomic_seen_success": 85.55555555555556,
+  "composite_seen_success": 66.125,
+  "composite_unseen_success": 39.25,
+  "notes": "BCP+RPM/AEP execution-control configuration on frozen Xiaomi-Robotics-1 one-epoch Human300 SFT. Run bcp_rpm_aep_1epoch_20261018, mode bcp_rpm: 1613/2500 (64.52%); Atomic 770/900, Seen 529/800, Unseen 314/800. RoboCasa target50, pretrain scenes, 50 trials/task, native horizons, 8 workers; environment seed 7, policy seed 20261015. BCP step 300 samples lengths 4/6/8/10/12/14/16 at temperature 1.0; RPM epoch 7 uses learned observation-based progress, AEP prefix 10. BCP plans execution length and RPM may reject continuation; only executed prefixes update recurrent state. Base weights frozen; heads trained separately. AEP within-episode and cross-episode success-based threshold adaptation enabled; retain within-task episode ordering. 34 task-specific calibrations and 16 train-global fallbacks. Component comparisons: BCP 1574/2500 (62.96%), RPM/AEP 1591/2500 (63.64%); joint gains 1.56 and 0.88 percentage points, respectively. Mean VLA calls 141.7916 versus 126.57/99.49. Historical plain-SFT reference 65.00%; no matched fixed16 baseline in this sweep or established statistical significance. Training_config describes base SFT (512 batch, 56849 updates); BCP and RPM training details are in the PR. BCP and TempoWAM/RPM methods are attributed; contribution is cooperative execution and XR1 adaptation. No Harness or experience package in this result. Future-all is described as a separate report-level representation-learning design, not a measured component/gain of this checkpoint. Replaces the earlier plain-SFT entry. Artifact hosting, reviewer access and paper link pending."
 }
