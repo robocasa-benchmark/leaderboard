@@ -11,10 +11,10 @@
     "batch_size": 512,
     "num_training_steps": 56849
   },
-  "model_name": "Cog-WM LHMM + Cog-Harness v3",
+  "model_name": "Cog-WM LHMM",
   "date": "2026-11-04",
   "atomic_seen_success": 87.33333333333333,
   "composite_seen_success": 65.375,
   "composite_unseen_success": 40,
-  "notes": "Cog-WM LHMM with Cog-Harness v3 achieved 65.16% success (1629/2500) on RoboCasa365. The evaluated system combines a frozen Xiaomi-Robotics-1 one-epoch Human300 SFT policy, GPT-6 Astra medium planning and a Harness memory system with task-scoped frozen experience, episode working memory, auditable retrieval and adaptive execution scheduling. The data pipeline aligns native state/action semantics, synchronized camera history, validity masks and exact effective batches. Live task-progress predicates and object truth coordinates were removed; native depth and terminal-only feedback were retained. The PR also describes the separate BCP/RPM policy design and the report's Future-all offline future-feature prediction objective; the score is not attributed to Future-all."
+  "notes": "Cog-WM LHMM achieved 65.16% success (1629/2500) on RoboCasa365. The method description covers Future-all future-feature prediction for policy representation learning, a separate BCP/RPM execution-policy design, Human300 data alignment with validity masks and exact effective batches, and a Harness memory system. The evaluated configuration combines a frozen Xiaomi-Robotics-1 one-epoch SFT executor, GPT-6 Astra medium planning, read-only task experience and episode working memory. Live task-progress predicates and object truth coordinates are excluded; native depth and terminal-only feedback are retained. Future-all is documented as a report-level training design; the score is not attributed to it."
 }
