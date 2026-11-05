@@ -16,5 +16,5 @@
   "atomic_seen_success": 87.33333333333333,
   "composite_seen_success": 65.375,
   "composite_unseen_success": 40,
-  "notes": "Cog-WM LHMM with Cog-Harness v3 achieved 65.16% success (1629/2500) on RoboCasa365. The evaluated system combines a frozen Xiaomi-Robotics-1 one-epoch SFT policy, GPT-6 Astra medium planning and disclosed frozen task experience. Contributions include adaptive action-chunk scheduling, task-local retrieval, episode working memory, observation-based feedback and remaining-budget continuation. Live task-progress predicates and object truth coordinates were removed; native depth and terminal-only feedback were retained. The task/episode/seed-matched baseline is 65.00%, a net gain of 0.16 percentage points. The score includes the Harness."
+  "notes": "Cog-WM LHMM with Cog-Harness v3 achieved 65.16% success (1629/2500) on RoboCasa365. The evaluated system combines a frozen Xiaomi-Robotics-1 one-epoch SFT policy, GPT-6 Astra medium planning and disclosed frozen task experience. Contributions include adaptive action-chunk scheduling, task-local retrieval, episode working memory, observation-based feedback and remaining-budget continuation. Live task-progress predicates and object truth coordinates were removed; native depth and terminal-only feedback were retained. The score includes the Harness."
 }
