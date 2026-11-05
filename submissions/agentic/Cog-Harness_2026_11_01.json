@@ -1,1 +1,21 @@
-
+{
+  "submitter": "lidingebkernel-bit",
+  "model_type": "VLA",
+  "robocasa_version": "1.0.1",
+  "code_url": "N/A",
+  "commit_hash": "N/A",
+  "checkpoint_url": "N/A",
+  "paper_link": "N/A",
+  "open_source": "no",
+  "training_config": {
+    "batch_size": 512,
+    "num_training_steps": 56849
+  },
+  "model_name": "Cog-Harness v3",
+  "date": "2026-11-04",
+  "atomic_seen_success": 87.33333333333333,
+  "composite_seen_success": 65.375,
+  "composite_unseen_success": 40,
+  "base_policy": "Cog-WM LHMM: frozen Xiaomi-Robotics-1-5B derivative, Human300 one-epoch SFT (56849 updates); executor does not include the BCP/RPM heads submitted in PR #40",
+  "notes": "Completed rerun cog-policy-observations-v3-20261103-r2, profile cog_policy_observations_v3: 1629/2500 (65.16%); Atomic 786/900, Seen 523/800, Unseen 320/800. RoboCasa target50, pretrain scenes, 50 episodes/task, native horizons and native scoring, 8 GPUs; 3050329 physics steps across completed episodes. Matched task/episode/seed baseline 1625/2500 (65.00%): +0.16 percentage points / 4 successes, essentially at baseline; no established statistical gain. GPT-6 Astra medium, Codex CLI 0.153.4, MCP-only tools. Contributions: adaptive chunk scheduling, bounded task-local retrieval/read-before-action, immutable cross-episode experience plus expiring episode-local notes, RGB/proprioception changes and native depth, continuous frozen-policy handoff within remaining horizon. Approved disclosed same-task seed-0 package from a different VLA: 43 tasks/111 payloads including 9 Composite-Unseen, read-only during evaluation. Source RLinf/RPent-memory@551fc3157b3e56b40a3d3a3b4c7ff81721ebe89b; imported index SHA256 fb6af2cb318047c54a33a19ca85c8c7268270b0116768cf305c57a23fd7e3a0b. Terminal-only native success feedback; no subsequent actions. Recorded audit checked 64080 observations and found no prohibited live progress predicates, object truth poses or similar forbidden fields at the audited Planner/working-memory boundary; this is not organizer certification. 2501 attempts/2500 completed cells: one capacity-error attempt without native verdict was rerun (1344 additional steps); completed verdicts retained. This 65.16% replaces the historical 70.60% result, which used a different observation protocol. BCP/RPM and Future-all are described as separate model-side research, not evaluated components of this v3 score. Frozen source and records retained; public/private reviewer artifact hosting, release commit, planner access and report link pending."
+}
