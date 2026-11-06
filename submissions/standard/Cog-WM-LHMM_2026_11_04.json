@@ -1,0 +1,20 @@
+{
+  "submitter": "lidingebkernel-bit",
+  "model_type": "VLA",
+  "robocasa_version": "1.0.1",
+  "code_url": "N/A",
+  "commit_hash": "1f7abf6c7b919111b1b56dbab73a473d9be9d640",
+  "checkpoint_url": "N/A",
+  "paper_link": "N/A",
+  "open_source": "no",
+  "training_config": {
+    "batch_size": 512,
+    "num_training_steps": 56849
+  },
+  "model_name": "Cog-WM LHMM",
+  "date": "2026-11-04",
+  "atomic_seen_success": 87.33333333333333,
+  "composite_seen_success": 65.375,
+  "composite_unseen_success": 40,
+  "notes": "Cog-WM LHMM achieved 65.16% success (1629/2500) on RoboCasa365. The method description covers Future-all future-feature prediction for policy representation learning, a separate BCP/RPM execution-policy design, Human300 data alignment with validity masks and exact effective batches, and a Harness memory system. The evaluated configuration combines a frozen Xiaomi-Robotics-1 one-epoch SFT executor, GPT-6 Astra medium planning, read-only task experience and episode working memory. Live task-progress predicates and object truth coordinates are excluded; native depth and terminal-only feedback are retained."
+}
