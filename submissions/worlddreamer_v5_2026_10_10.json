@@ -9,7 +9,7 @@
   "code_url": "https://github.com/worldAgents-c/worlddreamer-v5-robocasa",
   "commit_hash": "N/A",
   "checkpoint_url": "https://huggingface.co/WorldAgents-c/worlddreamer-v5-robocasa",
-  "paper_link": "https://worldagents-c.github.io/worlddreamer-v5-project/",
+  "paper_link": "https://arxiv.org/abs/2610.37518",
   "open_source": "yes",
   "training_config": {
     "batch_size": 192,
