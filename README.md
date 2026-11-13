@@ -71,7 +71,7 @@ Agentic submissions go in `submissions/agentic/`. Please start the PR title with
 2. **Base policy.** Name, HF repo and commit, and license. No weight edits.
 3. **Scope.** Policy observations only (no privileged simulator state). No ground-truth success signal during an episode. Cross-episode memory must be disclosed.
 4. **Reproducibility.** Public repo, pinned dependencies, and one-prompt setup. For closed-API planners: provider, model ID, settings, and a test key with enough quota for one full eval. For closed-source code or checkpoints, grant access on GitHub to [@Abhiram824](https://github.com/Abhiram824) and on Hugging Face to [Abhi03](https://huggingface.co/Abhi03).
-5. **Verification.** An arXiv or preprint link. We re-run the full eval, and our numbers are the ones posted.
+5. **Paper.** An arXiv link is required so others can see your methodology and how the results were obtained.
 
 ### Submission template
 
