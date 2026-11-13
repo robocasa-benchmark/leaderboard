@@ -8,7 +8,7 @@
   "composite_seen_success": 85.0,
   "composite_unseen_success": 80.0,
   "base_policy": "None: no trained policy and no demonstration data. A closed-API language model (gpt-6-astra) writes one Python cell per reply against a robot API (look, segment, measure, move); segmentation by SAM3 (facebook/sam3 on Hugging Face, unchanged weights)",
-  "code_url": "https://github.com/HexaFuture/HexaShell-1.5",
+  "code_url": "https://github.com/HexaFuture/HexaShell",
   "commit_hash": "10e11ef3ee83258b157c23f688d64c139933a221",
   "checkpoint_url": "N/A",
   "paper_link": "https://arxiv.org/abs/2610.23479",
