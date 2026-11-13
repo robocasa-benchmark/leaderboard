@@ -2,7 +2,7 @@
 
 - Model name: worlddreamer_v5
 - Submitter: World Agents
-- Model type: VLA
+- Model type: WAM
 - Date evaluated: 10/10/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 82.0
