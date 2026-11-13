@@ -81,7 +81,7 @@ Each submission is a single JSON file added to `submissions/agentic/` with this 
 {
   "model_name": "<string>",
   "submitter": "<team or organization name>",
-  "model_type": "<type of the base policy: VLA | WAM | VLA + WM | Visuomotor | Other>",
+  "model_type": "<type of the base policy: VLA | WAM | VLA + WM | Visuomotor | Agent | Other>",
   "date": "<YYYY-MM-DD>",
   "robocasa_version": "<string, default '1.0.1'>",
   "atomic_seen_success": <number 0–100>,
@@ -103,7 +103,7 @@ Each submission is a single JSON file added to `submissions/agentic/` with this 
 
 > [!NOTE]
 > `checkpoint_url` is required when `"open_source": "yes"`. `training_config` is optional; include it if you trained or finetuned a model.
-> `model_type` uses the same options as standard submissions and describes the base policy; the website shows agentic entries as `Agent + <model_type>`.
+> `model_type` describes the base policy, using the same options as standard submissions, or `Agent` when there is no trained base policy. The website shows agentic entries as `Agent + <model_type>`, or just `Agent`.
 
 ### Private information
 

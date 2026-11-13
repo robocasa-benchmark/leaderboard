@@ -37,7 +37,7 @@
         },
         "model_type": {
             "type": "string",
-            "enum": ["VLA", "WAM", "VLA + WM", "Visuomotor", "Other"]
+            "enum": ["VLA", "WAM", "VLA + WM", "Visuomotor", "Agent", "Other"]
         },
         "submitter": {
             "type": "string",

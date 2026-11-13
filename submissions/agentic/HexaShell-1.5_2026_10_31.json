@@ -1,7 +1,7 @@
 {
-  "model_name": "HexaShell 1.5",
+  "model_name": "HexaShell",
   "submitter": "HexaFuture",
-  "model_type": "Other",
+  "model_type": "Agent",
   "date": "2026-10-31",
   "robocasa_version": "1.0.1",
   "atomic_seen_success": 91.1,

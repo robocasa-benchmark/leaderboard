@@ -1,8 +1,8 @@
 ## Submission details
 
-- Model name: HexaShell 1.5
+- Model name: HexaShell
 - Submitter: HexaFuture
-- Model type: Other
+- Model type: Agent
 - Date evaluated: 10/31/2026
 - RoboCasa version: 1.0.1
 - Atomic-Seen success: 91.1

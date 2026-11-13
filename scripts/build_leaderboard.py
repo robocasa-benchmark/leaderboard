@@ -171,7 +171,7 @@ def _policy_row(data: dict, rank: int) -> dict:
         # The site filters on `type`; the badge reads "Agent + <base policy type>".
         row["type"] = "agentic"
         model_type = data.get("model_type")
-        row["model_type"] = f"Agent + {model_type}" if model_type and model_type != "Other" else "Agent"
+        row["model_type"] = f"Agent + {model_type}" if model_type and model_type not in ("Agent", "Other") else "Agent"
     if submitter:
         row["submitter"] = submitter
     if data.get("submitter_url"):
