@@ -1,6 +1,6 @@
 ## Submission details
 
-- Model name: worlddreamer_v5
+- Model name: WorldDreamer v5
 - Submitter: World Agents
 - Model type: WAM
 - Date evaluated: 10/10/2026
