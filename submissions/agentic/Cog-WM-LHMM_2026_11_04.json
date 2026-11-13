@@ -1,0 +1,21 @@
+{
+  "submitter": "lidingebkernel-bit",
+  "model_type": "VLA",
+  "base_policy": "Cog-WM LHMM (Xiaomi-Robotics-1-derived, one-epoch Human300 SFT; frozen)",
+  "robocasa_version": "1.0.1",
+  "code_url": "N/A",
+  "commit_hash": "1f7abf6c7b919111b1b56dbab73a473d9be9d640",
+  "checkpoint_url": "https://huggingface.co/dingli123/Cog-WM-LHMM/tree/54c6b3062791b645e98f3c3ab684766f46dcd80e",
+  "paper_link": "N/A",
+  "open_source": "no",
+  "training_config": {
+    "batch_size": 512,
+    "num_training_steps": 56849
+  },
+  "model_name": "Cog-WM LHMM",
+  "date": "2026-11-04",
+  "atomic_seen_success": 87.33333333333333,
+  "composite_seen_success": 65.375,
+  "composite_unseen_success": 40,
+  "notes": "Agentic system: frozen Cog-WM LHMM policy with the Cog-Harness planner and memory system; 1629/2500 successes (65.16%) on RoboCasa365 target50, pretrain scenes, native horizons and scoring. Base policy license: Apache-2.0; HF revision: 54c6b3062791b645e98f3c3ab684766f46dcd80e. Planner: OpenAI gpt-6-astra, medium reasoning, Codex CLI 0.153.4. Disclosed frozen task-scoped experience is reused across episodes; working memory resets each episode with no writeback. Live task-progress predicates and object ground-truth coordinates are excluded; native depth and terminal-only feedback are retained. Reviewer access, planner quota and paper link remain to be finalized."
+}
