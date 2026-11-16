@@ -7,7 +7,6 @@
   "atomic_seen_success": 80.1,
   "composite_seen_success": 51.5,
   "composite_unseen_success": 28.1,
-  "base_policy": "MIRA System1: subgoal-conditioned pi0.5 fine-tune (yinpei-tri-pi/robocasa-system1-pi05-progact)",
   "code_url": "https://github.com/yinpei-tri-pi/sys1_sys2",
   "commit_hash": "d3d4ecc1d68bd14efc40e88ac915ee05943d2065",
   "checkpoint_url": "https://huggingface.co/yinpei-tri-pi/robocasa-system1-pi05-progact",
