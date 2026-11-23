@@ -1,0 +1,17 @@
+{
+  "model_name": "RoboHarness-Zero",
+  "submitter": "Polyadic Research Group",
+  "model_type": "VLA",
+  "date": "2026-11-23",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 86.11111111111111,
+  "composite_seen_success": 70.3125,
+  "composite_unseen_success": 53.125,
+  "base_policy": "Xiaomi-Robotics-1-RoboCasa365",
+  "code_url": "https://github.com/polyadic-research/roboharness0",
+  "commit_hash": "684fe01a32f7078b5b615dbd78c347df7034c7dc",
+  "checkpoint_url": "https://huggingface.co/XiaomiRobotics/Xiaomi-Robotics-1-RoboCasa365/tree/0d1aa76d0d82debc9b611e4d1e231096434d5be4",
+  "paper_link": "N/A",
+  "open_source": "yes",
+  "notes": "Project source is licensed under Apache-2.0; NOTICE and THIRD_PARTY_NOTICES.md retain upstream attribution. API access is supplied privately; endpoint and key are excluded from the repository. Before success, the planner can see environment.success=false in tool responses. The first native success stops physical execution and sets the score. The terminal status can then reach the planner for finish bookkeeping. Unchanged Harness 2.0 is original 1.2.3.5 at c8911c64f24393e8665bd9ecc34f819173d9c3ba; Xiaomi base weights unchanged, Apache-2.0. Historical author-run selected200 r002: 50 tasks x4 episodes, 141/200 successes; Atomic-Seen 62/72, Composite-Seen 45/64, Composite-Unseen 34/64. Selected batches fresh50/followup01/followup02/followup04; followup03 excluded. Ten selected attempts used a 600-second nested-planning override, so this is a mixed-parameter supplemental panel, not an official 2500-rollout score. Original success feedback, success-dependent verification and RGB-D back_project are retained and disclosed for organizer review. Configured planner: OpenAI Codex SDK via codexgateway, gpt-6-astra, reasoning_effort=xhigh, max_tokens=0; upstream provider/model identity not independently verified. Fixed offline capability priors retained; dynamic cross-episode memory not independently audited. All200 workflow/archive closure is not claimed. No organizer eligibility approval or waiver is claimed. The source distribution is a curated RoboCasa/Xiaomi subset; retained runtime and model-bound inputs keep their original bytes, with exact exclusions in publication/source-manifest.json. We plan to submit the RoboHarness-Zero paper to arXiv on November 23 or 24, 2026. We’ll add the arXiv abstract link to the leaderboard submission as soon as it is public."
+}
