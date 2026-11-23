@@ -5,9 +5,9 @@
 - Model type: VLA
 - Date evaluated: 11/04/2026
 - RoboCasa version: 1.0.1
-- Atomic-Seen success: 87.33333333333333
-- Composite-Seen success: 65.375
-- Composite-Unseen success: 40
+- Atomic-Seen success: 87.3
+- Composite-Seen success: 65.38
+- Composite-Unseen success: 40.0
 - Commit hash: 1f7abf6c7b919111b1b56dbab73a473d9be9d640
 - Open Source: no
 - PR: [https://github.com/robocasa-benchmark/leaderboard/pull/41](https://github.com/robocasa-benchmark/leaderboard/pull/41)
