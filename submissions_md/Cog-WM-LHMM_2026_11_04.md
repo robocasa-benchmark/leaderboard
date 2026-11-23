@@ -1,7 +1,7 @@
 ## Submission details
 
 - Model name: Cog-WM LHMM
-- Submitter: lidingebkernel-bit
+- Submitter: EBKernel Cog-WM Team
 - Model type: VLA
 - Date evaluated: 11/04/2026
 - RoboCasa version: 1.0.1

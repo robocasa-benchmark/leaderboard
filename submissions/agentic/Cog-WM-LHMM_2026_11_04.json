@@ -1,5 +1,5 @@
 {
-  "submitter": "lidingebkernel-bit",
+  "submitter": "EBKernel Cog-WM Team",
   "model_type": "VLA",
   "base_policy": "Cog-WM LHMM (Xiaomi-Robotics-1-derived, one-epoch Human300 SFT; frozen)",
   "robocasa_version": "1.0.1",
