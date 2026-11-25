@@ -1,0 +1,20 @@
+{
+  "model_name": "Motubrain 2.0",
+  "submitter": "Motubrain team",
+  "model_type": "WAM",
+  "date": "2026-11-10",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 81.7,
+  "composite_seen_success": 71.2,
+  "composite_unseen_success": 39.2,
+  "code_url": "https://github.com/RongxuCui/Motubrain2.0-robocasa365-eval",
+  "commit_hash": "69011570b5caaf69332817cfc25ed002be40430c",
+  "checkpoint_url": "https://huggingface.co/Motubrain/Motubrain2.0-robocasa365",
+  "paper_link": "N/A",
+  "open_source": "yes",
+  "training_config": {
+    "batch_size": 128,
+    "num_training_steps": 400000
+  },
+  "notes": "Results of Motubrain 2.0 on the RoboCasa365 benchmark. Motubrain 2.0 is a 24-layer joint video-action diffusion transformer that predicts action chunks from three camera views, with depth-anything-3 geometry conditioning and sparse visual memory, sampled in four CMSolver steps. A technical report is planned for release in mid-November 2026."
+}
