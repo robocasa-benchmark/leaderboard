@@ -1,0 +1,17 @@
+{
+  "model_name": "Auriga",
+  "submitter": "StellarEdge AI",
+  "model_type": "Other",
+  "date": "2026-11-05",
+  "robocasa_version": "1.0.1",
+  "atomic_seen_success": 92.88888888888889,
+  "composite_seen_success": 60.5,
+  "composite_unseen_success": 59.25,
+  "base_policy": "Native Panda-Omron motion controller; no learned action-policy checkpoint. A closed-API language model (gpt-6-astra) plans and invokes Auriga's typed tools and helper programs. Perception uses SAM 3.1 masks and RGB-D-derived RPent world maps.",
+  "code_url": "https://github.com/StellarEdge-AI/Auriga-Robocasa",
+  "commit_hash": "0592172bc73d1234aa7973f25b1d20ba313955f7",
+  "checkpoint_url": "N/A",
+  "paper_link": "https://arxiv.org/abs/2611.01112",
+  "open_source": "no",
+  "notes": "Draft for protocol and reproducibility review; author-verified results, pending maintainer verification. The code repository remains private for reviewer access; harness license: MIT. RoboCasa365 Target50, split=target, 50 tasks with seeds 1-50 for each task (2500 cases). Atomic-Seen 836/900, Composite-Seen 484/800, Composite-Unseen 474/800; weighted overall 1794/2500 = 71.76% (71.8% displayed). Full-precision split rates avoid intermediate rounding. The reported view uses 98 designated Composite-Seen reruns adopted after reviewing their outcomes, including both improvements and decreases; first-formal-score reference 1783/2500 = 71.32%. One persistent framework-stop case without a scored receipt is explicitly counted as failure. Planner: gpt-6-astra, reasoning effort high, at most 100 model calls per episode, through a Responses-compatible API; model access details and a dedicated test key are to be supplied privately. Observations include RGB, proprioception, RGB-D-derived world maps and SAM 3.1 masks; VGGT is disabled. In-episode task_progress, ground-truth success and success_criteria source are exposed through the RPent/PyRUA-Lean task-information interface. There is no enforced native step horizon or overall episode wall-clock cap. Episode memory is configured independently and initially empty, with native model memory disabled. Fresh-distribution native validation remains incomplete: the SAM service/environment/checkpoint, kitchen asset inventory and pinned native dependencies still require verification. Full setup and native launch currently reject unresolved prerequisites. This entry does not claim compliance with the leaderboard's observation restrictions or completed maintainer verification."
+}
